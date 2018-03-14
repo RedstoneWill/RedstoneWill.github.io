@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>红色石头的机器学习之路</title>
+  
+  <subtitle>公众号ID：redstonewill</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://redstonewill.github.io/"/>
+  <updated>2018-03-14T01:57:34.259Z</updated>
+  <id>https://redstonewill.github.io/</id>
+  
+  <author>
+    <name>红色石头</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>台湾大学林轩田机器学习基石课程学习笔记2 -- Learning to Answer Yes or No</title>
+    <link href="https://redstonewill.github.io/2018/03/14/%E5%8F%B0%E6%B9%BE%E5%A4%A7%E5%AD%A6%E6%9E%97%E8%BD%A9%E7%94%B0%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%9F%B3%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%20--%20Learning%20to%20Answer%20Yes%20or%20No/"/>
+    <id>https://redstonewill.github.io/2018/03/14/台湾大学林轩田机器学习基石课程学习笔记2 -- Learning to Answer Yes or No/</id>
+    <published>2018-03-14T01:39:54.000Z</published>
+    <updated>2018-03-14T01:57:34.259Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>我的CSDN博客地址：<a href="http://blog.csdn.net/red_stone1" target="_blank" rel="noopener">红色石头的专栏</a></p><p>我的知乎主页：<a href="https://www.zhihu.com/people/red_stone_wl" target="_blank" rel="noopener">红色石头</a></p><p>我的微博：<a href="https://weibo.com/6479023696/profile?topnav=1&amp;wvr=6&amp;is_all=1" target="_blank" rel="noopener">RedstoneWill的微博</a></p><p>我的GitHub：<a href="https://github.com/RedstoneWill" target="_blank" rel="noopener">RedstoneWill的GitHub</a></p><p>我的微信公众号：红色石头的机器学习之路（ID：redstonewill）</p><p>欢迎大家关注我！共同学习，共同进步！</p></blockquote><p>上节课，我们主要简述了机器学习的定义及其重要性，并用流程图的形式介绍了机器学习的整个过程：根据模型H，使用演算法A，在训练样本D上进行训练，得到最好的h，其对应的g就是我们最后需要的机器学习的模型函数，一般g接近于目标函数f。本节课将继续深入探讨机器学习问题，介绍感知机Perceptron模型，并推导课程的第一个机器学习算法：Perceptron Learning Algorithm（PLA）。</p><a id="more"></a><h3 id="Perceptron-Hypothesis-Set"><a href="#Perceptron-Hypothesis-Set" class="headerlink" title="Perceptron Hypothesis Set"></a><strong>Perceptron Hypothesis Set</strong></h3><p>引入这样一个例子：某银行要根据用户的年龄、性别、年收入等情况来判断是否给该用户发信用卡。现在有训练样本D，即之前用户的信息和是否发了信用卡。这是一个典型的机器学习问题，我们要根据D，通过A，在H中选择最好的h，得到g，接近目标函数f，也就是根据先验知识建立是否给用户发信用卡的模型。银行用这个模型对以后用户进行判断：发信用卡（+1），不发信用卡（-1）。</p><p>在这个机器学习的整个流程中，有一个部分非常重要：就是模型选择，即Hypothesis Set。选择什么样的模型，很大程度上会影响机器学习的效果和表现。下面介绍一个简单常用的Hypothesis Set：感知机（Perceptron）。</p><p>还是刚才银行是否给用户发信用卡的例子，我们把用户的个人信息作为特征向量x，令总共有d个特征，每个特征赋予不同的权重w，表示该特征对输出（是否发信用卡）的影响有多大。那所有特征的加权和的值与一个设定的阈值threshold进行比较：大于这个阈值，输出为+1，即发信用卡；小于这个阈值，输出为-1，即不发信用卡。感知机模型，就是当特征加权和与阈值的差大于或等于0，则输出h(x)=1；当特征加权和与阈值的差小于0，则输出h(x)=-1，而我们的目的就是计算出所有权值w和阈值threshold。</p><p><img src="http://img.blog.csdn.net/20170608082007683?" alt="这里写图片描述"></p><p>为了计算方便，通常我们将阈值threshold当做$w_0$，引入一个$x_0=1$的量与$w_0$相乘，这样就把threshold也转变成了权值$w_0$，简化了计算。h(x)的表达式做如下变换：</p><p><img src="http://img.blog.csdn.net/20170608083119699?" alt="这里写图片描述"></p><p>为了更清晰地说明感知机模型，我们假设Perceptrons在二维平面上，即$h(x)=sign(w_0+w_1x_1+w_2x_2)$。其中，$w_0+w_1x_1+w_2x_2=0$是平面上一条分类直线，直线一侧是正类（+1），直线另一侧是负类（-1）。权重w不同，对应于平面上不同的直线。</p><p><img src="http://img.blog.csdn.net/20170608084125366?" alt="这里写图片描述"></p><p>那么，我们所说的Perceptron，在这个模型上就是一条直线，称之为linear(binary) classifiers。注意一下，感知器线性分类不限定在二维空间中，在3D中，线性分类用平面表示，在更高维度中，线性分类用超平面表示，即只要是形如$w^Tx$的线性模型就都属于linear(binary) classifiers。</p><p>同时，需要注意的是，这里所说的linear(binary) classifiers是用简单的感知器模型建立的，线性分类问题还可以使用logistic regression来解决，后面将会介绍。</p><h3 id="Perceptron-Learning-Algorithm-PLA"><a href="#Perceptron-Learning-Algorithm-PLA" class="headerlink" title="Perceptron Learning Algorithm(PLA)"></a><strong>Perceptron Learning Algorithm(PLA)</strong></h3><p>根据上一部分的介绍，我们已经知道了hypothesis set由许多条直线构成。接下来，我们的目的就是如何设计一个演算法A，来选择一个最好的直线，能将平面上所有的正类和负类完全分开，也就是找到最好的g，使$g\approx f$。</p><p>如何找到这样一条最好的直线呢？我们可以使用逐点修正的思想，首先在平面上随意取一条直线，看看哪些点分类错误。然后开始对第一个错误点就行修正，即变换直线的位置，使这个错误点变成分类正确的点。接着，再对第二个、第三个等所有的错误分类点就行直线纠正，直到所有的点都完全分类正确了，就得到了最好的直线。这种“逐步修正”，就是PLA思想所在。</p><p><img src="http://img.blog.csdn.net/20170608095000165?" alt="这里写图片描述"></p><p>下面介绍一下PLA是怎么做的。首先随机选择一条直线进行分类。然后找到第一个分类错误的点，如果这个点表示正类，被误分为负类，即$w_t^Tx_{n(t)}&lt;0$，那表示w和x夹角大于90度，其中w是直线的法向量。所以，x被误分在直线的下侧（相对于法向量，法向量的方向即为正类所在的一侧），修正的方法就是使w和x夹角小于90度。通常做法是$w\leftarrow w+yx,\ y=1$，如图右上角所示，一次或多次更新后的$w+yx$与x夹角小于90度，能保证x位于直线的上侧，则对误分为负类的错误点完成了直线修正。</p><p>同理，如果是误分为正类的点，即$w_t^Tx_{n(t)}&gt;0$，那表示w和x夹角小于90度，其中w是直线的法向量。所以，x被误分在直线的上侧，修正的方法就是使w和x夹角大于90度。通常做法是$w\leftarrow w+yx,\ y=-1$，如图右下角所示，一次或多次更新后的$w+yx$与x夹角大于90度，能保证x位于直线的下侧，则对误分为正类的错误点也完成了直线修正。</p><p>按照这种思想，遇到个错误点就进行修正，不断迭代。要注意一点：每次修正直线，可能使之前分类正确的点变成错误点，这是可能发生的。但是没关系，不断迭代，不断修正，最终会将所有点完全正确分类（PLA前提是线性可分的）。这种做法的思想是“知错能改”，有句话形容它：“A fault confessed is half redressed.”</p><p>实际操作中，可以一个点一个点地遍历，发现分类错误的点就进行修正，直到所有点全部分类正确。这种被称为Cyclic PLA。</p><p><img src="http://img.blog.csdn.net/20170608102847562?" alt="这里写图片描述"></p><p>下面用图解的形式来介绍PLA的修正过程：</p><p><img src="http://img.blog.csdn.net/20170608104910590?" alt="这里写图片描述"></p><p><img src="http://img.blog.csdn.net/20170608104952086?" alt="这里写图片描述"></p><p><img src="http://img.blog.csdn.net/20170608105013685?" alt="这里写图片描述"></p><p><img src="http://img.blog.csdn.net/20170608105029404?" alt="这里写图片描述"></p><p><img src="http://img.blog.csdn.net/20170608105044842?" alt="这里写图片描述"></p><p><img src="http://img.blog.csdn.net/20170608105100764?" alt="这里写图片描述"></p><p><img src="http://img.blog.csdn.net/20170608105122249?" alt="这里写图片描述"></p><p><img src="http://img.blog.csdn.net/20170608105214946?" alt="这里写图片描述"></p><p><img src="http://img.blog.csdn.net/20170608105230634?" alt="这里写图片描述"></p><p><img src="http://img.blog.csdn.net/20170608105243181?" alt="这里写图片描述"></p><p><img src="http://img.blog.csdn.net/20170608105257829?" alt="这里写图片描述"></p><p>对PLA，我们需要考虑以下两个问题：</p><ul><li><p>PLA迭代一定会停下来吗？如果线性不可分怎么办？</p></li><li><p>PLA停下来的时候，是否能保证$f\approx g$？如果没有停下来，是否有$f\approx g$？</p></li></ul><h3 id="Guarantee-of-PLA"><a href="#Guarantee-of-PLA" class="headerlink" title="Guarantee of PLA"></a><strong>Guarantee of PLA</strong></h3><p>PLA什么时候会停下来呢？根据PLA的定义，当找到一条直线，能将所有平面上的点都分类正确，那么PLA就停止了。要达到这个终止条件，就必须保证D是线性可分（linear separable）。如果是非线性可分的，那么，PLA就不会停止。</p><p><img src="http://img.blog.csdn.net/20170608111542131?" alt="这里写图片描述"></p><p>对于线性可分的情况，如果有这样一条直线，能够将正类和负类完全分开，令这时候的目标权重为$w_f$，则对每个点，必然满足$y_n=sign(w_f^Tx_n)$，即对任一点：</p><p><img src="http://img.blog.csdn.net/20170608134312092?" alt="这里写图片描述"></p><p>PLA会对每次错误的点进行修正，更新权重$w_{t+1}$的值，如果$w_{t+1}$与$w_f$越来越接近，数学运算上就是内积越大，那表示$w_{t+1}$是在接近目标权重$w_f$，证明PLA是有学习效果的。所以，我们来计算$w_{t+1}$与$w_f$的内积：</p><p><img src="http://img.blog.csdn.net/20170608134340499?" alt="这里写图片描述"></p><p>从推导可以看出，$w_{t+1}$与$w_f$的内积跟$w_t$与$w_f$的内积相比更大了。似乎说明了$w_{t+1}$更接近$w_f$，但是内积更大，可能是向量长度更大了，不一定是向量间角度更小。所以，下一步，我们还需要证明$w_{t+1}$与$w_t$向量长度的关系：</p><p><img src="http://img.blog.csdn.net/20170608140302480?" alt="这里写图片描述"></p><p>$w_t$只会在分类错误的情况下更新，最终得到的$||w_{t+1}^2||$相比$||w_{t}^2||$的增量值不超过$max||x_n^2||$。也就是说，$w_t$的增长被限制了，$w_{t+1}$与$w_t$向量长度不会差别太大！</p><p>如果令初始权值$w_0=0$，那么经过T次错误修正后，有如下结论：</p><p>$$\frac{w_f^T}{||w_f||}\frac{w_T}{w_T}\geq \sqrt T\cdot constant$$</p><p>下面贴出来该结论的具体推导过程：</p><p><img src="http://img.blog.csdn.net/20170608143421951?" alt="这里写图片描述"></p><p><img src="http://img.blog.csdn.net/20170608143438779?" alt="这里写图片描述"></p><p>上述不等式左边其实是$w_T$与$w_f$夹角的余弦值，随着T增大，该余弦值越来越接近1，即$w_T$与$w_f$越来越接近。同时，需要注意的是，$\sqrt T\cdot constant\leq 1$，也就是说，迭代次数T是有上界的。根据以上证明，我们最终得到的结论是：$w_{t+1}$与$w_f$的是随着迭代次数增加，逐渐接近的。而且，PLA最终会停下来（因为T有上界），实现对线性可分的数据集完全分类。</p><h3 id="Non-Separable-Data"><a href="#Non-Separable-Data" class="headerlink" title="Non-Separable Data"></a><strong>Non-Separable Data</strong></h3><p>上一部分，我们证明了线性可分的情况下，PLA是可以停下来并正确分类的，但对于非线性可分的情况，$w_f$实际上并不存在，那么之前的推导并不成立，PLA不一定会停下来。所以，PLA虽然实现简单，但也有缺点：</p><p><img src="http://img.blog.csdn.net/20170608145844603?" alt="这里写图片描述"></p><p>对于非线性可分的情况，我们可以把它当成是数据集D中掺杂了一下noise，事实上，大多数情况下我们遇到的D，都或多或少地掺杂了noise。这时，机器学习流程是这样的：</p><p><img src="http://img.blog.csdn.net/20170608150716294?" alt="这里写图片描述"></p><p>在非线性情况下，我们可以把条件放松，即不苛求每个点都分类正确，而是容忍有错误点，取错误点的个数最少时的权重w：</p><p><img src="http://img.blog.csdn.net/20170608151418751?" alt="这里写图片描述"></p><p>事实证明，上面的解是NP-hard问题，难以求解。然而，我们可以对在线性可分类型中表现很好的PLA做个修改，把它应用到非线性可分类型中，获得近似最好的g。</p><p>修改后的PLA称为Packet Algorithm。它的算法流程与PLA基本类似，首先初始化权重$w_0$，计算出在这条初始化的直线中，分类错误点的个数。然后对错误点进行修正，更新w，得到一条新的直线，在计算其对应的分类错误的点的个数，并与之前错误点个数比较，取个数较小的直线作为我们当前选择的分类直线。之后，再经过n次迭代，不断比较当前分类错误点个数与之前最少的错误点个数比较，选择最小的值保存。直到迭代次数完成后，选取个数最少的直线对应的w，即为我们最终想要得到的权重值。</p><p><img src="http://img.blog.csdn.net/20170608155259223?" alt="这里写图片描述"></p><p>如何判断数据集D是不是线性可分？对于二维数据来说，通常还是通过肉眼观察来判断的。一般情况下，Pocket Algorithm要比PLA速度慢一些。</p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h3><p>本节课主要介绍了线性感知机模型，以及解决这类感知机分类问题的简单算法：PLA。我们详细证明了对于线性可分问题，PLA可以停下来并实现完全正确分类。对于不是线性可分的问题，可以使用PLA的修正算法Pocket Algorithm来解决。</p><p><strong><em>注明：</em></strong></p><p>文章中所有的图片均来自台湾大学林轩田《机器学习基石》课程。</p><p><strong>更多AI资源请关注公众号：红色石头的机器学习之路（ID：redstonewill）</strong><br><img src="http://img.blog.csdn.net/20180302182836444?" alt="这里写图片描述"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;我的CSDN博客地址：&lt;a href=&quot;http://blog.csdn.net/red_stone1&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;红色石头的专栏&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;我的知乎主页：&lt;a href=&quot;https://www.zhihu.com/people/red_stone_wl&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;红色石头&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;我的微博：&lt;a href=&quot;https://weibo.com/6479023696/profile?topnav=1&amp;amp;wvr=6&amp;amp;is_all=1&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;RedstoneWill的微博&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;我的GitHub：&lt;a href=&quot;https://github.com/RedstoneWill&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;RedstoneWill的GitHub&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;我的微信公众号：红色石头的机器学习之路（ID：redstonewill）&lt;/p&gt;
+&lt;p&gt;欢迎大家关注我！共同学习，共同进步！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;上节课，我们主要简述了机器学习的定义及其重要性，并用流程图的形式介绍了机器学习的整个过程：根据模型H，使用演算法A，在训练样本D上进行训练，得到最好的h，其对应的g就是我们最后需要的机器学习的模型函数，一般g接近于目标函数f。本节课将继续深入探讨机器学习问题，介绍感知机Perceptron模型，并推导课程的第一个机器学习算法：Perceptron Learning Algorithm（PLA）。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="https://redstonewill.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="机器学习" scheme="https://redstonewill.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="林轩田" scheme="https://redstonewill.github.io/tags/%E6%9E%97%E8%BD%A9%E7%94%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>台湾大学林轩田机器学习基石课程学习笔记1 -- The Learning Problem</title>
+    <link href="https://redstonewill.github.io/2018/03/13/%E5%8F%B0%E6%B9%BE%E5%A4%A7%E5%AD%A6%E6%9E%97%E8%BD%A9%E7%94%B0%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%9F%B3%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%20--%20The%20Learning%20Problem/"/>
+    <id>https://redstonewill.github.io/2018/03/13/台湾大学林轩田机器学习基石课程学习笔记1 -- The Learning Problem/</id>
+    <published>2018-03-13T08:59:11.000Z</published>
+    <updated>2018-03-14T01:57:37.341Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>我的CSDN博客地址：<a href="http://blog.csdn.net/red_stone1" target="_blank" rel="noopener">红色石头的专栏</a></p><p>我的知乎主页：<a href="https://www.zhihu.com/people/red_stone_wl" target="_blank" rel="noopener">红色石头</a></p><p>我的微博：<a href="https://weibo.com/6479023696/profile?topnav=1&amp;wvr=6&amp;is_all=1" target="_blank" rel="noopener">RedstoneWill的微博</a></p><p>我的GitHub：<a href="https://github.com/RedstoneWill" target="_blank" rel="noopener">RedstoneWill的GitHub</a></p><p>我的微信公众号：红色石头的机器学习之路（ID：redstonewill）</p><p>欢迎大家关注我！共同学习，共同进步！</p></blockquote><p>最近在看NTU林轩田的《机器学习基石》课程，个人感觉讲的非常好。整个基石课程分成四个部分：</p><ul><li><p>When Can Machine Learn? </p></li><li><p>Why Can Machine Learn? </p></li><li><p>How Can Machine Learn?</p></li><li><p>How Can Machine Learn Better?</p></li></ul><p>每个部分由四节课组成，总共有16节课。那么，从这篇开始，我们将连续对这门课做课程笔记，共16篇，希望能对正在看这们课的童鞋有所帮助。下面开始第一节课的笔记：The Learning Problem。</p><a id="more"></a><h3 id="What-is-Machine-Learning"><a href="#What-is-Machine-Learning" class="headerlink" title="What is Machine Learning"></a><strong>What is Machine Learning</strong></h3><p>什么是“学习”？学习就是人类通过观察、积累经验，掌握某项技能或能力。就好像我们从小学习识别字母、认识汉字，就是学习的过程。而机器学习（Machine Learning），顾名思义，就是让机器（计算机）也能向人类一样，通过观察大量的数据和训练，发现事物规律，获得某种分析问题、解决问题的能力。</p><p><img src="http://img.blog.csdn.net/20170607145430382?" alt="这里写图片描述"></p><p>机器学习可以被定义为：Improving some performance measure with experence computed from data. 也就是机器从数据中总结经验，从数据中找出某种规律或者模型，并用它来解决实际问题。</p><p><img src="http://img.blog.csdn.net/20170607145937180?" alt="这里写图片描述"></p><p>什么情况下会使用机器学习来解决问题呢？其实，目前机器学习的应用非常广泛，基本上任何场合都能够看到它的身影。其应用场合大致可归纳为三个条件：</p><ul><li><p>事物本身存在某种潜在规律</p></li><li><p>某些问题难以使用普通编程解决</p></li><li><p>有大量的数据样本可供使用</p></li></ul><p><img src="http://img.blog.csdn.net/20170607151033657?" alt="这里写图片描述"></p><h3 id="Applications-of-Machine-Learning"><a href="#Applications-of-Machine-Learning" class="headerlink" title="Applications of Machine Learning"></a><strong>Applications of Machine Learning</strong></h3><p>机器学习在我们的衣、食、住、行、教育、娱乐等各个方面都有着广泛的应用，我们的生活处处都离不开机器学习。比如，打开购物网站，网站就会给我们自动推荐我们可能会喜欢的商品；电影频道会根据用户的浏览记录和观影记录，向不同用户推荐他们可能喜欢的电影等等，到处都有机器学习的影子。</p><h3 id="Components-of-Machine-Learning"><a href="#Components-of-Machine-Learning" class="headerlink" title="Components of Machine Learning"></a><strong>Components of Machine Learning</strong></h3><p>本系列的课程对机器学习问题有一些基本的术语需要注意一下：</p><ul><li><p>输入x</p></li><li><p>输出y</p></li><li><p>目标函数f，即最接近实际样本分布的规律</p></li><li><p>训练样本data</p></li><li><p>假设hypothesis，一个机器学习模型对应了很多不同的hypothesis，通过演算法A，选择一个最佳的hypothesis对应的函数称为矩g，g能最好地表示事物的内在规律，也是我们最终想要得到的模型表达式。</p></li></ul><p><img src="http://img.blog.csdn.net/20170607153054321?" alt="这里写图片描述"></p><p>实际中，机器学习的流程图可以表示为：</p><p><img src="http://img.blog.csdn.net/20170607153730795?" alt="这里写图片描述"></p><p>对于理想的目标函数f，我们是不知道的，我们手上拿到的是一些训练样本D，假设是监督式学习，其中有输入x，也有输出y。机器学习的过程，就是根据先验知识选择模型，该模型对应的hypothesis set（用H表示），H中包含了许多不同的hypothesis，通过演算法A，在训练样本D上进行训练，选择出一个最好的hypothes，对应的函数表达式g就是我们最终要求的。一般情况下，g能最接近目标函数f，这样，机器学习的整个流程就完成了。</p><h3 id="Machine-Learning-and-Other-Fields"><a href="#Machine-Learning-and-Other-Fields" class="headerlink" title="Machine Learning and Other Fields"></a><strong>Machine Learning and Other Fields</strong></h3><p>与机器学习相关的领域有：</p><ul><li><p>数据挖掘（Data Mining）</p></li><li><p>人工智能（Artificial Intelligence）</p></li><li><p>统计（Statistics）</p></li></ul><p>其实，机器学习与这三个领域是相通的，基本类似，但也不完全一样。机器学习是这三个领域中的有力工具，而同时，这三个领域也是机器学习可以广泛应用的领域，总得来说，他们之间没有十分明确的界线。</p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h3><p>本节课主要介绍了什么是机器学习，什么样的场合下可以使用机器学习解决问题，然后用流程图的形式展示了机器学习的整个过程，最后把机器学习和数据挖掘、人工智能、统计这三个领域做个比较。本节课的内容主要是概述性的东西，比较简单，所以笔记也相对比较简略。</p><p>这里附上林轩田（Hsuan-Tien Lin）关于这门课的主页：<br><a href="http://www.csie.ntu.edu.tw/~htlin/" target="_blank" rel="noopener">http://www.csie.ntu.edu.tw/~htlin/</a></p><p><strong><em>注明：</em></strong></p><p>文章中所有的图片均来自台湾大学林轩田《机器学习基石》课程。</p><p><strong>更多AI资源请关注公众号：红色石头的机器学习之路（ID：redstonewill）</strong><br><img src="http://img.blog.csdn.net/20180206210809986?" alt="这里写图片描述"></p><p><strong>关注公众号并回复jishi1获得本节课笔记的pdf文件哦～</strong></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;我的CSDN博客地址：&lt;a href=&quot;http://blog.csdn.net/red_stone1&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;红色石头的专栏&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;我的知乎主页：&lt;a href=&quot;https://www.zhihu.com/people/red_stone_wl&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;红色石头&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;我的微博：&lt;a href=&quot;https://weibo.com/6479023696/profile?topnav=1&amp;amp;wvr=6&amp;amp;is_all=1&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;RedstoneWill的微博&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;我的GitHub：&lt;a href=&quot;https://github.com/RedstoneWill&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;RedstoneWill的GitHub&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;我的微信公众号：红色石头的机器学习之路（ID：redstonewill）&lt;/p&gt;
+&lt;p&gt;欢迎大家关注我！共同学习，共同进步！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;最近在看NTU林轩田的《机器学习基石》课程，个人感觉讲的非常好。整个基石课程分成四个部分：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;When Can Machine Learn? &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Why Can Machine Learn? &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;How Can Machine Learn?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;How Can Machine Learn Better?&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;每个部分由四节课组成，总共有16节课。那么，从这篇开始，我们将连续对这门课做课程笔记，共16篇，希望能对正在看这们课的童鞋有所帮助。下面开始第一节课的笔记：The Learning Problem。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="https://redstonewill.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="机器学习" scheme="https://redstonewill.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="林轩田" scheme="https://redstonewill.github.io/tags/%E6%9E%97%E8%BD%A9%E7%94%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://redstonewill.github.io/2018/03/13/hello-world/"/>
+    <id>https://redstonewill.github.io/2018/03/13/hello-world/</id>
+    <published>2018-03-13T08:06:15.672Z</published>
+    <updated>2018-03-14T01:57:56.195Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><a id="more"></a><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
