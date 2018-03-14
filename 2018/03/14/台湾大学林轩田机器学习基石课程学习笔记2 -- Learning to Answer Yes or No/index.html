@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="机器学习,林轩田," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="我的CSDN博客地址：红色石头的专栏 我的知乎主页：红色石头 我的微博：RedstoneWill的微博 我的GitHub：RedstoneWill的GitHub 我的微信公众号：红色石头的机器学习之路（ID：redstonewill） 欢迎大家关注我！共同学习，共同进步！  上节课，我们主要简述了机器学习的定义及其重要性，并用流程图的形式介绍了机器学习的整个过程：根据模型H，使用演算法A，在训练">
+<meta name="keywords" content="机器学习,林轩田">
+<meta property="og:type" content="article">
+<meta property="og:title" content="台湾大学林轩田机器学习基石课程学习笔记2 -- Learning to Answer Yes or No">
+<meta property="og:url" content="https://redstonewill.github.io/2018/03/14/台湾大学林轩田机器学习基石课程学习笔记2 -- Learning to Answer Yes or No/index.html">
+<meta property="og:site_name" content="红色石头的机器学习之路">
+<meta property="og:description" content="我的CSDN博客地址：红色石头的专栏 我的知乎主页：红色石头 我的微博：RedstoneWill的微博 我的GitHub：RedstoneWill的GitHub 我的微信公众号：红色石头的机器学习之路（ID：redstonewill） 欢迎大家关注我！共同学习，共同进步！  上节课，我们主要简述了机器学习的定义及其重要性，并用流程图的形式介绍了机器学习的整个过程：根据模型H，使用演算法A，在训练">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://img.blog.csdn.net/20170608082007683?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170608083119699?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170608084125366?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170608095000165?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170608102847562?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170608104910590?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170608104952086?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170608105013685?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170608105029404?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170608105044842?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170608105100764?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170608105122249?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170608105214946?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170608105230634?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170608105243181?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170608105257829?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170608111542131?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170608134312092?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170608134340499?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170608140302480?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170608143421951?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170608143438779?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170608145844603?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170608150716294?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170608151418751?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170608155259223?">
+<meta property="og:image" content="http://img.blog.csdn.net/20180302182836444?">
+<meta property="og:updated_time" content="2018-03-14T01:57:34.259Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="台湾大学林轩田机器学习基石课程学习笔记2 -- Learning to Answer Yes or No">
+<meta name="twitter:description" content="我的CSDN博客地址：红色石头的专栏 我的知乎主页：红色石头 我的微博：RedstoneWill的微博 我的GitHub：RedstoneWill的GitHub 我的微信公众号：红色石头的机器学习之路（ID：redstonewill） 欢迎大家关注我！共同学习，共同进步！  上节课，我们主要简述了机器学习的定义及其重要性，并用流程图的形式介绍了机器学习的整个过程：根据模型H，使用演算法A，在训练">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20170608082007683?">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://redstonewill.github.io/2018/03/14/台湾大学林轩田机器学习基石课程学习笔记2 -- Learning to Answer Yes or No/"/>
+
+
+
+
+
+  <title>台湾大学林轩田机器学习基石课程学习笔记2 -- Learning to Answer Yes or No | 红色石头的机器学习之路</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	
+	<a href="https://github.com/RedstoneWill" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+	
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">红色石头的机器学习之路</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">公众号ID：redstonewill</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-something">
+          <a href="/something" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-beer"></i> <br />
+            
+            有料
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://redstonewill.github.io/2018/03/14/台湾大学林轩田机器学习基石课程学习笔记2 -- Learning to Answer Yes or No/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="红色石头">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="红色石头的机器学习之路">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">台湾大学林轩田机器学习基石课程学习笔记2 -- Learning to Answer Yes or No</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-14T09:39:54+08:00">
+                2018-03-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>我的CSDN博客地址：<a href="http://blog.csdn.net/red_stone1" target="_blank" rel="noopener">红色石头的专栏</a></p>
+<p>我的知乎主页：<a href="https://www.zhihu.com/people/red_stone_wl" target="_blank" rel="noopener">红色石头</a></p>
+<p>我的微博：<a href="https://weibo.com/6479023696/profile?topnav=1&amp;wvr=6&amp;is_all=1" target="_blank" rel="noopener">RedstoneWill的微博</a></p>
+<p>我的GitHub：<a href="https://github.com/RedstoneWill" target="_blank" rel="noopener">RedstoneWill的GitHub</a></p>
+<p>我的微信公众号：红色石头的机器学习之路（ID：redstonewill）</p>
+<p>欢迎大家关注我！共同学习，共同进步！</p>
+</blockquote>
+<p>上节课，我们主要简述了机器学习的定义及其重要性，并用流程图的形式介绍了机器学习的整个过程：根据模型H，使用演算法A，在训练样本D上进行训练，得到最好的h，其对应的g就是我们最后需要的机器学习的模型函数，一般g接近于目标函数f。本节课将继续深入探讨机器学习问题，介绍感知机Perceptron模型，并推导课程的第一个机器学习算法：Perceptron Learning Algorithm（PLA）。</p>
+<a id="more"></a>
+<h3 id="Perceptron-Hypothesis-Set"><a href="#Perceptron-Hypothesis-Set" class="headerlink" title="Perceptron Hypothesis Set"></a><strong>Perceptron Hypothesis Set</strong></h3><p>引入这样一个例子：某银行要根据用户的年龄、性别、年收入等情况来判断是否给该用户发信用卡。现在有训练样本D，即之前用户的信息和是否发了信用卡。这是一个典型的机器学习问题，我们要根据D，通过A，在H中选择最好的h，得到g，接近目标函数f，也就是根据先验知识建立是否给用户发信用卡的模型。银行用这个模型对以后用户进行判断：发信用卡（+1），不发信用卡（-1）。</p>
+<p>在这个机器学习的整个流程中，有一个部分非常重要：就是模型选择，即Hypothesis Set。选择什么样的模型，很大程度上会影响机器学习的效果和表现。下面介绍一个简单常用的Hypothesis Set：感知机（Perceptron）。</p>
+<p>还是刚才银行是否给用户发信用卡的例子，我们把用户的个人信息作为特征向量x，令总共有d个特征，每个特征赋予不同的权重w，表示该特征对输出（是否发信用卡）的影响有多大。那所有特征的加权和的值与一个设定的阈值threshold进行比较：大于这个阈值，输出为+1，即发信用卡；小于这个阈值，输出为-1，即不发信用卡。感知机模型，就是当特征加权和与阈值的差大于或等于0，则输出h(x)=1；当特征加权和与阈值的差小于0，则输出h(x)=-1，而我们的目的就是计算出所有权值w和阈值threshold。</p>
+<p><img src="http://img.blog.csdn.net/20170608082007683?" alt="这里写图片描述"></p>
+<p>为了计算方便，通常我们将阈值threshold当做$w_0$，引入一个$x_0=1$的量与$w_0$相乘，这样就把threshold也转变成了权值$w_0$，简化了计算。h(x)的表达式做如下变换：</p>
+<p><img src="http://img.blog.csdn.net/20170608083119699?" alt="这里写图片描述"></p>
+<p>为了更清晰地说明感知机模型，我们假设Perceptrons在二维平面上，即$h(x)=sign(w_0+w_1x_1+w_2x_2)$。其中，$w_0+w_1x_1+w_2x_2=0$是平面上一条分类直线，直线一侧是正类（+1），直线另一侧是负类（-1）。权重w不同，对应于平面上不同的直线。</p>
+<p><img src="http://img.blog.csdn.net/20170608084125366?" alt="这里写图片描述"></p>
+<p>那么，我们所说的Perceptron，在这个模型上就是一条直线，称之为linear(binary) classifiers。注意一下，感知器线性分类不限定在二维空间中，在3D中，线性分类用平面表示，在更高维度中，线性分类用超平面表示，即只要是形如$w^Tx$的线性模型就都属于linear(binary) classifiers。</p>
+<p>同时，需要注意的是，这里所说的linear(binary) classifiers是用简单的感知器模型建立的，线性分类问题还可以使用logistic regression来解决，后面将会介绍。</p>
+<h3 id="Perceptron-Learning-Algorithm-PLA"><a href="#Perceptron-Learning-Algorithm-PLA" class="headerlink" title="Perceptron Learning Algorithm(PLA)"></a><strong>Perceptron Learning Algorithm(PLA)</strong></h3><p>根据上一部分的介绍，我们已经知道了hypothesis set由许多条直线构成。接下来，我们的目的就是如何设计一个演算法A，来选择一个最好的直线，能将平面上所有的正类和负类完全分开，也就是找到最好的g，使$g\approx f$。</p>
+<p>如何找到这样一条最好的直线呢？我们可以使用逐点修正的思想，首先在平面上随意取一条直线，看看哪些点分类错误。然后开始对第一个错误点就行修正，即变换直线的位置，使这个错误点变成分类正确的点。接着，再对第二个、第三个等所有的错误分类点就行直线纠正，直到所有的点都完全分类正确了，就得到了最好的直线。这种“逐步修正”，就是PLA思想所在。</p>
+<p><img src="http://img.blog.csdn.net/20170608095000165?" alt="这里写图片描述"></p>
+<p>下面介绍一下PLA是怎么做的。首先随机选择一条直线进行分类。然后找到第一个分类错误的点，如果这个点表示正类，被误分为负类，即$w_t^Tx_{n(t)}&lt;0$，那表示w和x夹角大于90度，其中w是直线的法向量。所以，x被误分在直线的下侧（相对于法向量，法向量的方向即为正类所在的一侧），修正的方法就是使w和x夹角小于90度。通常做法是$w\leftarrow w+yx,\ y=1$，如图右上角所示，一次或多次更新后的$w+yx$与x夹角小于90度，能保证x位于直线的上侧，则对误分为负类的错误点完成了直线修正。</p>
+<p>同理，如果是误分为正类的点，即$w_t^Tx_{n(t)}&gt;0$，那表示w和x夹角小于90度，其中w是直线的法向量。所以，x被误分在直线的上侧，修正的方法就是使w和x夹角大于90度。通常做法是$w\leftarrow w+yx,\ y=-1$，如图右下角所示，一次或多次更新后的$w+yx$与x夹角大于90度，能保证x位于直线的下侧，则对误分为正类的错误点也完成了直线修正。</p>
+<p>按照这种思想，遇到个错误点就进行修正，不断迭代。要注意一点：每次修正直线，可能使之前分类正确的点变成错误点，这是可能发生的。但是没关系，不断迭代，不断修正，最终会将所有点完全正确分类（PLA前提是线性可分的）。这种做法的思想是“知错能改”，有句话形容它：“A fault confessed is half redressed.”</p>
+<p>实际操作中，可以一个点一个点地遍历，发现分类错误的点就进行修正，直到所有点全部分类正确。这种被称为Cyclic PLA。</p>
+<p><img src="http://img.blog.csdn.net/20170608102847562?" alt="这里写图片描述"></p>
+<p>下面用图解的形式来介绍PLA的修正过程：</p>
+<p><img src="http://img.blog.csdn.net/20170608104910590?" alt="这里写图片描述"></p>
+<p><img src="http://img.blog.csdn.net/20170608104952086?" alt="这里写图片描述"></p>
+<p><img src="http://img.blog.csdn.net/20170608105013685?" alt="这里写图片描述"></p>
+<p><img src="http://img.blog.csdn.net/20170608105029404?" alt="这里写图片描述"></p>
+<p><img src="http://img.blog.csdn.net/20170608105044842?" alt="这里写图片描述"></p>
+<p><img src="http://img.blog.csdn.net/20170608105100764?" alt="这里写图片描述"></p>
+<p><img src="http://img.blog.csdn.net/20170608105122249?" alt="这里写图片描述"></p>
+<p><img src="http://img.blog.csdn.net/20170608105214946?" alt="这里写图片描述"></p>
+<p><img src="http://img.blog.csdn.net/20170608105230634?" alt="这里写图片描述"></p>
+<p><img src="http://img.blog.csdn.net/20170608105243181?" alt="这里写图片描述"></p>
+<p><img src="http://img.blog.csdn.net/20170608105257829?" alt="这里写图片描述"></p>
+<p>对PLA，我们需要考虑以下两个问题：</p>
+<ul>
+<li><p>PLA迭代一定会停下来吗？如果线性不可分怎么办？</p>
+</li>
+<li><p>PLA停下来的时候，是否能保证$f\approx g$？如果没有停下来，是否有$f\approx g$？</p>
+</li>
+</ul>
+<h3 id="Guarantee-of-PLA"><a href="#Guarantee-of-PLA" class="headerlink" title="Guarantee of PLA"></a><strong>Guarantee of PLA</strong></h3><p>PLA什么时候会停下来呢？根据PLA的定义，当找到一条直线，能将所有平面上的点都分类正确，那么PLA就停止了。要达到这个终止条件，就必须保证D是线性可分（linear separable）。如果是非线性可分的，那么，PLA就不会停止。</p>
+<p><img src="http://img.blog.csdn.net/20170608111542131?" alt="这里写图片描述"></p>
+<p>对于线性可分的情况，如果有这样一条直线，能够将正类和负类完全分开，令这时候的目标权重为$w_f$，则对每个点，必然满足$y_n=sign(w_f^Tx_n)$，即对任一点：</p>
+<p><img src="http://img.blog.csdn.net/20170608134312092?" alt="这里写图片描述"></p>
+<p>PLA会对每次错误的点进行修正，更新权重$w_{t+1}$的值，如果$w_{t+1}$与$w_f$越来越接近，数学运算上就是内积越大，那表示$w_{t+1}$是在接近目标权重$w_f$，证明PLA是有学习效果的。所以，我们来计算$w_{t+1}$与$w_f$的内积：</p>
+<p><img src="http://img.blog.csdn.net/20170608134340499?" alt="这里写图片描述"></p>
+<p>从推导可以看出，$w_{t+1}$与$w_f$的内积跟$w_t$与$w_f$的内积相比更大了。似乎说明了$w_{t+1}$更接近$w_f$，但是内积更大，可能是向量长度更大了，不一定是向量间角度更小。所以，下一步，我们还需要证明$w_{t+1}$与$w_t$向量长度的关系：</p>
+<p><img src="http://img.blog.csdn.net/20170608140302480?" alt="这里写图片描述"></p>
+<p>$w_t$只会在分类错误的情况下更新，最终得到的$||w_{t+1}^2||$相比$||w_{t}^2||$的增量值不超过$max||x_n^2||$。也就是说，$w_t$的增长被限制了，$w_{t+1}$与$w_t$向量长度不会差别太大！</p>
+<p>如果令初始权值$w_0=0$，那么经过T次错误修正后，有如下结论：</p>
+<p>$$\frac{w_f^T}{||w_f||}\frac{w_T}{w_T}\geq \sqrt T\cdot constant$$</p>
+<p>下面贴出来该结论的具体推导过程：</p>
+<p><img src="http://img.blog.csdn.net/20170608143421951?" alt="这里写图片描述"></p>
+<p><img src="http://img.blog.csdn.net/20170608143438779?" alt="这里写图片描述"></p>
+<p>上述不等式左边其实是$w_T$与$w_f$夹角的余弦值，随着T增大，该余弦值越来越接近1，即$w_T$与$w_f$越来越接近。同时，需要注意的是，$\sqrt T\cdot constant\leq 1$，也就是说，迭代次数T是有上界的。根据以上证明，我们最终得到的结论是：$w_{t+1}$与$w_f$的是随着迭代次数增加，逐渐接近的。而且，PLA最终会停下来（因为T有上界），实现对线性可分的数据集完全分类。</p>
+<h3 id="Non-Separable-Data"><a href="#Non-Separable-Data" class="headerlink" title="Non-Separable Data"></a><strong>Non-Separable Data</strong></h3><p>上一部分，我们证明了线性可分的情况下，PLA是可以停下来并正确分类的，但对于非线性可分的情况，$w_f$实际上并不存在，那么之前的推导并不成立，PLA不一定会停下来。所以，PLA虽然实现简单，但也有缺点：</p>
+<p><img src="http://img.blog.csdn.net/20170608145844603?" alt="这里写图片描述"></p>
+<p>对于非线性可分的情况，我们可以把它当成是数据集D中掺杂了一下noise，事实上，大多数情况下我们遇到的D，都或多或少地掺杂了noise。这时，机器学习流程是这样的：</p>
+<p><img src="http://img.blog.csdn.net/20170608150716294?" alt="这里写图片描述"></p>
+<p>在非线性情况下，我们可以把条件放松，即不苛求每个点都分类正确，而是容忍有错误点，取错误点的个数最少时的权重w：</p>
+<p><img src="http://img.blog.csdn.net/20170608151418751?" alt="这里写图片描述"></p>
+<p>事实证明，上面的解是NP-hard问题，难以求解。然而，我们可以对在线性可分类型中表现很好的PLA做个修改，把它应用到非线性可分类型中，获得近似最好的g。</p>
+<p>修改后的PLA称为Packet Algorithm。它的算法流程与PLA基本类似，首先初始化权重$w_0$，计算出在这条初始化的直线中，分类错误点的个数。然后对错误点进行修正，更新w，得到一条新的直线，在计算其对应的分类错误的点的个数，并与之前错误点个数比较，取个数较小的直线作为我们当前选择的分类直线。之后，再经过n次迭代，不断比较当前分类错误点个数与之前最少的错误点个数比较，选择最小的值保存。直到迭代次数完成后，选取个数最少的直线对应的w，即为我们最终想要得到的权重值。</p>
+<p><img src="http://img.blog.csdn.net/20170608155259223?" alt="这里写图片描述"></p>
+<p>如何判断数据集D是不是线性可分？对于二维数据来说，通常还是通过肉眼观察来判断的。一般情况下，Pocket Algorithm要比PLA速度慢一些。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h3><p>本节课主要介绍了线性感知机模型，以及解决这类感知机分类问题的简单算法：PLA。我们详细证明了对于线性可分问题，PLA可以停下来并实现完全正确分类。对于不是线性可分的问题，可以使用PLA的修正算法Pocket Algorithm来解决。</p>
+<p><strong><em>注明：</em></strong></p>
+<p>文章中所有的图片均来自台湾大学林轩田《机器学习基石》课程。</p>
+<p><strong>更多AI资源请关注公众号：红色石头的机器学习之路（ID：redstonewill）</strong><br><img src="http://img.blog.csdn.net/20180302182836444?" alt="这里写图片描述"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
+          
+            <a href="/tags/林轩田/" rel="tag"># 林轩田</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/13/台湾大学林轩田机器学习基石课程学习笔记1 -- The Learning Problem/" rel="next" title="台湾大学林轩田机器学习基石课程学习笔记1 -- The Learning Problem">
+                <i class="fa fa-chevron-left"></i> 台湾大学林轩田机器学习基石课程学习笔记1 -- The Learning Problem
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/blog-logo.jpg"
+                alt="红色石头" />
+            
+              <p class="site-author-name" itemprop="name">红色石头</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Perceptron-Hypothesis-Set"><span class="nav-number">1.</span> <span class="nav-text">Perceptron Hypothesis Set</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Perceptron-Learning-Algorithm-PLA"><span class="nav-number">2.</span> <span class="nav-text">Perceptron Learning Algorithm(PLA)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Guarantee-of-PLA"><span class="nav-number">3.</span> <span class="nav-text">Guarantee of PLA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Non-Separable-Data"><span class="nav-number">4.</span> <span class="nav-text">Non-Separable Data</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">红色石头</span>
+
+  
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
