@@ -4,30 +4,8 @@
 
     
   <url>
-    <loc>https://redstonewill.github.io/2018/03/13/2018-03-11-math/</loc>
-    <lastmod>2018-03-16T12:24:12.694Z</lastmod>
-    <data>
-        <display>
-        <title>math</title>
-        <pubTime>2018-03-13T08:59:11.000Z</pubTime>
-        
-        <tag>机器学习</tag>
-         
-        <tag>林轩田</tag>
-         
-         
-           
-             
-              <breadCrumb title="学习笔记" url="https://redstonewill.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://redstonewill.github.io/2018/03/13/%E5%8F%B0%E6%B9%BE%E5%A4%A7%E5%AD%A6%E6%9E%97%E8%BD%A9%E7%94%B0%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%9F%B3%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%20--%20The%20Learning%20Problem/</loc>
-    <lastmod>2018-03-16T09:49:16.384Z</lastmod>
+    <lastmod>2018-03-16T12:59:41.172Z</lastmod>
     <data>
         <display>
         <title>台湾大学林轩田机器学习基石课程学习笔记1 -- The Learning Problem</title>
@@ -37,15 +15,24 @@
          
         <tag>林轩田</tag>
          
+        <tag>基石</tag>
+         
+        <tag>学习笔记</tag>
+         
          
            
              
-              <breadCrumb title="学习笔记" url="https://redstonewill.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+              <breadCrumb title="机器学习" url="https://redstonewill.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+          
+             
+              <breadCrumb title="林轩田机器学习基石" url="https://redstonewill.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9E%97%E8%BD%A9%E7%94%B0%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%9F%B3/"/>
           
         </display>
     </data>
     </url>
 
+    
+    
     
     
   <url>
@@ -69,6 +56,4 @@
     </data>
     </url>
 
-    
-    
 </urlset>
