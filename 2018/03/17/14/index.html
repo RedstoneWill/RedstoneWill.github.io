@@ -94,29 +94,31 @@
 
 <meta name="keywords" content="机器学习,林轩田,基石,笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="台湾大学林轩田机器学习基石课程学习笔记8 -- Noise and Error">
-<meta property="og:url" content="https://redstonewill.github.io/2018/03/17/8/index.html">
+<meta property="og:title" content="台湾大学林轩田机器学习基石课程学习笔记14 -- Regularization">
+<meta property="og:url" content="https://redstonewill.github.io/2018/03/17/14/index.html">
 <meta property="og:site_name" content="红色石头的机器学习之路">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://img.blog.csdn.net/20170509214259658?imageView/2/w/500/q/100">
-<meta property="og:image" content="http://img.blog.csdn.net/20170509214259658?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170509234714781?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170509234729403?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170616080950726?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170509235041811?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170616082857078?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170616083449361?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170509235617200?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170616084802840?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170510000042846?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170510000434925?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170616093909660?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170510001149489?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170510001245521?">
-<meta property="og:updated_time" content="2018-03-17T06:39:03.797Z">
+<meta property="og:image" content="http://img.blog.csdn.net/20170526135401178?imageView/2/w/500/q/100">
+<meta property="og:image" content="http://img.blog.csdn.net/20170526134202674?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170526134855871?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170526135401178?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170526154350108?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170526160916246?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170526214203283?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170527103629017?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170527103932990?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170531165847641?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170531171049190?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170531200442866?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170531203944555?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170531204300526?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170531211835309?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170531212104701?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170531212415879?">
+<meta property="og:updated_time" content="2018-03-17T13:58:20.891Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="台湾大学林轩田机器学习基石课程学习笔记8 -- Noise and Error">
-<meta name="twitter:image" content="http://img.blog.csdn.net/20170509214259658?imageView/2/w/500/q/100">
+<meta name="twitter:title" content="台湾大学林轩田机器学习基石课程学习笔记14 -- Regularization">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20170526135401178?imageView/2/w/500/q/100">
 
 
 
@@ -146,13 +148,13 @@
 
 
 
-  <link rel="canonical" href="https://redstonewill.github.io/2018/03/17/8/"/>
+  <link rel="canonical" href="https://redstonewill.github.io/2018/03/17/14/"/>
 
 
 
 
 
-  <title>台湾大学林轩田机器学习基石课程学习笔记8 -- Noise and Error | 红色石头的机器学习之路</title>
+  <title>台湾大学林轩田机器学习基石课程学习笔记14 -- Regularization | 红色石头的机器学习之路</title>
   
 
 
@@ -339,7 +341,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://redstonewill.github.io/2018/03/17/8/">
+    <link itemprop="mainEntityOfPage" href="https://redstonewill.github.io/2018/03/17/14/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="红色石头">
@@ -356,7 +358,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">台湾大学林轩田机器学习基石课程学习笔记8 -- Noise and Error</h1>
+          <h1 class="post-title" itemprop="name headline">台湾大学林轩田机器学习基石课程学习笔记14 -- Regularization</h1>
         
 
         <div class="post-meta">
@@ -368,7 +370,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-17T14:37:13+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-17T21:55:35+08:00">
                 2018-03-17
               </time>
             
@@ -419,7 +421,7 @@
 
           
           
-             <span id="/2018/03/17/8/" class="leancloud_visitors" data-flag-title="台湾大学林轩田机器学习基石课程学习笔记8 -- Noise and Error">
+             <span id="/2018/03/17/14/" class="leancloud_visitors" data-flag-title="台湾大学林轩田机器学习基石课程学习笔记14 -- Regularization">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -444,7 +446,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,319
+                  3,472
                 </span>
               
 
@@ -469,60 +471,109 @@
       
 
       
-        <p><img src="http://img.blog.csdn.net/20170509214259658?imageView/2/w/500/q/100" alt="这里写图片描述"><br><a id="more"></a></p>
+        <p><img src="http://img.blog.csdn.net/20170526135401178?imageView/2/w/500/q/100" alt="这里写图片描述"><br><a id="more"></a></p>
 <blockquote>
 <p>我的CSDN博客地址：<a href="http://blog.csdn.net/red_stone1" target="_blank" rel="noopener">红色石头的专栏</a><br>我的知乎主页：<a href="https://www.zhihu.com/people/red_stone_wl" target="_blank" rel="noopener">红色石头</a><br>我的微博：<a href="https://weibo.com/6479023696/profile?topnav=1&amp;wvr=6&amp;is_all=1" target="_blank" rel="noopener">RedstoneWill的微博</a><br>我的GitHub：<a href="https://github.com/RedstoneWill" target="_blank" rel="noopener">RedstoneWill的GitHub</a><br>我的微信公众号：红色石头的机器学习之路（ID：redstonewill）<br>欢迎大家关注我！共同学习，共同进步！</p>
 </blockquote>
-<p>上一节课，我们主要介绍了VC Dimension的概念。如果Hypotheses set的VC Dimension是有限的，且有足够多N的资料，同时能够找到一个hypothesis使它的$E_{in}\approx 0$，那么就能说明机器学习是可行的。本节课主要讲了数据集有Noise的情况下，是否能够进行机器学习，并且介绍了假设空间H下演算法A的Error估计。</p>
-<h3 id="Noise-and-Probablistic-target"><a href="#Noise-and-Probablistic-target" class="headerlink" title="Noise and Probablistic target"></a>Noise and Probablistic target</h3><p>上节课推导VC Dimension的数据集是在没有Noise的情况下，本节课讨论如果数据集本身存在Noise，那VC Dimension的推导是否还成立呢？</p>
-<p>首先，Data Sets的Noise一般有三种情况：</p>
+<p>上节课我们介绍了过拟合发生的原因：excessive power, stochastic/deterministic noise 和limited data。并介绍了解决overfitting的简单方法。本节课，我们将介绍解决overfitting的另一种非常重要的方法：Regularization规则化。</p>
+<h3 id="Regularized-Hypothesis-Set"><a href="#Regularized-Hypothesis-Set" class="headerlink" title="Regularized Hypothesis Set"></a>Regularized Hypothesis Set</h3><p>先来看一个典型的overfitting的例子：</p>
+<p><img src="http://img.blog.csdn.net/20170526134202674?" alt="这里写图片描述"></p>
+<p>如图所示，在数据量不够大的情况下，如果我们使用一个高阶多项式（图中红色曲线所示），例如10阶，对目标函数（蓝色曲线）进行拟合。拟合曲线波动很大，虽然$E_{in}$很小，但是$E_{out}$很大，也就造成了过拟合现象。</p>
+<p>那么如何对过拟合现象进行修正，使hypothesis更接近于target function呢？一种方法就是regularized fit。</p>
+<p><img src="http://img.blog.csdn.net/20170526134855871?" alt="这里写图片描述"></p>
+<p>这种方法得到的红色fit曲线，要比overfit的红色曲线平滑很多，更接近与目标函数，它的阶数要更低一些。那么问题就变成了我们要把高阶（10阶）的hypothesis sets转换为低阶（2阶）的hypothesis sets。通过下图我们发现，不同阶数的hypothesis存在如下包含关系：</p>
+<p><img src="http://img.blog.csdn.net/20170526135401178?" alt="这里写图片描述"></p>
+<p>我们发现10阶多项式hypothesis sets里包含了2阶多项式hypothesis sets的所有项，那么在$H_{10}$中加入一些限定条件，使它近似为$H_2$即可。这种函数近似曾被称之为不适定问题（ill-posed problem）。</p>
+<p>如何从10阶转换为2阶呢？首先，$H_{10}$可表示为：<br>$$H_{10}=w_0+w_1x+w_2x^2+w_3x^3+\cdots+w_{10}x^{10}$$</p>
+<p>而$H_2$可表示为：<br>$$H_2=w_0+w_1x+w_2x^2$$</p>
+<p>所以，如果限定条件是$w_3=w_4=\cdots=w_{10}=0$，那么就有$H_2=H_{10}$。也就是说，对于高阶的hypothesis，为了防止过拟合，我们可以将其高阶部分的权重w限制为0，这样，就相当于从高阶的形式转换为低阶，fit波形更加平滑，不容易发生过拟合。</p>
+<p><img src="http://img.blog.csdn.net/20170526154350108?" alt="这里写图片描述"></p>
+<p>那有一个问题，令$H_{10}$高阶权重w为0，为什么不直接使用$H_2$呢？这样做的目的是拓展我们的视野，为即将讨论的问题做准备。刚刚我们讨论的限制是$H_{10}$高阶部分的权重w限制为0，这是比较苛刻的一种限制。下面，我们把这个限制条件变得更宽松一点，即令任意8个权重w为0，并不非要限定$w_3=w_4=\cdots=w_{10}=0$，这个Looser Constraint可以写成：<br>$$\sum_{q=0}^{10}(w_q\neq0)\leq3$$</p>
+<p>也就只是限定了w不为0的个数，并不限定必须是高阶的w。这种hypothesis记为$H_2’$，称为sparse hypothesis set，它与$H_2$和$H_{10}$的关系为：<br>$$H_2\subset H_2’\subset H_{10}$$</p>
+<p><img src="http://img.blog.csdn.net/20170526160916246?" alt="这里写图片描述"></p>
+<p>Looser Constraint对应的hypothesis应该更好解一些，但事实是sparse hypothesis set $H_2’$被证明也是NP-hard，求解非常困难。所以，还要转换为另一种易于求解的限定条件。</p>
+<p>那么，我们寻找一种更容易求解的宽松的限定条件Softer Constraint，即：</p>
+<p>$$\sum_{q=0}^{10}w_q^2=||w||^2\leq C$$</p>
+<p>其中，C是常数，也就是说，所有的权重w的平方和的大小不超过C，我们把这种hypothesis sets记为$H(C)$。</p>
+<p>$H_2’$与$H(C)$的关系是，它们之间有重叠，有交集的部分，但是没有完全包含的关系，也不一定相等。对应$H(C)$，C值越大，限定的范围越大，即越宽松：</p>
+<p>$$H(0)\subset H(1.126)\subset \cdots \subset H(1126)\subset \cdots \subset H(\infty)=H_{10}$$</p>
+<p>当C无限大的时候，即限定条件非常宽松，相当于没有加上任何限制，就与$H_{10}$没有什么两样。$H(C)$称为regularized hypothesis set，这种形式的限定条件是可以进行求解的，我们把求解的满足限定条件的权重w记为$w_{REG}$。接下来就要探讨如何求解$w_{REG}$。</p>
+<h3 id="Weight-Decay-Regularization"><a href="#Weight-Decay-Regularization" class="headerlink" title="Weight Decay Regularization"></a>Weight Decay Regularization</h3><p>现在，针对H(c)，即加上限定条件，我们的问题变成：</p>
+<p><img src="http://img.blog.csdn.net/20170526214203283?" alt="这里写图片描述"></p>
+<p>我们的目的是计算$E_{in}(w)$的最小值，限定条件是$||w^2||\leq C$。这个限定条件从几何角度上的意思是，权重w被限定在半径为$\sqrt C$的圆内，而球外的w都不符合要求，即便它是靠近$E_{in}(w)$梯度为零的w。</p>
+<p><img src="http://img.blog.csdn.net/20170527103629017?" alt="这里写图片描述"></p>
+<p>下面用一张图来解释在限定条件下，最小化$E_{in}(w)$的过程：</p>
+<p><img src="http://img.blog.csdn.net/20170527103932990?" alt="这里写图片描述"></p>
+<p>如上图所示，假设在空间中的一点w，根据梯度下降算法，w会朝着$-\nabla E_{in}$的方向移动（图中蓝色箭头指示的方向），在没有限定条件的情况下，w最终会取得最小值$w_{lin}$，即“谷底”的位置。现在，加上限定条件，即w被限定在半径为$\sqrt C$的圆内，w距离原点的距离不能超过圆的半径，球如图中红色圆圈所示$w^Tw=C$。那么，这种情况下，w不能到达$w_{lin}$的位置，最大只能位于圆上，沿着圆的切线方向移动（图中绿色箭头指示的方向）。与绿色向量垂直的向量（图中红色箭头指示的方向）是圆切线的法向量，即w的方向，w不能靠近红色箭头方向移动。那么随着迭代优化过程，只要$-\nabla E_{in}$与w点切线方向不垂直，那么根据向量知识，$-\nabla E_{in}$一定在w点切线方向上有不为零的分量，即w点会继续移动。只有当$-\nabla E_{in}$与绿色切线垂直，即与红色法向量平行的时候，$-\nabla E_{in}$在切线方向上没有不为零的分量了，也就表示这时w达到了最优解的位置。</p>
+<p>有了这个平行的概念，我们就得到了获得最优解需要满足的性质：</p>
+<p>$$\nabla E_{in}(w_{REG})+\frac{2\lambda}{N}w_{REG}=0$$</p>
+<p>上面公式中的$\lambda$称为Lagrange multiplier，是用来解有条件的最佳化问题常用的数学工具，$\frac2N$是方便后面公式推导。那么我们的目标就变成了求解满足上面公式的$w_{REG}$。</p>
+<p>之前我们推导过，线性回归的$E_{in}$的表达式为：</p>
+<p>$$E_{in}=\frac1N\sum_{n=1}^N(x_n^Tw-y_n)^2$$</p>
+<p>计算$E_{in}$梯度，并代入到平行条件中，得到：</p>
+<p>$$\frac2N(Z^TZw_{REG}-Z^Ty)+\frac{2\lambda}Nw_{REG}=0$$</p>
+<p>这是一个线性方程式，直接得到$w_{REG}$为：</p>
+<p>$$w_{REG}=(Z^TZ+\lambda I)^{-1}Z^Ty$$</p>
+<p>上式中包含了求逆矩阵的过程，因为$Z^TZ$是半正定矩阵，如果$\lambda$大于零，那么$Z^TZ+\lambda I$一定是正定矩阵，即一定可逆。另外提一下，统计学上把这叫做ridge regression，可以看成是linear regression的进阶版。</p>
+<p>如果对于更一般的情况，例如逻辑回归问题中，$\nabla E_{in}$不是线性的，那么将其代入平行条件中得到的就不是一个线性方程式，$w_{REG}$不易求解。下面我们从另一个角度来看一下平行等式：</p>
+<p>$$\nabla E_{in}(w_{REG})+\frac{2\lambda}{N}w_{REG}=0$$</p>
+<p>已知$\nabla E_{in}$是$E_{in}$对$w_{REG}$的导数，而$\frac{2\lambda}{N}w_{REG}$也可以看成是$\frac{\lambda}Nw_{REG}^2$的导数。那么平行等式左边可以看成一个函数的导数，导数为零，即求该函数的最小值。也就是说，问题转换为最小化该函数：</p>
+<p>$$E_{aug}(w)=E_{in}(w)+\frac{\lambda}Nw^Tw$$</p>
+<p>该函数中第二项就是限定条件regularizer，也称为weight-decay regularization。我们把这个函数称为Augmented Error，即$E_{aug}(w)$。</p>
+<p>如果$\lambda$不为零，对应于加上了限定条件，若$\lambda$等于零，则对应于没有任何限定条件，问题转换成之前的最小化$E_{in}(w)$。</p>
+<p>下面给出一个曲线拟合的例子，$\lambda$取不同的值时，得到的曲线也不相同：</p>
+<p><img src="http://img.blog.csdn.net/20170531165847641?" alt="这里写图片描述"></p>
+<p>从图中可以看出，当$\lambda=0$时，发生了过拟合；当$\lambda=0.0001$时，拟合的效果很好；当$\lambda=0.01$和$\lambda=1$时，发生了欠拟合。我们可以把$\lambda$看成是一种penality，即对hypothesis复杂度的惩罚，$\lambda$越大，w就越小，对应于C值越小，即这种惩罚越大，拟合曲线就会越平滑，高阶项就会削弱，容易发生欠拟合。$\lambda$一般取比较小的值就能达到良好的拟合效果，过大过小都有问题，但究竟取什么值，要根据具体训练数据和模型进行分析与调试。</p>
+<p><img src="http://img.blog.csdn.net/20170531171049190?" alt="这里写图片描述"></p>
+<p>事实上，这种regularization不仅可以用在多项式的hypothesis中，还可以应用在logistic regression等其他hypothesis中，都可以达到防止过拟合的效果。</p>
+<p>我们目前讨论的多项式是形如$x,x^2,x^3,\cdots,x^n$的形式，若x的范围限定在[-1,1]之间，那么可能导致$x^n$相对于低阶的值要小得多，则其对于的w非常大，相当于要给高阶项设置很大的惩罚。为了避免出现这种数据大小差别很大的情况，可以使用Legendre Polynomials代替$x,x^2,x^3,\cdots,x^n$这种形式，Legendre Polynomials各项之间是正交的，用它进行多项式拟合的效果更好。关于Legendre Polynomials的概念这里不详细介绍，有兴趣的童鞋可以看一下<a href="https://en.wikipedia.org/wiki/Legendre_polynomials" target="_blank" rel="noopener">维基百科</a>。</p>
+<h3 id="Regularization-and-VC-Theory"><a href="#Regularization-and-VC-Theory" class="headerlink" title="Regularization and VC Theory"></a>Regularization and VC Theory</h3><p>下面我们研究一下Regularization与VC理论之间的关系。Augmented Error表达式如下：</p>
+<p>$$E_{aug}(w)=E_{in}(w)+\frac{\lambda}Nw^Tw$$</p>
+<p>VC Bound表示为：</p>
+<p>$$E_{out}(w)\leq E_{in}(w)+\Omega(H)$$</p>
+<p>其中$w^Tw$表示的是单个hypothesis的复杂度，记为$\Omega(w)$；而$\Omega(H)$表示整个hypothesis set的复杂度。根据Augmented Error和VC Bound的表达式，$\Omega(w)$包含于$\Omega(H)$之内，所以，$E_{aug}(w)$比$E_{in}$更接近于$E_{out}$，即更好地代表$E_{out}$，$E_{aug}(w)$与$E_{out}$之间的误差更小。</p>
+<p><img src="http://img.blog.csdn.net/20170531200442866?" alt="这里写图片描述"></p>
+<p>根据VC Dimension理论，整个hypothesis set的$d_{VC}=\breve d+1$，这是因为所有的w都考虑了，没有任何限制条件。而引入限定条件的$d_{VC}(H(C))=d_{EFF}(H,A)$，即有效的VC dimension。也就是说，$d_{VC}(H)$比较大，因为它代表了整个hypothesis set，但是$d_{EFF}(H,A)$比较小，因为由于regularized的影响，限定了w只取一小部分。其中A表示regularized算法。当$\lambda&gt;0$时，有：</p>
+<p>$$d_{EFF}(H,A)\leq d_{VC}$$</p>
+<p>这些与实际情况是相符的，比如对多项式拟合模型，当$\lambda=0$时，所有的w都给予考虑，相应的$d_{VC}$很大，容易发生过拟合。当$\lambda&gt;0$且越来越大时，很多w将被舍弃，$d_{EFF}(H,A)$减小，拟合曲线越来越平滑，容易发生欠拟合。</p>
+<h3 id="General-Regularizers"><a href="#General-Regularizers" class="headerlink" title="General Regularizers"></a>General Regularizers</h3><p>那么通用的Regularizers，即$\Omega(w)$，应该选择什么样的形式呢？一般地，我们会朝着目标函数的方向进行选取。有三种方式：</p>
 <ul>
-<li><p><strong>由于人为因素，正类被误分为负类，或者负类被误分为正类；</strong></p>
+<li><p><strong>target-dependent</strong></p>
 </li>
-<li><p><strong>同样特征的样本被模型分为不同的类；</strong></p>
+<li><p><strong>plausible</strong></p>
 </li>
-<li><p><strong>样本的特征被错误记录和使用。</strong></p>
+<li><p><strong>friendly</strong></p>
 </li>
 </ul>
-<p><img src="http://img.blog.csdn.net/20170509214259658?" alt="这里写图片描述"></p>
-<p>之前的数据集是确定的，即没有Noise的，我们称之为Deterministic。现在有Noise了，也就是说在某点处不再是确定分布，而是概率分布了，即对每个(x，y)出现的概率是$P(y|x)$。</p>
-<p>因为Noise的存在，比如在x点，有0.7的概率y=1，有0.3的概率y=0，即y是按照$P(y|x)$分布的。数学上可以证明如果数据集按照$P(y|x)$概率分布且是iid的，那么以前证明机器可以学习的方法依然奏效，VC Dimension有限即可推断$E{in}$和$E{out}$是近似的。</p>
-<p><img src="http://img.blog.csdn.net/20170509234714781?" alt="这里写图片描述"></p>
-<p>$P(y|x)$称之为目标分布（Target Distribution）。它实际上告诉我们最好的选择是什么，同时伴随着多少noise。其实，没有noise的数据仍然可以看成“特殊”的$P(y|x)$概率分布，即概率仅是1和0.对于以前确定的数据集：<br>$$P(y|x)=1,for \space y=f(x)$$<br>$$P(y|x)=0,for \space y\neq f(x)$$</p>
-<p><img src="http://img.blog.csdn.net/20170509234729403?" alt="这里写图片描述"></p>
-<p>在引入noise的情况下，新的学习流程图如下所示：</p>
-<p><img src="http://img.blog.csdn.net/20170616080950726?" alt="这里写图片描述"></p>
-<h3 id="ERROR-Measure"><a href="#ERROR-Measure" class="headerlink" title="ERROR Measure"></a>ERROR Measure</h3><p>机器学习需要考虑的问题是找出的矩g与目标函数f有多相近，我们一直使用$E_{out}$进行误差的估计，那一般的错误测量有哪些形式呢？</p>
-<p>我们介绍的矩g对错误的衡量有三个特性：</p>
+<p><img src="http://img.blog.csdn.net/20170531203944555?" alt="这里写图片描述"></p>
+<p>其实这三种方法跟之前error measure类似，其也有三种方法：</p>
 <ul>
-<li><p><strong>out-of-sample：样本外的未知数据</strong></p>
+<li><p><strong>user-dependent</strong></p>
 </li>
-<li><p><strong>pointwise：对每个数据点x进行测试</strong></p>
+<li><p><strong>plausible</strong></p>
 </li>
-<li><p><strong>classification：看prediction与target是否一致，classification error通常称为0/1 error</strong></p>
+<li><p><strong>friendly</strong></p>
 </li>
 </ul>
-<p><img src="http://img.blog.csdn.net/20170509235041811?" alt="这里写图片描述"></p>
-<p>PointWise error实际上就是对数据集的每个点计算错误并计算平均，$E{in}$和$E{out}$的pointwise error的表达式为：</p>
-<p><img src="http://img.blog.csdn.net/20170616082857078?" alt="这里写图片描述"></p>
-<p>pointwise error是机器学习中最常用也是最简单的一种错误衡量方式，未来课程中，我们主要考虑这种方式。pointwise error一般可以分成两类：0/1 error和squared error。0/1 error通常用在分类（classification）问题上，而squared error通常用在回归（regression）问题上。</p>
-<p><img src="http://img.blog.csdn.net/20170616083449361?" alt="这里写图片描述"></p>
-<p>Ideal Mini-Target由$P(y|x)$和err共同决定，0/1 error和squared error的Ideal Mini-Target计算方法不一样。例如下面这个例子，分别用0/1 error和squared error来估计最理想的mini-target是多少。0/1 error中的mini-target是取P(y|x)最大的那个类，而squared error中的mini-target是取所有类的加权平方和。</p>
-<p><img src="http://img.blog.csdn.net/20170509235617200?" alt="这里写图片描述"></p>
-<p>有了错误衡量，就会知道当前的矩g是好还是不好，并会让演算法不断修正，得到更好的矩g，从而使得g与目标函数更接近。所以，引入error measure后，学习流程图如下所示：</p>
-<p><img src="http://img.blog.csdn.net/20170616084802840?" alt="这里写图片描述"></p>
-<h3 id="Algorithmic-Error-Measure"><a href="#Algorithmic-Error-Measure" class="headerlink" title="Algorithmic Error Measure"></a>Algorithmic Error Measure</h3><p>Error有两种：false accept和false reject。false accept意思是误把负类当成正类，false reject是误把正类当成负类。 根据不同的机器学习问题，false accept和false reject应该有不同的权重，这根实际情况是符合的，比如是超市优惠，那么false reject应该设的大一些；如果是安保系统，那么false accept应该设的大一些。</p>
-<p><img src="http://img.blog.csdn.net/20170510000042846?" alt="这里写图片描述"></p>
-<p>机器学习演算法A的cost function error估计有多种方法，真实的err一般难以计算，常用的方法可以采用plausible或者friendly，根据具体情况而定。</p>
-<p><img src="http://img.blog.csdn.net/20170510000434925?" alt="这里写图片描述"></p>
-<p>引入algorithm error measure之后，学习流程图如下：</p>
-<p><img src="http://img.blog.csdn.net/20170616093909660?" alt="这里写图片描述"></p>
-<h3 id="Weighted-Classification"><a href="#Weighted-Classification" class="headerlink" title="Weighted Classification"></a>Weighted Classification</h3><p>实际上，机器学习的Cost Function即来自于这些error，也就是算法里面的迭代的目标函数，通过优化使得Error（Ein）不断变小。<br>cost function中，false accept和false reject赋予不同的权重，在演算法中体现。对不同权重的错误惩罚，可以选用virtual copying的方法。</p>
-<p><img src="http://img.blog.csdn.net/20170510001149489?" alt="这里写图片描述"></p>
-<p><img src="http://img.blog.csdn.net/20170510001245521?" alt="这里写图片描述"></p>
-<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p>本节课主要讲了在有Noise的情况下，即数据集按照$P(y|x)$概率分布，那么VC Dimension仍然成立，机器学习算法推导仍然有效。机器学习cost function常用的Error有0/1 error和squared error两类。实际问题中，对false accept和false reject应该选择不同的权重。</p>
+<p>regularizer与error measure是机器学习模型设计中的重要步骤。</p>
+<p><img src="http://img.blog.csdn.net/20170531204300526?" alt="这里写图片描述"></p>
+<p>接下来，介绍两种Regularizer：L2和L1。L2 Regularizer一般比较通用，其形式如下：</p>
+<p>$$\Omega(w)=\sum_{q=0}^Qw_q^2=||w||_2^2$$</p>
+<p>这种形式的regularizer计算的是w的平方和，是凸函数，比较平滑，易于微分，容易进行最优化计算。</p>
+<p>L1 Regularizer的表达式如下：</p>
+<p>$$\Omega(w)=\sum_{q=0}^Q|w_q|=||w||_1$$</p>
+<p>L1计算的不是w的平方和，而是绝对值和，即长度和，也是凸函数。已知$w^Tw=C$围成的是圆形，而$||w||<em>1=C$围成的是正方形，那么在正方形的四个顶点处，是不可微分的（不像圆形，处处可微分）。根据之前介绍的平行等式推导过程，对应这种正方形，它的解大都位于四个顶点处（不太理解，欢迎补充赐教），因为正方形边界处的w绝对值都不为零，若$-\nabla E</em>{in}$不与其平行，那么w就会向顶点处移动，顶点处的许多w分量为零，所以，L1 Regularizer的解是稀疏的，称为sparsity。优点是计算速度快。</p>
+<p><img src="http://img.blog.csdn.net/20170531211835309?" alt="这里写图片描述"></p>
+<p>下面来看一下$\lambda$如何取值，首先，若stochastic noise不同，那么一般情况下，$\lambda$取值有如下特点：</p>
+<p><img src="http://img.blog.csdn.net/20170531212104701?" alt="这里写图片描述"></p>
+<p>从图中可以看出，stochastic noise越大，$\lambda$越大。</p>
+<p>另一种情况，不同的deterministic noise，$\lambda$取值有如下特点：</p>
+<p><img src="http://img.blog.csdn.net/20170531212415879?" alt="这里写图片描述"></p>
+<p>从图中可以看出，deterministic noise越大，$\lambda$越大。</p>
+<p>以上两种noise的情况下，都是noise越大，相应的$\lambda$也就越大。这也很好理解，如果在开车的情况下，路况也不好，即noise越多，那么就越会踩刹车，这里踩刹车指的就是regularization。但是大多数情况下，noise是不可知的，这种情况下如何选择$\lambda$？这部分内容，我们下节课将会讨论。</p>
+<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p>本节课主要介绍了Regularization。首先，原来的hypothesis set加上一些限制条件，就成了Regularized Hypothesis Set。加上限制条件之后，我们就可以把问题转化为$E_{aug}$最小化问题，即把w的平方加进去。这种过程，实际上回降低VC Dimension。最后，介绍regularization是通用的机器学习工具，设计方法通常包括target-dependent，plausible，friendly等等。下节课将介绍如何选取合适的$\lambda$来建立最佳拟合模型。</p>
 <p><strong><em>注明：</em></strong></p>
-<p>文章中所有的图片均来自台湾大学林轩田《机器学习基石》课程。</p>
+<p>文章中所有的图片均来自台湾大学林轩田《机器学习基石》课程</p>
 
       
     </div>
@@ -580,7 +631,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://redstonewill.github.io/2018/03/17/8/" title="台湾大学林轩田机器学习基石课程学习笔记8 -- Noise and Error">https://redstonewill.github.io/2018/03/17/8/</a>
+    <a href="https://redstonewill.github.io/2018/03/17/14/" title="台湾大学林轩田机器学习基石课程学习笔记14 -- Regularization">https://redstonewill.github.io/2018/03/17/14/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -614,8 +665,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/17/7/" rel="next" title="台湾大学林轩田机器学习基石课程学习笔记7 -- The VC Dimension">
-                <i class="fa fa-chevron-left"></i> 台湾大学林轩田机器学习基石课程学习笔记7 -- The VC Dimension
+              <a href="/2018/03/17/13/" rel="next" title="台湾大学林轩田机器学习基石课程学习笔记13 -- Hazard of Overfitting">
+                <i class="fa fa-chevron-left"></i> 台湾大学林轩田机器学习基石课程学习笔记13 -- Hazard of Overfitting
               </a>
             
           </div>
@@ -624,8 +675,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/17/9/" rel="prev" title="台湾大学林轩田机器学习基石课程学习笔记9 -- Linear Regression">
-                台湾大学林轩田机器学习基石课程学习笔记9 -- Linear Regression <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/17/15/" rel="prev" title="台湾大学林轩田机器学习基石课程学习笔记15 -- Validation">
+                台湾大学林轩田机器学习基石课程学习笔记15 -- Validation <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -814,7 +865,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Noise-and-Probablistic-target"><span class="nav-number">1.</span> <span class="nav-text">Noise and Probablistic target</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ERROR-Measure"><span class="nav-number">2.</span> <span class="nav-text">ERROR Measure</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Algorithmic-Error-Measure"><span class="nav-number">3.</span> <span class="nav-text">Algorithmic Error Measure</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Weighted-Classification"><span class="nav-number">4.</span> <span class="nav-text">Weighted Classification</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Summary"><span class="nav-number">5.</span> <span class="nav-text">Summary</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Regularized-Hypothesis-Set"><span class="nav-number">1.</span> <span class="nav-text">Regularized Hypothesis Set</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Weight-Decay-Regularization"><span class="nav-number">2.</span> <span class="nav-text">Weight Decay Regularization</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Regularization-and-VC-Theory"><span class="nav-number">3.</span> <span class="nav-text">Regularization and VC Theory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#General-Regularizers"><span class="nav-number">4.</span> <span class="nav-text">General Regularizers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Summary"><span class="nav-number">5.</span> <span class="nav-text">Summary</span></a></li></ol></div>
             
 
           </div>
