@@ -94,35 +94,31 @@
 
 <meta name="keywords" content="机器学习,林轩田,基石,笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="台湾大学林轩田机器学习基石课程学习笔记5 -- Training versus Testing">
-<meta property="og:url" content="https://redstonewill.github.io/2018/03/16/5/index.html">
+<meta property="og:title" content="台湾大学林轩田机器学习基石课程学习笔记12 -- Nonlinear Transformation">
+<meta property="og:url" content="https://redstonewill.github.io/2018/03/17/12/index.html">
 <meta property="og:site_name" content="红色石头的机器学习之路">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://img.blog.csdn.net/20170613075450559?imageView/2/w/500/q/100">
-<meta property="og:image" content="http://img.blog.csdn.net/20170613075450559?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170613081415084?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170613083237643?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170613092500157?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170613095709542?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170613103010274?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170613103032665?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170613102051356?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170613102539221?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170613110232379?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170613112843268?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170613113650318?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170613113930381?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170613115111665?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170613133644825?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170613134246055?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170613135200251?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170613135918235?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170613140725974?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170613143127195?">
-<meta property="og:updated_time" content="2018-03-17T06:31:32.547Z">
+<meta property="og:image" content="http://img.blog.csdn.net/20170523005800773?imageView/2/w/500/q/100">
+<meta property="og:image" content="http://img.blog.csdn.net/20170522205736151?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170522210031309?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170522210959142?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170523005800773?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170523091547803?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170523093213481?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170523094016913?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170523095731798?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170523100508738?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170523105942602?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170523111019007?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170523111216948?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170523113636362?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170523132015872?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170523133004123?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170523133948471?">
+<meta property="og:updated_time" content="2018-03-17T12:33:25.012Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="台湾大学林轩田机器学习基石课程学习笔记5 -- Training versus Testing">
-<meta name="twitter:image" content="http://img.blog.csdn.net/20170613075450559?imageView/2/w/500/q/100">
+<meta name="twitter:title" content="台湾大学林轩田机器学习基石课程学习笔记12 -- Nonlinear Transformation">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20170523005800773?imageView/2/w/500/q/100">
 
 
 
@@ -152,13 +148,13 @@
 
 
 
-  <link rel="canonical" href="https://redstonewill.github.io/2018/03/16/5/"/>
+  <link rel="canonical" href="https://redstonewill.github.io/2018/03/17/12/"/>
 
 
 
 
 
-  <title>台湾大学林轩田机器学习基石课程学习笔记5 -- Training versus Testing | 红色石头的机器学习之路</title>
+  <title>台湾大学林轩田机器学习基石课程学习笔记12 -- Nonlinear Transformation | 红色石头的机器学习之路</title>
   
 
 
@@ -345,7 +341,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://redstonewill.github.io/2018/03/16/5/">
+    <link itemprop="mainEntityOfPage" href="https://redstonewill.github.io/2018/03/17/12/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="红色石头">
@@ -362,7 +358,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">台湾大学林轩田机器学习基石课程学习笔记5 -- Training versus Testing</h1>
+          <h1 class="post-title" itemprop="name headline">台湾大学林轩田机器学习基石课程学习笔记12 -- Nonlinear Transformation</h1>
         
 
         <div class="post-meta">
@@ -374,8 +370,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-16T22:45:12+08:00">
-                2018-03-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-17T20:27:40+08:00">
+                2018-03-17
               </time>
             
 
@@ -425,7 +421,7 @@
 
           
           
-             <span id="/2018/03/16/5/" class="leancloud_visitors" data-flag-title="台湾大学林轩田机器学习基石课程学习笔记5 -- Training versus Testing">
+             <span id="/2018/03/17/12/" class="leancloud_visitors" data-flag-title="台湾大学林轩田机器学习基石课程学习笔记12 -- Nonlinear Transformation">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -450,7 +446,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,759
+                  2,481
                 </span>
               
 
@@ -475,76 +471,73 @@
       
 
       
-        <p><img src="http://img.blog.csdn.net/20170613075450559?imageView/2/w/500/q/100" alt="这里写图片描述"><br><a id="more"></a></p>
+        <p><img src="http://img.blog.csdn.net/20170523005800773?imageView/2/w/500/q/100" alt="这里写图片描述"><br><a id="more"></a></p>
 <blockquote>
 <p>我的CSDN博客地址：<a href="http://blog.csdn.net/red_stone1" target="_blank" rel="noopener">红色石头的专栏</a><br>我的知乎主页：<a href="https://www.zhihu.com/people/red_stone_wl" target="_blank" rel="noopener">红色石头</a><br>我的微博：<a href="https://weibo.com/6479023696/profile?topnav=1&amp;wvr=6&amp;is_all=1" target="_blank" rel="noopener">RedstoneWill的微博</a><br>我的GitHub：<a href="https://github.com/RedstoneWill" target="_blank" rel="noopener">RedstoneWill的GitHub</a><br>我的微信公众号：红色石头的机器学习之路（ID：redstonewill）<br>欢迎大家关注我！共同学习，共同进步！</p>
 </blockquote>
-<p>上节课，我们主要介绍了机器学习的可行性。首先，由NFL定理可知，机器学习貌似是不可行的。但是，随后引入了统计学知识，如果样本数据足够大，且hypothesis个数有限，那么机器学习一般就是可行的。本节课将讨论机器学习的核心问题，严格证明为什么机器可以学习。从上节课最后的问题出发，即当hypothesis的个数是无限多的时候，机器学习的可行性是否仍然成立？</p>
-<h3 id="Recap-and-Preview"><a href="#Recap-and-Preview" class="headerlink" title="Recap and Preview"></a>Recap and Preview</h3><p>我们先来看一下基于统计学的机器学习流程图：</p>
-<p><img src="http://img.blog.csdn.net/20170613075450559?" alt="这里写图片描述"></p>
-<p>该流程图中，训练样本D和最终测试h的样本都是来自同一个数据分布，这是机器能够学习的前提。另外，训练样本D应该足够大，且hypothesis set的个数是有限的，这样根据霍夫丁不等式，才不会出现Bad Data，保证$E_{in}\approx E_{out}$，即有很好的泛化能力。同时，通过训练，得到使$E_{in}$最小的h，作为模型最终的矩g，g接近于目标函数。</p>
-<p>这里，我们总结一下前四节课的主要内容：第一节课，我们介绍了机器学习的定义，目标是找出最好的矩g，使$g\approx f$，保证$E_{out}(g)\approx 0$；第二节课，我们介绍了如何让$E_{in}\approx 0$，可以使用PLA、pocket等演算法来实现；第三节课，我们介绍了机器学习的分类，我们的训练样本是批量数据（batch），处理监督式（supervised）二元分类（binary classification）问题；第四节课，我们介绍了机器学习的可行性，通过统计学知识，把$E_{in}(g)$与$E_{out}(g)$联系起来，证明了在一些条件假设下，$E_{in}(g)\approx E_{out}(g)$成立。</p>
-<p><img src="http://img.blog.csdn.net/20170613081415084?" alt="这里写图片描述"></p>
-<p>这四节课总结下来，我们把机器学习的主要目标分成两个核心的问题：</p>
+<p>上一节课，我们介绍了分类问题的三种线性模型，可以用来解决binary classification和multiclass classification问题。本节课主要介绍非线性的模型来解决分类问题。</p>
+<h3 id="Quadratic-Hypothesis"><a href="#Quadratic-Hypothesis" class="headerlink" title="Quadratic Hypothesis"></a>Quadratic Hypothesis</h3><p>之前介绍的线性模型，在2D平面上是一条直线，在3D空间中是一个平面。数学上，我们用线性得分函数s来表示：$s=w^Tx$。其中，x为特征值向量，w为权重，s是线性的。</p>
+<p><img src="http://img.blog.csdn.net/20170522205736151?" alt="这里写图片描述"></p>
+<p>线性模型的优点就是，它的VC Dimension比较小，保证了$E_{in}\approx E_{out}$。但是缺点也很明显，对某些非线性问题，可能会造成$E_{in}$很大，虽然$E_{in}\approx E_{out}$，但是也造成$E_{out}$很大，分类效果不佳。</p>
+<p><img src="http://img.blog.csdn.net/20170522210031309?" alt="这里写图片描述"></p>
+<p>为了解决线性模型的缺点，我们可以使用非线性模型来进行分类。例如数据集D不是线性可分的，而是圆形可分的，圆形内部是正类，外面是负类。假设它的hypotheses可以写成：<br>$$h_{SEP}(x)=sign(-x_1^2-x_2^2+0.6)$$<br>基于这种非线性思想，我们之前讨论的PLA、Regression问题都可以有非线性的形式进行求解。</p>
+<p><img src="http://img.blog.csdn.net/20170522210959142?" alt="这里写图片描述"></p>
+<p>下面介绍如何设计这些非线性模型的演算法。还是上面介绍的平面圆形分类例子，它的h(x)的权重w0=0.6，w1=-1，w2=-1，但是h(x)的特征不是线性模型的$(1,x_1,x_2)$，而是$(1,x_1^2,x_2^2)$。我们令$z_0=1$，$z_1=x_1^2$，$z_2=x_2^2$，那么，h(x)变成：</p>
+<p>$$h(x)=sign(\breve{w}_0\cdot z_0+\breve{w}_1\cdot z_1+\breve{w}_2\cdot z_2)=sign(0.6\cdot z_0-1\cdot z_1-1\cdot z_2)=sign(\breve{w}^Tz)$$</p>
+<p>这种$x_n\rightarrow z_n$的转换可以看成是x空间的点映射到z空间中去，而在z域中，可以用一条直线进行分类，也就是从x空间的圆形可分映射到z空间的线性可分。z域中的直线对应于x域中的圆形。因此，我们把$x_n\rightarrow z_n$这个过程称之为特征转换（Feature Transform）。通过这种特征转换，可以将非线性模型转换为另一个域中的线性模型。</p>
+<p><img src="http://img.blog.csdn.net/20170523005800773?" alt="这里写图片描述"></p>
+<p>已知x域中圆形可分在z域中是线性可分的，那么反过来，如果在z域中线性可分，是否在x域中一定是圆形可分的呢？答案是否定的。由于权重向量w取值不同，x域中的hypothesis可能是圆形、椭圆、双曲线等等多种情况。</p>
+<p><img src="http://img.blog.csdn.net/20170523091547803?" alt="这里写图片描述"></p>
+<p>目前讨论的x域中的圆形都是圆心过原点的，对于圆心不过原点的一般情况，$x_n\rightarrow z_n$映射公式包含的所有项为：</p>
+<p>$$\Phi_2(x)=(1,x_1,x_2,x_1^2,x_1x_2,x_2^2)$$</p>
+<p>也就是说，对于二次hypothesis，它包含二次项、一次项和常数项1，z域中每一条线对应x域中的某二次曲线的分类方式，也许是圆，也许是椭圆，也许是双曲线等等。那么z域中的hypothesis可以写成：</p>
+<p><img src="http://img.blog.csdn.net/20170523093213481?" alt="这里写图片描述"></p>
+<h3 id="Nonlinear-Transform"><a href="#Nonlinear-Transform" class="headerlink" title="Nonlinear Transform"></a>Nonlinear Transform</h3><p>上一部分我们定义了什么了二次hypothesis，那么这部分将介绍如何设计一个好的二次hypothesis来达到良好的分类效果。那么目标就是在z域中设计一个最佳的分类线。</p>
+<p><img src="http://img.blog.csdn.net/20170523094016913?" alt="这里写图片描述"></p>
+<p>其实，做法很简单，利用映射变换的思想，通过映射关系，把x域中的最高阶二次的多项式转换为z域中的一次向量，也就是从quardratic hypothesis转换成了perceptrons问题。用z值代替x多项式，其中向量z的个数与x域中x多项式的个数一致（包含常数项）。这样就可以在z域中利用线性分类模型进行分类训练。训练好的线性模型之后，再将z替换为x的多项式就可以了。具体过程如下：</p>
+<p><img src="http://img.blog.csdn.net/20170523095731798?" alt="这里写图片描述"></p>
+<p>整个过程就是通过映射关系，换个空间去做线性分类，重点包括两个：</p>
 <ul>
-<li><p>$E_{in}(g)\approx E_{out}(g)$</p>
+<li><p>特征转换</p>
 </li>
-<li><p>$E_{in}(g)$足够小</p>
+<li><p>训练线性模型</p>
 </li>
 </ul>
-<p>上节课介绍的机器学习可行的一个条件是hypothesis set的个数M是有限的，那M跟上面这两个核心问题有什么联系呢？</p>
-<p>我们先来看一下，当M很小的时候，由上节课介绍的霍夫丁不等式，得到$E_{in}(g)\approx E_{out}(g)$，即能保证第一个核心问题成立。但M很小时，演算法A可以选择的hypothesis有限，不一定能找到使$E_{in}(g)$足够小的hypothesis，即不能保证第二个核心问题成立。当M很大的时候，同样由霍夫丁不等式，$E_{in}(g)$与$E_{out}(g)$的差距可能比较大，第一个核心问题可能不成立。而M很大，使的演算法A的可以选择的hypothesis就很多，很有可能找到一个hypothesis，使$E_{in}(g)$足够小，第二个核心问题可能成立。</p>
-<p><img src="http://img.blog.csdn.net/20170613083237643?" alt="这里写图片描述"></p>
-<p>从上面的分析来看，M的选择直接影响机器学习两个核心问题是否满足，M不能太大也不能太小。那么如果M无限大的时候，是否机器就不可以学习了呢？例如PLA算法中直线是无数条的，但是PLA能够很好地进行机器学习，这又是为什么呢？如果我们能将无限大的M限定在一个有限的$m_H$内，问题似乎就解决了。</p>
-<h3 id="Effective-Number-of-Line"><a href="#Effective-Number-of-Line" class="headerlink" title="Effective Number of Line"></a>Effective Number of Line</h3><p>我们先看一下上节课推导的霍夫丁不等式：</p>
-<p>$$P[|E_{in}(g)-E_{out}(g)|&gt;\epsilon]\leq 2\cdot M\cdot exp(-2\epsilon^2N)$$</p>
-<p>其中，M表示hypothesis的个数。每个hypothesis下的BAD events $B_m$级联的形式满足下列不等式：</p>
-<p>$$P[B_1\ or\ B_2\ or\ \cdots B_M]\leq P[B_1]+P[B_2]+\cdots+P[B_M]$$</p>
-<p>当$M=\infty$时，上面不等式右边值将会很大，似乎说明BAD events很大，$E_{in}(g)$与$E_{out}(g)$也并不接近。但是BAD events $B_m$级联的形式实际上是扩大了上界，union bound过大。这种做法假设各个hypothesis之间没有交集，这是最坏的情况，可是实际上往往不是如此，很多情况下，都是有交集的，也就是说M实际上没那么大，如下图所示：</p>
-<p><img src="http://img.blog.csdn.net/20170613092500157?" alt="这里写图片描述"></p>
-<p>也就是说union bound被估计过高了（over-estimating）。所以，我们的目的是找出不同BAD events之间的重叠部分，也就是将无数个hypothesis分成有限个类别。</p>
-<p>如何将无数个hypothesis分成有限类呢？我们先来看这样一个例子，假如平面上用直线将点分开，也就跟PLA一样。如果平面上只有一个点x1，那么直线的种类有两种：一种将x1划为+1，一种将x1划为-1：</p>
-<p><img src="http://img.blog.csdn.net/20170613095709542?" alt="这里写图片描述"></p>
-<p>如果平面上有两个点x1、x2，那么直线的种类共4种：x1、x2都为+1，x1、x2都为-1，x1为+1且x2为-1，x1为-1且x2为+1：</p>
-<p><img src="http://img.blog.csdn.net/20170613103010274?" alt="这里写图片描述"></p>
-<p>如果平面上有三个点x1、x2、x3，那么直线的种类共8种：</p>
-<p><img src="http://img.blog.csdn.net/20170613103032665?" alt="这里写图片描述"></p>
-<p>但是，在三个点的情况下，也会出现不能用一条直线划分的情况：</p>
-<p><img src="http://img.blog.csdn.net/20170613102051356?" alt="这里写图片描述"></p>
-<p>也就是说，对于平面上三个点，不能保证所有的8个类别都能被一条直线划分。那如果是四个点x1、x2、x3、x4，我们发现，平面上找不到一条直线能将四个点组成的16个类别完全分开，最多只能分开其中的14类，即直线最多只有14种：</p>
-<p><img src="http://img.blog.csdn.net/20170613102539221?" alt="这里写图片描述"></p>
-<p>经过分析，我们得到平面上线的种类是有限的，1个点最多有2种线，2个点最多有4种线，3个点最多有8种线，4个点最多有14（$&lt;2^4$）种线等等。我们发现，有效直线的数量总是满足$\leq 2^N$，其中，N是点的个数。所以，如果我们可以用effective(N)代替M，霍夫丁不等式可以写成：</p>
-<p>$$P[|E_{in}(g)-E_{out}(g)|&gt;\epsilon]\leq 2\cdot effective(N)\cdot exp(-2\epsilon^2N)$$</p>
-<p>已知effective(N)&lt;$2^N$，如果能够保证effective(N)&lt;&lt;$2^N$，即不等式右边接近于零，那么即使M无限大，直线的种类也很有限，机器学习也是可能的。</p>
-<p><img src="http://img.blog.csdn.net/20170613110232379?" alt="这里写图片描述"></p>
-<h3 id="Effective-Number-of-Hypotheses"><a href="#Effective-Number-of-Hypotheses" class="headerlink" title="Effective Number of Hypotheses"></a>Effective Number of Hypotheses</h3><p>接下来先介绍一个新名词：二分类（dichotomy）。dichotomy就是将空间中的点（例如二维平面）用一条直线分成正类（蓝色o）和负类（红色x）。令H是将平面上的点用直线分开的所有hypothesis h的集合，dichotomy H与hypotheses H的关系是：hypotheses H是平面上所有直线的集合，个数可能是无限个，而dichotomy H是平面上能将点完全用直线分开的直线种类，它的上界是$2^N$。接下来，我们要做的就是尝试用dichotomy代替M。</p>
-<p><img src="http://img.blog.csdn.net/20170613112843268?" alt="这里写图片描述"></p>
-<p>再介绍一个新的名词：成长函数（growth function），记为$m_H(H)$。成长函数的定义是：对于由N个点组成的不同集合中，某集合对应的dichotomy最大，那么这个dichotomy值就是$m_H(H)$，它的上界是$2^N$：</p>
-<p><img src="http://img.blog.csdn.net/20170613113650318?" alt="这里写图片描述"></p>
-<p>成长函数其实就是我们之前讲的effective lines的数量最大值。根据成长函数的定义，二维平面上，$m_H(H)$随N的变化关系是：</p>
-<p><img src="http://img.blog.csdn.net/20170613113930381?" alt="这里写图片描述"></p>
-<p>接下来，我们讨论如何计算成长函数。先看一个简单情况，一维的Positive Rays：</p>
-<p><img src="http://img.blog.csdn.net/20170613115111665?" alt="这里写图片描述"></p>
-<p>若有N个点，则整个区域可分为N+1段，很容易得到其成长函数$m_H(N)=N+1$。注意当N很大时，$(N+1)&lt;&lt;2^N$，这是我们希望看到的。</p>
-<p>另一种情况是一维的Positive Intervals：</p>
-<p><img src="http://img.blog.csdn.net/20170613133644825?" alt="这里写图片描述"></p>
-<p>它的成长函数可以由下面推导得出：</p>
-<p><img src="http://img.blog.csdn.net/20170613134246055?" alt="这里写图片描述"></p>
-<p>这种情况下，$m_H(N)=\frac12N^2+\frac12N+1&lt;&lt;2^N$，在N很大的时候，仍然是满足的。</p>
-<p>再来看这个例子，假设在二维空间里，如果hypothesis是凸多边形或类圆构成的封闭曲线，如下图所示，左边是convex的，右边不是convex的。那么，它的成长函数是多少呢？</p>
-<p><img src="http://img.blog.csdn.net/20170613135200251?" alt="这里写图片描述"></p>
-<p>当数据集D按照如下的凸分布时，我们很容易计算得到它的成长函数$m_H=2^N$。这种情况下，N个点所有可能的分类情况都能够被hypotheses set覆盖，我们把这种情形称为shattered。也就是说，如果能够找到一个数据分布集，hypotheses set对N个输入所有的分类情况都做得到，那么它的成长函数就是$2^N$。</p>
-<p><img src="http://img.blog.csdn.net/20170613135918235?" alt="这里写图片描述"></p>
-<h3 id="Break-Point"><a href="#Break-Point" class="headerlink" title="Break Point"></a>Break Point</h3><p>上一小节，我们介绍了四种不同的成长函数，分别是：</p>
-<p><img src="http://img.blog.csdn.net/20170613140725974?" alt="这里写图片描述"></p>
-<p>其中，positive rays和positive intervals的成长函数都是polynomial的，如果用$m_H$代替M的话，这两种情况是比较好的。而convex sets的成长函数是exponential的，即等于M，并不能保证机器学习的可行性。那么，对于2D perceptrons，它的成长函数究竟是polynomial的还是exponential的呢？</p>
-<p>对于2D perceptrons，我们之前分析了3个点，可以做出8种所有的dichotomy，而4个点，就无法做出所有16个点的dichotomy了。所以，我们就把4称为2D perceptrons的break point（5、6、7等都是break point）。令有k个点，如果k大于等于break point时，它的成长函数一定小于2的k次方。</p>
-<p>根据break point的定义，我们知道满足$m_H(k)\neq 2^k$的k的最小值就是break point。对于我们之前介绍的四种成长函数，他们的break point分别是：</p>
-<p><img src="http://img.blog.csdn.net/20170613143127195?" alt="这里写图片描述"></p>
-<p>通过观察，我们猜测成长函数可能与break point存在某种关系：对于convex sets，没有break point，它的成长函数是2的N次方；对于positive rays，break point k=2，它的成长函数是O(N)；对于positive intervals，break point k=3，它的成长函数是$O(N^2)$。则根据这种推论，我们猜测2D perceptrons，它的成长函数$m_H(N)=O(N^{k-1})$ 。如果成立，那么就可以用$m_H$代替M，就满足了机器能够学习的条件。关于上述猜测的证明，我们下节课再详细介绍。</p>
-<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p>本节课，我们更深入地探讨了机器学习的可行性。我们把机器学习拆分为两个核心问题：$E_{in}(g)\approx E_{out}(g)$和$E_{in}(g)\approx 0$。对于第一个问题，我们探讨了M个hypothesis到底可以划分为多少种，也就是成长函数$m_H$。并引入了break point的概念，给出了break point的计算方法。下节课，我们将详细论证对于2D perceptrons，它的成长函数与break point是否存在多项式的关系，如果是这样，那么机器学习就是可行的。</p>
+<p>其实，我们以前处理机器学习问题的时候，已经做过类似的特征变换了。比如数字识别问题，我们从原始的像素值特征转换为一些实际的concrete特征，比如密度、对称性等等，这也用到了feature transform的思想。</p>
+<p><img src="http://img.blog.csdn.net/20170523100508738?" alt="这里写图片描述"></p>
+<h3 id="Price-of-Nonlinear-Transform"><a href="#Price-of-Nonlinear-Transform" class="headerlink" title="Price of Nonlinear Transform"></a>Price of Nonlinear Transform</h3><p>若x特征维度是d维的，也就是包含d个特征，那么二次多项式个数，即z域特征维度是：<br>$$\breve d=1+C_d^1+C_d^2+d=\frac{d(d+3)}2+1$$<br>如果x特征维度是2维的，即$(x_1,x_2)$，那么它的二次多项式为$(1,x_1,x_2,x_1^2,x_1x_2,x_2^2)$，有6个。</p>
+<p>现在，如果阶数更高，假设阶数为Q，那么对于x特征维度是d维的，它的z域特征维度为：<br>$$\breve d=C_{Q+d}^Q=C_{Q+d}^d=O(Q^d)$$<br>由上式可以看出，计算z域特征维度个数的时间复杂度是Q的d次方，随着Q和d的增大，计算量会变得很大。同时，空间复杂度也大。也就是说，这种特征变换的一个代价是计算的时间、空间复杂度都比较大。</p>
+<p><img src="http://img.blog.csdn.net/20170523105942602?" alt="这里写图片描述"></p>
+<p>另一方面，z域中特征个数随着Q和d增加变得很大，同时权重w也会增大，即自由度增加，VC Dimension增大。令z域中的特征维度是$1+\breve d$，则在在域中，任何$\breve d+2$的输入都不能被shattered；同样，在x域中，任何$\breve d+2$的输入也不能被shattered。$\breve d+1$是VC Dimension的上界，如果$\breve d+1$很大的时候，相应的VC Dimension就会很大。根据之前章节课程的讨论，VC Dimension过大，模型的泛化能力会比较差。</p>
+<p><img src="http://img.blog.csdn.net/20170523111019007?" alt="这里写图片描述"></p>
+<p>下面通过一个例子来解释为什么VC Dimension过大，会造成不好的分类效果：</p>
+<p><img src="http://img.blog.csdn.net/20170523111216948?" alt="这里写图片描述"></p>
+<p>上图中，左边是用直线进行线性分类，有部分点分类错误；右边是用四次曲线进行非线性分类，所有点都分类正确，那么哪一个分类效果好呢？单从平面上这些训练数据来看，四次曲线的分类效果更好，但是四次曲线模型很容易带来过拟合的问题，虽然它的$E_{in}$比较小，从泛化能力上来说，还是左边的分类器更好一些。也就是说VC Dimension过大会带来过拟合问题，$\breve d+1$不能太大了。</p>
+<p>那么如何选择合适的Q，来保证不会出现过拟合问题，使模型的泛化能力强呢？一般情况下，为了尽量减少特征自由度，我们会根据训练样本的分布情况，人为地减少、省略一些项。但是，这种人为地删减特征会带来一些“自我分析”代价，虽然对训练样本分类效果好，但是对训练样本外的样本，不一定效果好。所以，一般情况下，还是要保存所有的多项式特征，避免对训练样本的人为选择。</p>
+<p><img src="http://img.blog.csdn.net/20170523113636362?" alt="这里写图片描述"></p>
+<h3 id="Structured-Hypothesis-Sets"><a href="#Structured-Hypothesis-Sets" class="headerlink" title="Structured Hypothesis Sets"></a>Structured Hypothesis Sets</h3><p>下面，我们讨论一下从x域到z域的多项式变换。首先，如果特征维度只有1维的话，那么变换多项式只有常数项：</p>
+<p>$$\Phi_0(x)=(1)$$</p>
+<p>如果特征维度是两维的，变换多项式包含了一维的$\Phi_0(x)$：</p>
+<p>$$\Phi_1(x)=(\Phi_0(x),x_1,x_2,\ldots,x_d)$$</p>
+<p>如果特征维度是三维的，变换多项式包含了二维的$\Phi_1(x)$：</p>
+<p>$$\Phi_2(x)=(\Phi_1(x),x_1^2,x_1x_2,\ldots,x_d^2)$$</p>
+<p>以此类推，如果特征维度是Q次，那么它的变换多项式为：</p>
+<p>$$\Phi_Q(x)=(\Phi_{Q-1}(x),x_1^Q,x_1^{Q-1}x_2,\cdots,x_d^Q)$$</p>
+<p>那么对于不同阶次构成的hypothesis有如下关系：</p>
+<p>$$H_{\Phi_0} \subset H_{\Phi_1} \subset H_{\Phi_2} \subset \cdots \subset H_{\Phi_Q}$$</p>
+<p>我们把这种结构叫做Structured Hypothesis Sets：</p>
+<p><img src="http://img.blog.csdn.net/20170523132015872?" alt="这里写图片描述"></p>
+<p>那么对于这种Structured Hypothesis Sets，它们的VC Dimension满足下列关系：</p>
+<p>$$d_{VC}(H_0)\leq d_{VC}(H_1)\leq d_{VC}(H_2)\leq \cdots \leq d_{VC}(H_Q)$$</p>
+<p>它的$E_{in}$满足下列关系：</p>
+<p>$$E_{in}(g_0)\geq E_{in}(g_1)\geq E_{in}(g_2)\geq \cdots \geq E_{in}(g_Q)$$</p>
+<p><img src="http://img.blog.csdn.net/20170523133004123?" alt="这里写图片描述"></p>
+<p>从上图中也可以看到，随着变换多项式的阶数增大，虽然$E_{in}$逐渐减小，但是model complexity会逐渐增大，造成$E_{out}$很大，所以阶数不能太高。</p>
+<p>那么，如果选择的阶数很大，确实能使$E_{in}$接近于0，但是泛化能力通常很差，我们把这种情况叫做tempting sin。所以，一般最合适的做法是先从低阶开始，如先选择一阶hypothesis，看看$E_{in}$是否很小，如果$E_{in}$足够小的话就选择一阶，如果$E_{in}$大的话，再逐渐增加阶数，直到满足要求为止。也就是说，尽量选择低阶的hypothes，这样才能得到较强的泛化能力。</p>
+<p><img src="http://img.blog.csdn.net/20170523133948471?" alt="这里写图片描述"></p>
+<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p>这节课主要介绍了非线性分类模型，通过非线性变换，将非线性模型映射到另一个空间，转换为线性模型，再来进行线性分类。本节课完整介绍了非线性变换的整体流程，以及非线性变换可能会带来的一些问题：时间复杂度和空间复杂度的增加。最后介绍了在要付出代价的情况下，使用非线性变换的最安全的做法，尽可能使用简单的模型，而不是模型越复杂越好。</p>
 <p><strong><em>注明：</em></strong></p>
-<p>文章中所有的图片均来自台湾大学林轩田《机器学习基石》课程。</p>
+<p>文章中所有的图片均来自台湾大学林轩田《机器学习基石》课程</p>
 
       
     </div>
@@ -602,7 +595,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://redstonewill.github.io/2018/03/16/5/" title="台湾大学林轩田机器学习基石课程学习笔记5 -- Training versus Testing">https://redstonewill.github.io/2018/03/16/5/</a>
+    <a href="https://redstonewill.github.io/2018/03/17/12/" title="台湾大学林轩田机器学习基石课程学习笔记12 -- Nonlinear Transformation">https://redstonewill.github.io/2018/03/17/12/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -636,8 +629,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/16/4/" rel="next" title="台湾大学林轩田机器学习基石课程学习笔记4 -- Feasibility of Learning">
-                <i class="fa fa-chevron-left"></i> 台湾大学林轩田机器学习基石课程学习笔记4 -- Feasibility of Learning
+              <a href="/2018/03/17/11/" rel="next" title="台湾大学林轩田机器学习基石课程学习笔记11 -- Linear Models for Classification">
+                <i class="fa fa-chevron-left"></i> 台湾大学林轩田机器学习基石课程学习笔记11 -- Linear Models for Classification
               </a>
             
           </div>
@@ -646,8 +639,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/17/6/" rel="prev" title="台湾大学林轩田机器学习基石课程学习笔记6 -- Theory of Generalization">
-                台湾大学林轩田机器学习基石课程学习笔记6 -- Theory of Generalization <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/17/13/" rel="prev" title="13">
+                13 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -836,7 +829,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Recap-and-Preview"><span class="nav-number">1.</span> <span class="nav-text">Recap and Preview</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Effective-Number-of-Line"><span class="nav-number">2.</span> <span class="nav-text">Effective Number of Line</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Effective-Number-of-Hypotheses"><span class="nav-number">3.</span> <span class="nav-text">Effective Number of Hypotheses</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Break-Point"><span class="nav-number">4.</span> <span class="nav-text">Break Point</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Summary"><span class="nav-number">5.</span> <span class="nav-text">Summary</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Quadratic-Hypothesis"><span class="nav-number">1.</span> <span class="nav-text">Quadratic Hypothesis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Nonlinear-Transform"><span class="nav-number">2.</span> <span class="nav-text">Nonlinear Transform</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Price-of-Nonlinear-Transform"><span class="nav-number">3.</span> <span class="nav-text">Price of Nonlinear Transform</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Structured-Hypothesis-Sets"><span class="nav-number">4.</span> <span class="nav-text">Structured Hypothesis Sets</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Summary"><span class="nav-number">5.</span> <span class="nav-text">Summary</span></a></li></ol></div>
             
 
           </div>
