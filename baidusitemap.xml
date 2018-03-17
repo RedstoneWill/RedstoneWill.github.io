@@ -4,12 +4,157 @@
 
     
   <url>
-    <loc>https://redstonewill.github.io/2018/03/16/5/</loc>
-    <lastmod>2018-03-16T14:47:24.055Z</lastmod>
+    <loc>https://redstonewill.github.io/2018/03/17/11/</loc>
+    <lastmod>2018-03-17T06:46:21.892Z</lastmod>
     <data>
         <display>
-        <title>台湾大学林轩田机器学习基石课程学习笔记5 -- Training versus Testing</title>
-        <pubTime>2018-03-16T14:45:12.000Z</pubTime>
+        <title>台湾大学林轩田机器学习基石课程学习笔记11 -- Linear Models for Classification</title>
+        <pubTime>2018-03-17T06:44:47.000Z</pubTime>
+        
+        <tag>机器学习</tag>
+         
+        <tag>林轩田</tag>
+         
+        <tag>基石</tag>
+         
+        <tag>笔记</tag>
+         
+         
+           
+             
+              <breadCrumb title="机器学习" url="https://redstonewill.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+          
+             
+              <breadCrumb title="林轩田机器学习基石" url="https://redstonewill.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9E%97%E8%BD%A9%E7%94%B0%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%9F%B3/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://redstonewill.github.io/2018/03/17/10/</loc>
+    <lastmod>2018-03-17T06:44:06.377Z</lastmod>
+    <data>
+        <display>
+        <title>台湾大学林轩田机器学习基石课程学习笔记10 -- Logistic Regression</title>
+        <pubTime>2018-03-17T06:42:15.000Z</pubTime>
+        
+        <tag>机器学习</tag>
+         
+        <tag>林轩田</tag>
+         
+        <tag>基石</tag>
+         
+        <tag>笔记</tag>
+         
+         
+           
+             
+              <breadCrumb title="机器学习" url="https://redstonewill.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+          
+             
+              <breadCrumb title="林轩田机器学习基石" url="https://redstonewill.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9E%97%E8%BD%A9%E7%94%B0%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%9F%B3/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://redstonewill.github.io/2018/03/17/9/</loc>
+    <lastmod>2018-03-17T06:43:17.774Z</lastmod>
+    <data>
+        <display>
+        <title>台湾大学林轩田机器学习基石课程学习笔记9 -- Linear Regression</title>
+        <pubTime>2018-03-17T06:39:42.000Z</pubTime>
+        
+        <tag>机器学习</tag>
+         
+        <tag>林轩田</tag>
+         
+        <tag>基石</tag>
+         
+        <tag>笔记</tag>
+         
+         
+           
+             
+              <breadCrumb title="机器学习" url="https://redstonewill.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+          
+             
+              <breadCrumb title="林轩田机器学习基石" url="https://redstonewill.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9E%97%E8%BD%A9%E7%94%B0%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%9F%B3/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://redstonewill.github.io/2018/03/17/8/</loc>
+    <lastmod>2018-03-17T06:39:03.797Z</lastmod>
+    <data>
+        <display>
+        <title>台湾大学林轩田机器学习基石课程学习笔记8 -- Noise and Error</title>
+        <pubTime>2018-03-17T06:37:13.000Z</pubTime>
+        
+        <tag>机器学习</tag>
+         
+        <tag>林轩田</tag>
+         
+        <tag>基石</tag>
+         
+        <tag>笔记</tag>
+         
+         
+           
+             
+              <breadCrumb title="机器学习" url="https://redstonewill.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+          
+             
+              <breadCrumb title="林轩田机器学习基石" url="https://redstonewill.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9E%97%E8%BD%A9%E7%94%B0%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%9F%B3/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://redstonewill.github.io/2018/03/17/7/</loc>
+    <lastmod>2018-03-17T06:36:12.540Z</lastmod>
+    <data>
+        <display>
+        <title>台湾大学林轩田机器学习基石课程学习笔记7 -- The VC Dimension</title>
+        <pubTime>2018-03-17T06:33:34.000Z</pubTime>
+        
+        <tag>机器学习</tag>
+         
+        <tag>林轩田</tag>
+         
+        <tag>基石</tag>
+         
+        <tag>笔记</tag>
+         
+         
+           
+             
+              <breadCrumb title="机器学习" url="https://redstonewill.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+          
+             
+              <breadCrumb title="林轩田机器学习基石" url="https://redstonewill.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9E%97%E8%BD%A9%E7%94%B0%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%9F%B3/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://redstonewill.github.io/2018/03/13/1/</loc>
+    <lastmod>2018-03-17T06:33:01.886Z</lastmod>
+    <data>
+        <display>
+        <title>台湾大学林轩田机器学习基石课程学习笔记1 -- The Learning Problem</title>
+        <pubTime>2018-03-13T08:59:11.000Z</pubTime>
         
         <tag>机器学习</tag>
          
@@ -34,7 +179,7 @@
     
   <url>
     <loc>https://redstonewill.github.io/2018/03/16/4/</loc>
-    <lastmod>2018-03-16T14:34:55.760Z</lastmod>
+    <lastmod>2018-03-17T06:32:57.753Z</lastmod>
     <data>
         <display>
         <title>台湾大学林轩田机器学习基石课程学习笔记4 -- Feasibility of Learning</title>
@@ -62,37 +207,8 @@
 
     
   <url>
-    <loc>https://redstonewill.github.io/2018/03/16/3/</loc>
-    <lastmod>2018-03-16T14:16:49.462Z</lastmod>
-    <data>
-        <display>
-        <title>台湾大学林轩田机器学习基石课程学习笔记3 -- Types of Learning</title>
-        <pubTime>2018-03-16T13:52:20.000Z</pubTime>
-        
-        <tag>机器学习</tag>
-         
-        <tag>林轩田</tag>
-         
-        <tag>基石</tag>
-         
-        <tag>笔记</tag>
-         
-         
-           
-             
-              <breadCrumb title="机器学习" url="https://redstonewill.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-          
-             
-              <breadCrumb title="林轩田机器学习基石" url="https://redstonewill.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9E%97%E8%BD%A9%E7%94%B0%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%9F%B3/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://redstonewill.github.io/2018/03/14/2/</loc>
-    <lastmod>2018-03-16T14:16:44.490Z</lastmod>
+    <lastmod>2018-03-17T06:31:58.886Z</lastmod>
     <data>
         <display>
         <title>台湾大学林轩田机器学习基石课程学习笔记2 -- Learning to Answer Yes or No</title>
@@ -120,12 +236,70 @@
 
     
   <url>
-    <loc>https://redstonewill.github.io/2018/03/13/1/</loc>
-    <lastmod>2018-03-16T14:16:15.793Z</lastmod>
+    <loc>https://redstonewill.github.io/2018/03/16/3/</loc>
+    <lastmod>2018-03-17T06:31:54.198Z</lastmod>
     <data>
         <display>
-        <title>台湾大学林轩田机器学习基石课程学习笔记1 -- The Learning Problem</title>
-        <pubTime>2018-03-13T08:59:11.000Z</pubTime>
+        <title>台湾大学林轩田机器学习基石课程学习笔记3 -- Types of Learning</title>
+        <pubTime>2018-03-16T13:52:20.000Z</pubTime>
+        
+        <tag>机器学习</tag>
+         
+        <tag>林轩田</tag>
+         
+        <tag>基石</tag>
+         
+        <tag>笔记</tag>
+         
+         
+           
+             
+              <breadCrumb title="机器学习" url="https://redstonewill.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+          
+             
+              <breadCrumb title="林轩田机器学习基石" url="https://redstonewill.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9E%97%E8%BD%A9%E7%94%B0%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%9F%B3/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://redstonewill.github.io/2018/03/16/5/</loc>
+    <lastmod>2018-03-17T06:31:32.547Z</lastmod>
+    <data>
+        <display>
+        <title>台湾大学林轩田机器学习基石课程学习笔记5 -- Training versus Testing</title>
+        <pubTime>2018-03-16T14:45:12.000Z</pubTime>
+        
+        <tag>机器学习</tag>
+         
+        <tag>林轩田</tag>
+         
+        <tag>基石</tag>
+         
+        <tag>笔记</tag>
+         
+         
+           
+             
+              <breadCrumb title="机器学习" url="https://redstonewill.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+          
+             
+              <breadCrumb title="林轩田机器学习基石" url="https://redstonewill.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9E%97%E8%BD%A9%E7%94%B0%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%9F%B3/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://redstonewill.github.io/2018/03/17/6/</loc>
+    <lastmod>2018-03-17T06:30:32.483Z</lastmod>
+    <data>
+        <display>
+        <title>台湾大学林轩田机器学习基石课程学习笔记6 -- Theory of Generalization</title>
+        <pubTime>2018-03-17T06:24:41.000Z</pubTime>
         
         <tag>机器学习</tag>
          

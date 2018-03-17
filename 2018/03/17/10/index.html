@@ -94,41 +94,39 @@
 
 <meta name="keywords" content="机器学习,林轩田,基石,笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="台湾大学林轩田机器学习基石课程学习笔记2 -- Learning to Answer Yes or No">
-<meta property="og:url" content="https://redstonewill.github.io/2018/03/14/2/index.html">
+<meta property="og:title" content="台湾大学林轩田机器学习基石课程学习笔记10 -- Logistic Regression">
+<meta property="og:url" content="https://redstonewill.github.io/2018/03/17/10/index.html">
 <meta property="og:site_name" content="红色石头的机器学习之路">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://img.blog.csdn.net/20170608082007683?imageView/2/w/500/q/100">
-<meta property="og:image" content="http://img.blog.csdn.net/20170608082007683?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170608083119699?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170608084125366?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170608095000165?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170608102847562?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170608104910590?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170608104952086?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170608105013685?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170608105029404?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170608105044842?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170608105100764?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170608105122249?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170608105214946?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170608105230634?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170608105243181?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170608105257829?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170608111542131?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170608134312092?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170608134340499?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170608140302480?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170608143421951?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170608143438779?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170608145844603?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170608150716294?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170608151418751?">
-<meta property="og:image" content="http://img.blog.csdn.net/20170608155259223?">
-<meta property="og:updated_time" content="2018-03-17T06:31:58.886Z">
+<meta property="og:image" content="http://img.blog.csdn.net/20170515225915831?imageView/2/w/500/q/100">
+<meta property="og:image" content="http://img.blog.csdn.net/20170515225915831?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170515230741609?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170515232055978?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170515233141740?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170515233941909?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170515235513276?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170516001146598?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170516002847044?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170516002958701?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170516003257812?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170516003559844?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170516003823843?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170516004024658?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170516090812306?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170516091637644?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170516092312216?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170516092503784?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170516093504716?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170516100435914?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170516100842890?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170516101506325?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170516102731492?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170516103259068?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170516111145698?">
+<meta property="og:updated_time" content="2018-03-17T06:44:06.377Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="台湾大学林轩田机器学习基石课程学习笔记2 -- Learning to Answer Yes or No">
-<meta name="twitter:image" content="http://img.blog.csdn.net/20170608082007683?imageView/2/w/500/q/100">
+<meta name="twitter:title" content="台湾大学林轩田机器学习基石课程学习笔记10 -- Logistic Regression">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20170515225915831?imageView/2/w/500/q/100">
 
 
 
@@ -158,13 +156,13 @@
 
 
 
-  <link rel="canonical" href="https://redstonewill.github.io/2018/03/14/2/"/>
+  <link rel="canonical" href="https://redstonewill.github.io/2018/03/17/10/"/>
 
 
 
 
 
-  <title>台湾大学林轩田机器学习基石课程学习笔记2 -- Learning to Answer Yes or No | 红色石头的机器学习之路</title>
+  <title>台湾大学林轩田机器学习基石课程学习笔记10 -- Logistic Regression | 红色石头的机器学习之路</title>
   
 
 
@@ -351,7 +349,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://redstonewill.github.io/2018/03/14/2/">
+    <link itemprop="mainEntityOfPage" href="https://redstonewill.github.io/2018/03/17/10/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="红色石头">
@@ -368,7 +366,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">台湾大学林轩田机器学习基石课程学习笔记2 -- Learning to Answer Yes or No</h1>
+          <h1 class="post-title" itemprop="name headline">台湾大学林轩田机器学习基石课程学习笔记10 -- Logistic Regression</h1>
         
 
         <div class="post-meta">
@@ -380,8 +378,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-14T09:39:54+08:00">
-                2018-03-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-17T14:42:15+08:00">
+                2018-03-17
               </time>
             
 
@@ -431,7 +429,7 @@
 
           
           
-             <span id="/2018/03/14/2/" class="leancloud_visitors" data-flag-title="台湾大学林轩田机器学习基石课程学习笔记2 -- Learning to Answer Yes or No">
+             <span id="/2018/03/17/10/" class="leancloud_visitors" data-flag-title="台湾大学林轩田机器学习基石课程学习笔记10 -- Logistic Regression">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -456,7 +454,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,936
+                  2,252
                 </span>
               
 
@@ -481,77 +479,83 @@
       
 
       
-        <p><img src="http://img.blog.csdn.net/20170608082007683?imageView/2/w/500/q/100" alt="这里写图片描述"></p>
-<a id="more"></a>
+        <p><img src="http://img.blog.csdn.net/20170515225915831?imageView/2/w/500/q/100" alt="这里写图片描述"><br><a id="more"></a></p>
 <blockquote>
 <p>我的CSDN博客地址：<a href="http://blog.csdn.net/red_stone1" target="_blank" rel="noopener">红色石头的专栏</a><br>我的知乎主页：<a href="https://www.zhihu.com/people/red_stone_wl" target="_blank" rel="noopener">红色石头</a><br>我的微博：<a href="https://weibo.com/6479023696/profile?topnav=1&amp;wvr=6&amp;is_all=1" target="_blank" rel="noopener">RedstoneWill的微博</a><br>我的GitHub：<a href="https://github.com/RedstoneWill" target="_blank" rel="noopener">RedstoneWill的GitHub</a><br>我的微信公众号：红色石头的机器学习之路（ID：redstonewill）<br>欢迎大家关注我！共同学习，共同进步！</p>
 </blockquote>
-<p>上节课，我们主要简述了机器学习的定义及其重要性，并用流程图的形式介绍了机器学习的整个过程：根据模型H，使用演算法A，在训练样本D上进行训练，得到最好的h，其对应的g就是我们最后需要的机器学习的模型函数，一般g接近于目标函数f。本节课将继续深入探讨机器学习问题，介绍感知机Perceptron模型，并推导课程的第一个机器学习算法：Perceptron Learning Algorithm（PLA）。</p>
-<h3 id="Perceptron-Hypothesis-Set"><a href="#Perceptron-Hypothesis-Set" class="headerlink" title="Perceptron Hypothesis Set"></a>Perceptron Hypothesis Set</h3><p>引入这样一个例子：某银行要根据用户的年龄、性别、年收入等情况来判断是否给该用户发信用卡。现在有训练样本D，即之前用户的信息和是否发了信用卡。这是一个典型的机器学习问题，我们要根据D，通过A，在H中选择最好的h，得到g，接近目标函数f，也就是根据先验知识建立是否给用户发信用卡的模型。银行用这个模型对以后用户进行判断：发信用卡（+1），不发信用卡（-1）。</p>
-<p>在这个机器学习的整个流程中，有一个部分非常重要：就是模型选择，即Hypothesis Set。选择什么样的模型，很大程度上会影响机器学习的效果和表现。下面介绍一个简单常用的Hypothesis Set：感知机（Perceptron）。</p>
-<p>还是刚才银行是否给用户发信用卡的例子，我们把用户的个人信息作为特征向量x，令总共有d个特征，每个特征赋予不同的权重w，表示该特征对输出（是否发信用卡）的影响有多大。那所有特征的加权和的值与一个设定的阈值threshold进行比较：大于这个阈值，输出为+1，即发信用卡；小于这个阈值，输出为-1，即不发信用卡。感知机模型，就是当特征加权和与阈值的差大于或等于0，则输出h(x)=1；当特征加权和与阈值的差小于0，则输出h(x)=-1，而我们的目的就是计算出所有权值w和阈值threshold。</p>
-<p><img src="http://img.blog.csdn.net/20170608082007683?" alt="这里写图片描述"></p>
-<p>为了计算方便，通常我们将阈值threshold当做$w_0$，引入一个$x_0=1$的量与$w_0$相乘，这样就把threshold也转变成了权值$w_0$，简化了计算。h(x)的表达式做如下变换：</p>
-<p><img src="http://img.blog.csdn.net/20170608083119699?" alt="这里写图片描述"></p>
-<p>为了更清晰地说明感知机模型，我们假设Perceptrons在二维平面上，即$h(x)=sign(w_0+w_1x_1+w_2x_2)$。其中，$w_0+w_1x_1+w_2x_2=0$是平面上一条分类直线，直线一侧是正类（+1），直线另一侧是负类（-1）。权重w不同，对应于平面上不同的直线。</p>
-<p><img src="http://img.blog.csdn.net/20170608084125366?" alt="这里写图片描述"></p>
-<p>那么，我们所说的Perceptron，在这个模型上就是一条直线，称之为linear(binary) classifiers。注意一下，感知器线性分类不限定在二维空间中，在3D中，线性分类用平面表示，在更高维度中，线性分类用超平面表示，即只要是形如$w^Tx$的线性模型就都属于linear(binary) classifiers。</p>
-<p>同时，需要注意的是，这里所说的linear(binary) classifiers是用简单的感知器模型建立的，线性分类问题还可以使用logistic regression来解决，后面将会介绍。</p>
-<h3 id="Perceptron-Learning-Algorithm-PLA"><a href="#Perceptron-Learning-Algorithm-PLA" class="headerlink" title="Perceptron Learning Algorithm(PLA)"></a>Perceptron Learning Algorithm(PLA)</h3><p>根据上一部分的介绍，我们已经知道了hypothesis set由许多条直线构成。接下来，我们的目的就是如何设计一个演算法A，来选择一个最好的直线，能将平面上所有的正类和负类完全分开，也就是找到最好的g，使$g\approx f$。</p>
-<p>如何找到这样一条最好的直线呢？我们可以使用逐点修正的思想，首先在平面上随意取一条直线，看看哪些点分类错误。然后开始对第一个错误点就行修正，即变换直线的位置，使这个错误点变成分类正确的点。接着，再对第二个、第三个等所有的错误分类点就行直线纠正，直到所有的点都完全分类正确了，就得到了最好的直线。这种“逐步修正”，就是PLA思想所在。</p>
-<p><img src="http://img.blog.csdn.net/20170608095000165?" alt="这里写图片描述"></p>
-<p>下面介绍一下PLA是怎么做的。首先随机选择一条直线进行分类。然后找到第一个分类错误的点，如果这个点表示正类，被误分为负类，即$w_t^Tx_{n(t)}&lt;0$，那表示w和x夹角大于90度，其中w是直线的法向量。所以，x被误分在直线的下侧（相对于法向量，法向量的方向即为正类所在的一侧），修正的方法就是使w和x夹角小于90度。通常做法是$w\leftarrow w+yx,\ y=1$，如图右上角所示，一次或多次更新后的$w+yx$与x夹角小于90度，能保证x位于直线的上侧，则对误分为负类的错误点完成了直线修正。</p>
-<p>同理，如果是误分为正类的点，即$w_t^Tx_{n(t)}&gt;0$，那表示w和x夹角小于90度，其中w是直线的法向量。所以，x被误分在直线的上侧，修正的方法就是使w和x夹角大于90度。通常做法是$w\leftarrow w+yx,\ y=-1$，如图右下角所示，一次或多次更新后的$w+yx$与x夹角大于90度，能保证x位于直线的下侧，则对误分为正类的错误点也完成了直线修正。</p>
-<p>按照这种思想，遇到个错误点就进行修正，不断迭代。要注意一点：每次修正直线，可能使之前分类正确的点变成错误点，这是可能发生的。但是没关系，不断迭代，不断修正，最终会将所有点完全正确分类（PLA前提是线性可分的）。这种做法的思想是“知错能改”，有句话形容它：“A fault confessed is half redressed.”</p>
-<p>实际操作中，可以一个点一个点地遍历，发现分类错误的点就进行修正，直到所有点全部分类正确。这种被称为Cyclic PLA。</p>
-<p><img src="http://img.blog.csdn.net/20170608102847562?" alt="这里写图片描述"></p>
-<p>下面用图解的形式来介绍PLA的修正过程：</p>
-<p><img src="http://img.blog.csdn.net/20170608104910590?" alt="这里写图片描述"></p>
-<p><img src="http://img.blog.csdn.net/20170608104952086?" alt="这里写图片描述"></p>
-<p><img src="http://img.blog.csdn.net/20170608105013685?" alt="这里写图片描述"></p>
-<p><img src="http://img.blog.csdn.net/20170608105029404?" alt="这里写图片描述"></p>
-<p><img src="http://img.blog.csdn.net/20170608105044842?" alt="这里写图片描述"></p>
-<p><img src="http://img.blog.csdn.net/20170608105100764?" alt="这里写图片描述"></p>
-<p><img src="http://img.blog.csdn.net/20170608105122249?" alt="这里写图片描述"></p>
-<p><img src="http://img.blog.csdn.net/20170608105214946?" alt="这里写图片描述"></p>
-<p><img src="http://img.blog.csdn.net/20170608105230634?" alt="这里写图片描述"></p>
-<p><img src="http://img.blog.csdn.net/20170608105243181?" alt="这里写图片描述"></p>
-<p><img src="http://img.blog.csdn.net/20170608105257829?" alt="这里写图片描述"></p>
-<p>对PLA，我们需要考虑以下两个问题：</p>
+<p>上一节课，我们介绍了Linear Regression线性回归，以及用平方错误来寻找最佳的权重向量w，获得最好的线性预测。本节课将介绍Logistic Regression逻辑回归问题。</p>
+<h3 id="Logistic-Regression-Problem"><a href="#Logistic-Regression-Problem" class="headerlink" title="Logistic Regression Problem"></a>Logistic Regression Problem</h3><p>一个心脏病预测的问题：根据患者的年龄、血压、体重等信息，来预测患者是否会有心脏病。很明显这是一个二分类问题，其输出y只有{-1,1}两种情况。</p>
+<p>二元分类，一般情况下，理想的目标函数f(x)&gt;0.5，则判断为正类1；若f(x)&lt;0.5，则判断为负类-1。</p>
+<p><img src="http://img.blog.csdn.net/20170515225915831?" alt="这里写图片描述"></p>
+<p>但是，如果我们想知道的不是患者有没有心脏病，而是到底患者有多大的几率是心脏病。这表示，我们更关心的是目标函数的值（分布在0,1之间），表示是正类的概率（正类表示是心脏病）。这跟我们原来讨论的二分类问题不太一样，我们把这个问题称为软性二分类问题（’soft’ binary classification）。这个值越接近1，表示正类的可能性越大；越接近0，表示负类的可能性越大。</p>
+<p><img src="http://img.blog.csdn.net/20170515230741609?" alt="这里写图片描述"></p>
+<p>对于软性二分类问题，理想的数据是分布在[0,1]之间的具体值，但是实际中的数据只可能是0或者1，我们可以把实际中的数据看成是理想数据加上了噪声的影响。</p>
+<p><img src="http://img.blog.csdn.net/20170515232055978?" alt="这里写图片描述"></p>
+<p>如果目标函数是$f(x)=P(+1|x)\in[0,1]$的话，我们如何找到一个好的Hypothesis跟这个目标函数很接近呢？</p>
+<p>首先，根据我们之前的做法，对所有的特征值进行加权处理。计算的结果s，我们称之为’risk score’：</p>
+<p><img src="http://img.blog.csdn.net/20170515233141740?" alt="这里写图片描述"></p>
+<p>但是特征加权和$s\in(-\infty,+\infty)$，如何将s值限定在[0,1]之间呢？一个方法是使用sigmoid Function，记为$\theta(s)$。那么我们的目标就是找到一个hypothesis：$h(x)=\theta(w^Tx)$。</p>
+<p><img src="http://img.blog.csdn.net/20170515233941909?" alt="这里写图片描述"></p>
+<p>Sigmoid Function函数记为$\theta(s)=\frac1{1+e^{-s}}$，满足$\theta(-\infty)=0$，$\theta(0)=\frac12$，$\theta(+\infty)=1$。这个函数是平滑的、单调的S型函数。则对于逻辑回归问题，hypothesis就是这样的形式：</p>
+<p>$$h(x)=\frac1{1+e^{-w^Tx}}$$</p>
+<p>那我们的目标就是求出这个预测函数h(x)，使它接近目标函数f(x)。</p>
+<h3 id="Logistic-Regression-Error"><a href="#Logistic-Regression-Error" class="headerlink" title="Logistic Regression Error"></a>Logistic Regression Error</h3><p>现在我们将Logistic Regression与之前讲的Linear Classification、Linear Regression做个比较：</p>
+<p><img src="http://img.blog.csdn.net/20170515235513276?" alt="这里写图片描述"></p>
+<p>这三个线性模型都会用到线性scoring function $s=w^Tx$。linear classification的误差使用的是0/1 err；linear regression的误差使用的是squared err。那么logistic regression的误差该如何定义呢？</p>
+<p>先介绍一下“似然性”的概念。目标函数$f(x)=P(+1|x)$，如果我们找到了hypothesis很接近target function。也就是说，在所有的Hypothesis集合中找到一个hypothesis与target function最接近，能产生同样的数据集D，包含y输出label，则称这个hypothesis是最大似然likelihood。</p>
+<p><img src="http://img.blog.csdn.net/20170516001146598?" alt="这里写图片描述"></p>
+<p>logistic function: $h(x)=\theta(w^Tx)$满足一个性质：$1-h(x)=h(-x)$。那么，似然性h:</p>
+<p>$$likelihood(h)=P(x_1)h(+x_1)\times P(x_2)h(-x_2)\times \cdots P(x_N)h(-x_N)$$</p>
+<p>因为$P(x_n)$对所有的h来说，都是一样的，所以我们可以忽略它。那么我们可以得到logistic h正比于所有的$h(y_nx)$乘积。我们的目标就是让乘积值最大化。</p>
+<p><img src="http://img.blog.csdn.net/20170516002847044?" alt="这里写图片描述"></p>
+<p>如果将w代入的话：</p>
+<p><img src="http://img.blog.csdn.net/20170516002958701?" alt="这里写图片描述"></p>
+<p>为了把连乘问题简化计算，我们可以引入ln操作，让连乘转化为连加：</p>
+<p><img src="http://img.blog.csdn.net/20170516003257812?" alt="这里写图片描述"></p>
+<p>接着，我们将maximize问题转化为minimize问题，添加一个负号就行，并引入平均数操作$\frac1N$：</p>
+<p><img src="http://img.blog.csdn.net/20170516003559844?" alt="这里写图片描述"></p>
+<p>将logistic function的表达式带入，那么minimize问题就会转化为如下形式：</p>
+<p><img src="http://img.blog.csdn.net/20170516003823843?" alt="这里写图片描述"></p>
+<p>至此，我们得到了logistic regression的err function，称之为cross-entropy error交叉熵误差：</p>
+<p><img src="http://img.blog.csdn.net/20170516004024658?" alt="这里写图片描述"></p>
+<h3 id="Gradient-of-Logistic-Regression-Error"><a href="#Gradient-of-Logistic-Regression-Error" class="headerlink" title="Gradient of Logistic Regression Error"></a>Gradient of Logistic Regression Error</h3><p>我们已经推导了$E_{in}$的表达式，那接下来的问题就是如何找到合适的向量w，让$E_{in}$最小。</p>
+<p><img src="http://img.blog.csdn.net/20170516090812306?" alt="这里写图片描述"></p>
+<p>Logistic Regression的$E_{in}$是连续、可微、二次可微的凸曲线（开口向上），根据之前Linear Regression的思路，我们只要计算$E_{in}$的梯度为零时的w，即为最优解。</p>
+<p><img src="http://img.blog.csdn.net/20170516091637644?" alt="这里写图片描述"></p>
+<p>对$E_{in}$计算梯度，学过微积分的都应该很容易计算出来：</p>
+<p><img src="http://img.blog.csdn.net/20170516092312216?" alt="这里写图片描述"></p>
+<p>最终得到的梯度表达式为：</p>
+<p><img src="http://img.blog.csdn.net/20170516092503784?" alt="这里写图片描述"></p>
+<p>为了计算$E_{in}$最小值，我们就要找到让$\nabla E_{in}(w)$等于0的位置。</p>
+<p><img src="http://img.blog.csdn.net/20170516093504716?" alt="这里写图片描述"></p>
+<p>上式可以看成$\theta(-y_nw^Tx_n)$是$-y_nx_n$的线性加权。要求$\theta(-y_nw^Tx_n)$与$-y_nx_n$的线性加权和为0，那么一种情况是线性可分，如果所有的权重$\theta(-y_nw^Tx_n)$为0，那就能保证$\nabla E_{in}(w)$为0。$\theta(-y_nw^Tx_n)$是sigmoid function，根据其特性，只要让$-y_nw^Tx_n≪0 $，即$y_nw^Tx_n≫0 $。$y_nw^Tx_n≫0 $表示对于所有的点，$y_n$与$w^Tx_n$都是同号的，这表示数据集D必须是全部线性可分的才能成立。</p>
+<p>然而，保证所有的权重$\theta(-y_nw^Tx_n)$为0是不太现实的，总有不等于0的时候，那么另一种常见的情况是非线性可分，只能通过使加权和为零，来求解w。这种情况没有closed-form解，与Linear Regression不同，只能用迭代方法求解。</p>
+<p><img src="http://img.blog.csdn.net/20170516100435914?" alt="这里写图片描述"></p>
+<p>之前所说的Linear Regression有closed-form解，可以说是“一步登天”的；但是PLA算法是一步一步修正迭代进行的，每次对错误点进行修正，不断更新w值。PLA的迭代优化过程表示如下：</p>
+<p><img src="http://img.blog.csdn.net/20170516100842890?" alt="这里写图片描述"></p>
+<p>w每次更新包含两个内容：一个是每次更新的方向$y_nx_n$，用$v$表示，另一个是每次更新的步长$\eta$。参数$(v,\eta)$和终止条件决定了我们的迭代优化算法。</p>
+<p><img src="http://img.blog.csdn.net/20170516101506325?" alt="这里写图片描述"></p>
+<h3 id="Gradient-Descent"><a href="#Gradient-Descent" class="headerlink" title="Gradient Descent"></a>Gradient Descent</h3><p>根据上一小节PLA的思想，迭代优化让每次w都有更新：</p>
+<p><img src="http://img.blog.csdn.net/20170516102731492?" alt="这里写图片描述"></p>
+<p>我们把$E_{in}(w)$曲线看做是一个山谷的话，要求$E_{in}(w)$最小，即可比作下山的过程。整个下山过程由两个因素影响：一个是下山的单位方向$v$；另外一个是下山的步长$\eta$。</p>
+<p><img src="http://img.blog.csdn.net/20170516103259068?" alt="这里写图片描述"></p>
+<p>利用微分思想和线性近似，假设每次下山我们只前进一小步，即$\eta$很小，那么根据泰勒Taylor一阶展开，可以得到：<br>$$E_{in}(w_t+\eta v)\approx E_{in}(w_t)+\eta v^T\nabla E_{in}(w_t)$$</p>
+<p>关于Taylor展开的介绍，可参考我另一篇博客：<br><a href="http://blog.csdn.net/red_stone1/article/details/70260070" target="_blank" rel="noopener">多元函数的泰勒(Taylor)展开式</a></p>
+<p>迭代的目的是让$E_{in}$越来越小，即让$E_{in}(w_t+\eta v)&lt;E_{in}(w_t)$。$\eta$是标量，因为如果两个向量方向相反的话，那么他们的内积最小（为负），也就是说如果方向$v$与梯度$\nabla E_{in}(w_t)$反向的话，那么就能保证每次迭代$E_{in}(w_t+\eta v)&lt;E_{in}(w_t)$都成立。则，我们令下降方向$v$为：<br>$$v=-\frac{\nabla E_{in}(w_t)}{||\nabla E_{in}(w_t)||}$$</p>
+<p>$v$是单位向量，$v$每次都是沿着梯度的反方向走，这种方法称为梯度下降（gradient descent）算法。那么每次迭代公式就可以写成：<br>$$w_{t+1}\leftarrow w_t-\eta\frac{\nabla E_{in}(w_t)}{||\nabla E_{in}(w_t)||}$$</p>
+<p>下面讨论一下$\eta$的大小对迭代优化的影响：$\eta$如果太小的话，那么下降的速度就会很慢；$\eta$如果太大的话，那么之前利用Taylor展开的方法就不准了，造成下降很不稳定，甚至会上升。因此，$\eta$应该选择合适的值，一种方法是在梯度较小的时候，选择小的$\eta$，梯度较大的时候，选择大的$\eta$，即$\eta$正比于$||\nabla E_{in}(w_t)||$。这样保证了能够快速、稳定地得到最小值$E_{in}(w)$。</p>
+<p><img src="http://img.blog.csdn.net/20170516111145698?" alt="这里写图片描述"></p>
+<p>对学习速率$\eta$做个更修正，梯度下降算法的迭代公式可以写成：<br>$$w_{t+1}\leftarrow w_t-\eta’\nabla E_{in}(w_t)$$<br>其中：<br>$$\eta’=\frac{\eta}{||\nabla E_{in}(w_t)||}$$</p>
+<p>总结一下基于梯度下降的Logistic Regression算法步骤如下：</p>
 <ul>
-<li><p>PLA迭代一定会停下来吗？如果线性不可分怎么办？</p>
-</li>
-<li><p>PLA停下来的时候，是否能保证$f\approx g$？如果没有停下来，是否有$f\approx g$？</p>
-</li>
+<li><strong>初始化$w_0$</strong></li>
+<li><strong>计算梯度$\nabla E_{in}(w_t)=\frac1N\sum_{n=1}^N\theta(-y_nw_t^Tx_n)(-y_nx_n)$</strong></li>
+<li><strong>迭代跟新$w_{t+1}\leftarrow w_t-\eta\nabla E_{in}(w_t)$</strong></li>
+<li><strong>满足$\nabla E_{in}(w_{t+1})\approx0$或者达到迭代次数，迭代结束</strong></li>
 </ul>
-<h3 id="Guarantee-of-PLA"><a href="#Guarantee-of-PLA" class="headerlink" title="Guarantee of PLA"></a>Guarantee of PLA</h3><p>PLA什么时候会停下来呢？根据PLA的定义，当找到一条直线，能将所有平面上的点都分类正确，那么PLA就停止了。要达到这个终止条件，就必须保证D是线性可分（linear separable）。如果是非线性可分的，那么，PLA就不会停止。</p>
-<p><img src="http://img.blog.csdn.net/20170608111542131?" alt="这里写图片描述"></p>
-<p>对于线性可分的情况，如果有这样一条直线，能够将正类和负类完全分开，令这时候的目标权重为$w_f$，则对每个点，必然满足$y_n=sign(w_f^Tx_n)$，即对任一点：</p>
-<p><img src="http://img.blog.csdn.net/20170608134312092?" alt="这里写图片描述"></p>
-<p>PLA会对每次错误的点进行修正，更新权重$w_{t+1}$的值，如果$w_{t+1}$与$w_f$越来越接近，数学运算上就是内积越大，那表示$w_{t+1}$是在接近目标权重$w_f$，证明PLA是有学习效果的。所以，我们来计算$w_{t+1}$与$w_f$的内积：</p>
-<p><img src="http://img.blog.csdn.net/20170608134340499?" alt="这里写图片描述"></p>
-<p>从推导可以看出，$w_{t+1}$与$w_f$的内积跟$w_t$与$w_f$的内积相比更大了。似乎说明了$w_{t+1}$更接近$w_f$，但是内积更大，可能是向量长度更大了，不一定是向量间角度更小。所以，下一步，我们还需要证明$w_{t+1}$与$w_t$向量长度的关系：</p>
-<p><img src="http://img.blog.csdn.net/20170608140302480?" alt="这里写图片描述"></p>
-<p>$w_t$只会在分类错误的情况下更新，最终得到的$||w_{t+1}^2||$相比$||w_{t}^2||$的增量值不超过$max||x_n^2||$。也就是说，$w_t$的增长被限制了，$w_{t+1}$与$w_t$向量长度不会差别太大！</p>
-<p>如果令初始权值$w_0=0$，那么经过T次错误修正后，有如下结论：</p>
-<p>$$\frac{w_f^T}{||w_f||}\frac{w_T}{w_T}\geq \sqrt T\cdot constant$$</p>
-<p>下面贴出来该结论的具体推导过程：</p>
-<p><img src="http://img.blog.csdn.net/20170608143421951?" alt="这里写图片描述"></p>
-<p><img src="http://img.blog.csdn.net/20170608143438779?" alt="这里写图片描述"></p>
-<p>上述不等式左边其实是$w_T$与$w_f$夹角的余弦值，随着T增大，该余弦值越来越接近1，即$w_T$与$w_f$越来越接近。同时，需要注意的是，$\sqrt T\cdot constant\leq 1$，也就是说，迭代次数T是有上界的。根据以上证明，我们最终得到的结论是：$w_{t+1}$与$w_f$的是随着迭代次数增加，逐渐接近的。而且，PLA最终会停下来（因为T有上界），实现对线性可分的数据集完全分类。</p>
-<h3 id="Non-Separable-Data"><a href="#Non-Separable-Data" class="headerlink" title="Non-Separable Data"></a>Non-Separable Data</h3><p>上一部分，我们证明了线性可分的情况下，PLA是可以停下来并正确分类的，但对于非线性可分的情况，$w_f$实际上并不存在，那么之前的推导并不成立，PLA不一定会停下来。所以，PLA虽然实现简单，但也有缺点：</p>
-<p><img src="http://img.blog.csdn.net/20170608145844603?" alt="这里写图片描述"></p>
-<p>对于非线性可分的情况，我们可以把它当成是数据集D中掺杂了一下noise，事实上，大多数情况下我们遇到的D，都或多或少地掺杂了noise。这时，机器学习流程是这样的：</p>
-<p><img src="http://img.blog.csdn.net/20170608150716294?" alt="这里写图片描述"></p>
-<p>在非线性情况下，我们可以把条件放松，即不苛求每个点都分类正确，而是容忍有错误点，取错误点的个数最少时的权重w：</p>
-<p><img src="http://img.blog.csdn.net/20170608151418751?" alt="这里写图片描述"></p>
-<p>事实证明，上面的解是NP-hard问题，难以求解。然而，我们可以对在线性可分类型中表现很好的PLA做个修改，把它应用到非线性可分类型中，获得近似最好的g。</p>
-<p>修改后的PLA称为Packet Algorithm。它的算法流程与PLA基本类似，首先初始化权重$w_0$，计算出在这条初始化的直线中，分类错误点的个数。然后对错误点进行修正，更新w，得到一条新的直线，在计算其对应的分类错误的点的个数，并与之前错误点个数比较，取个数较小的直线作为我们当前选择的分类直线。之后，再经过n次迭代，不断比较当前分类错误点个数与之前最少的错误点个数比较，选择最小的值保存。直到迭代次数完成后，选取个数最少的直线对应的w，即为我们最终想要得到的权重值。</p>
-<p><img src="http://img.blog.csdn.net/20170608155259223?" alt="这里写图片描述"></p>
-<p>如何判断数据集D是不是线性可分？对于二维数据来说，通常还是通过肉眼观察来判断的。一般情况下，Pocket Algorithm要比PLA速度慢一些。</p>
-<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p>本节课主要介绍了线性感知机模型，以及解决这类感知机分类问题的简单算法：PLA。我们详细证明了对于线性可分问题，PLA可以停下来并实现完全正确分类。对于不是线性可分的问题，可以使用PLA的修正算法Pocket Algorithm来解决。</p>
+<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p>我们今天介绍了Logistic Regression。首先，从逻辑回归的问题出发，将$P(+1|x)$作为目标函数，将$\theta(w^Tx)$作为hypothesis。接着，我们定义了logistic regression的err function，称之为cross-entropy error交叉熵误差。然后，我们计算logistic regression error的梯度，最后，通过梯度下降算法，计算$\nabla E_{in}(w_t)\approx0$时对应的$w_t$值。</p>
 <p><strong><em>注明：</em></strong></p>
-<p>文章中所有的图片均来自台湾大学林轩田《机器学习基石》课程。</p>
+<p>文章中所有的图片均来自台湾大学林轩田《机器学习基石》课程</p>
 
       
     </div>
@@ -609,7 +613,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://redstonewill.github.io/2018/03/14/2/" title="台湾大学林轩田机器学习基石课程学习笔记2 -- Learning to Answer Yes or No">https://redstonewill.github.io/2018/03/14/2/</a>
+    <a href="https://redstonewill.github.io/2018/03/17/10/" title="台湾大学林轩田机器学习基石课程学习笔记10 -- Logistic Regression">https://redstonewill.github.io/2018/03/17/10/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -643,8 +647,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/13/1/" rel="next" title="台湾大学林轩田机器学习基石课程学习笔记1 -- The Learning Problem">
-                <i class="fa fa-chevron-left"></i> 台湾大学林轩田机器学习基石课程学习笔记1 -- The Learning Problem
+              <a href="/2018/03/17/9/" rel="next" title="台湾大学林轩田机器学习基石课程学习笔记9 -- Linear Regression">
+                <i class="fa fa-chevron-left"></i> 台湾大学林轩田机器学习基石课程学习笔记9 -- Linear Regression
               </a>
             
           </div>
@@ -653,8 +657,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/16/3/" rel="prev" title="台湾大学林轩田机器学习基石课程学习笔记3 -- Types of Learning">
-                台湾大学林轩田机器学习基石课程学习笔记3 -- Types of Learning <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/17/11/" rel="prev" title="台湾大学林轩田机器学习基石课程学习笔记11 -- Linear Models for Classification">
+                台湾大学林轩田机器学习基石课程学习笔记11 -- Linear Models for Classification <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -843,7 +847,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Perceptron-Hypothesis-Set"><span class="nav-number">1.</span> <span class="nav-text">Perceptron Hypothesis Set</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Perceptron-Learning-Algorithm-PLA"><span class="nav-number">2.</span> <span class="nav-text">Perceptron Learning Algorithm(PLA)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Guarantee-of-PLA"><span class="nav-number">3.</span> <span class="nav-text">Guarantee of PLA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Non-Separable-Data"><span class="nav-number">4.</span> <span class="nav-text">Non-Separable Data</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Summary"><span class="nav-number">5.</span> <span class="nav-text">Summary</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Logistic-Regression-Problem"><span class="nav-number">1.</span> <span class="nav-text">Logistic Regression Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Logistic-Regression-Error"><span class="nav-number">2.</span> <span class="nav-text">Logistic Regression Error</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gradient-of-Logistic-Regression-Error"><span class="nav-number">3.</span> <span class="nav-text">Gradient of Logistic Regression Error</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gradient-Descent"><span class="nav-number">4.</span> <span class="nav-text">Gradient Descent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Summary"><span class="nav-number">5.</span> <span class="nav-text">Summary</span></a></li></ol></div>
             
 
           </div>
