@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="googlead9dc5c68da2c41a" />
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="baV2kbPkNW" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/favicon.ico?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="机器学习,林轩田,笔记,技法," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="红色石头的机器学习之路" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="keywords" content="机器学习,林轩田,笔记,技法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="台湾大学林轩田机器学习技法课程学习笔记8 -- Adaptive Boosting">
+<meta property="og:url" content="https://redstonewill.github.io/2018/03/18/25/index.html">
+<meta property="og:site_name" content="红色石头的机器学习之路">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://img.blog.csdn.net/20170713163950772?imageView/2/w/500/q/100">
+<meta property="og:image" content="http://img.blog.csdn.net/20170713163950772?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170713171109291?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170713214123596?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170713214711978?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170713215718130?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170713215800108?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170714080644583?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170714081506965?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170714083230109?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170714085048224?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170714131902089?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170714134048908?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170714135429196?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170714141601750?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170714152321580?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170717080641948?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170717081850838?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170717083113667?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170717085137932?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170717085756381?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170717112519198?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170717112851795?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170717132338143?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170717134058765?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170717134139058?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170717134354783?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170717134445972?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170717134548872?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170717134642556?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170717134743082?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170717135425498?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170717140200102?">
+<meta property="og:updated_time" content="2018-03-18T06:02:40.916Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="台湾大学林轩田机器学习技法课程学习笔记8 -- Adaptive Boosting">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20170713163950772?imageView/2/w/500/q/100">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'ZFJHIGA2DV',
+      apiKey: 'e3baeea7f059baffe169cc0eec8adacf',
+      indexName: 'redstonewillblog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"输入关键词进行搜索","hits_empty":"没有找到与 ${query} 相关的内容","hits_stats":"${hits}条相关记录，共耗时${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://redstonewill.github.io/2018/03/18/25/"/>
+
+
+
+
+
+  <title>台湾大学林轩田机器学习技法课程学习笔记8 -- Adaptive Boosting | 红色石头的机器学习之路</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	
+	<a href="https://github.com/RedstoneWill" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+	
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">红色石头的机器学习之路</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">公众号ID：redstonewill</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://redstonewill.github.io/2018/03/18/25/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="红色石头">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="红色石头的机器学习之路">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">台湾大学林轩田机器学习技法课程学习笔记8 -- Adaptive Boosting</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-18T14:01:09+08:00">
+                2018-03-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/林轩田机器学习技法/" itemprop="url" rel="index">
+                    <span itemprop="name">林轩田机器学习技法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/03/18/25/" class="leancloud_visitors" data-flag-title="台湾大学林轩田机器学习技法课程学习笔记8 -- Adaptive Boosting">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4,226
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://img.blog.csdn.net/20170713163950772?imageView/2/w/500/q/100" alt="这里写图片描述"><br><a id="more"></a></p>
+<blockquote>
+<p>我的CSDN博客地址：<a href="http://blog.csdn.net/red_stone1" target="_blank" rel="noopener">红色石头的专栏</a><br>我的知乎主页：<a href="https://www.zhihu.com/people/red_stone_wl" target="_blank" rel="noopener">红色石头</a><br>我的微博：<a href="https://weibo.com/6479023696/profile?topnav=1&amp;wvr=6&amp;is_all=1" target="_blank" rel="noopener">RedstoneWill的微博</a><br>我的GitHub：<a href="https://github.com/RedstoneWill" target="_blank" rel="noopener">RedstoneWill的GitHub</a><br>我的微信公众号：红色石头的机器学习之路（ID：redstonewill）<br>欢迎大家关注我！共同学习，共同进步！</p>
+</blockquote>
+<p>上节课我们主要开始介绍Aggregation Models，目的是将不同的hypothesis得到的$g_t$集合起来，利用集体智慧得到更好的预测模型G。首先我们介绍了Blending，blending是将已存在的所有$g_t$结合起来，可以是uniformly，linearly，或者non-linearly组合形式。然后，我们讨论了在没有那么多$g_t$的情况下，使用bootstrap方式，从已有数据集中得到新的类似的数据集，从而得到不同的$g_t$。这种做法称为bagging。本节课将继续从这些概念出发，介绍一种新的演算法。</p>
+<h3 id="Motivation-of-Boosting"><a href="#Motivation-of-Boosting" class="headerlink" title="Motivation of Boosting"></a>Motivation of Boosting</h3><p>我们先来看一个简单的识别苹果的例子，老师展示20张图片，让6岁孩子们通过观察，判断其中哪些图片的内容是苹果。从判断的过程中推导如何解决二元分类问题的方法。</p>
+<p>显然这是一个监督式学习，20张图片包括它的标签都是已知的。首先，学生Michael回答说：所有的苹果应该是圆形的。根据Michael的判断，对应到20张图片中去，大部分苹果能被识别出来，但也有错误。其中错误包括有的苹果不是圆形，而且圆形的水果也不一定是苹果。如下图所示：</p>
+<p><img src="http://img.blog.csdn.net/20170713163950772?" alt="这里写图片描述"></p>
+<p>上图中蓝色区域的图片代表分类错误。显然，只用“苹果是圆形的”这一个条件不能保证分类效果很好。我们把蓝色区域（分类错误的图片）放大，分类正确的图片缩小，这样在接下来的分类中就会更加注重这些错误样本。</p>
+<p>然后，学生Tina观察被放大的错误样本和上一轮被缩小的正确样本，回答说：苹果应该是红色的。根据Tina的判断，得到的结果如下图所示：</p>
+<p><img src="http://img.blog.csdn.net/20170713171109291?" alt="这里写图片描述"></p>
+<p>上图中蓝色区域的图片一样代表分类错误，即根据这个苹果是红色的条件，使得青苹果和草莓、西红柿都出现了判断错误。那么结果就是把这些分类错误的样本放大化，其它正确的样本缩小化。同样，这样在接下来的分类中就会更加注重这些错误样本。</p>
+<p>接着，学生Joey经过观察又说：苹果也可能是绿色的。根据Joey的判断，得到的结果如下图所示：</p>
+<p><img src="http://img.blog.csdn.net/20170713214123596?" alt="这里写图片描述"></p>
+<p>上图中蓝色区域的图片一样代表分类错误，根据苹果是绿色的条件，使得图中蓝色区域都出现了判断错误。同样把这些分类错误的样本放大化，其它正确的样本缩小化，在下一轮判断继续对其修正。</p>
+<p>后来，学生Jessica又发现：上面有梗的才是苹果。得到如下结果：</p>
+<p><img src="http://img.blog.csdn.net/20170713214711978?" alt="这里写图片描述"></p>
+<p>经过这几个同学的推论，苹果被定义为：圆的，红色的，也可能是绿色的，上面有梗。从一个一个的推导过程中，我们似乎得到一个较为准确的苹果的定义。虽然可能不是非常准确，但是要比单一的条件要好得多。也就是说把所有学生对苹果的定义融合起来，最终得到一个比较好的对苹果的总体定义。这种做法就是我们本节课将要讨论的演算法。这些学生代表的就是简单的hypotheses $g_t$，将所有$g_t$融合，得到很好的预测模型G。例如，二维平面上简单的hypotheses（水平线和垂直线），这些简单$g_t$最终组成的较复杂的分类线能够较好地将正负样本完全分开，即得到了好的预测模型。</p>
+<p><img src="http://img.blog.csdn.net/20170713215718130?" alt="这里写图片描述"></p>
+<p>所以，上个苹果的例子中，不同的学生代表不同的hypotheses $g_t$；最终得到的苹果总体定义就代表hypothesis G；而老师就代表演算法A，指导学生的注意力集中到关键的例子中（错误样本），从而得到更好的苹果定义。其中的数学原理，我们下一部分详细介绍。</p>
+<p><img src="http://img.blog.csdn.net/20170713215800108?" alt="这里写图片描述"></p>
+<h3 id="Diversity-by-Re-weighting"><a href="#Diversity-by-Re-weighting" class="headerlink" title="Diversity by Re-weighting"></a>Diversity by Re-weighting</h3><p>在介绍这个演算法之前，我们先来讲一下上节课就介绍过的bagging。Bagging的核心是bootstrapping，通过对原始数据集D不断进行bootstrap的抽样动作，得到与D类似的数据集$\hat{D}_t$，每组$\hat{D}_t$都能得到相应的$g_t$，从而进行aggregation的操作。现在，假如包含四个样本的D经过bootstrap，得到新的$\hat{D}_t$如下：</p>
+<p><img src="http://img.blog.csdn.net/20170714080644583?" alt="这里写图片描述"></p>
+<p>那么，对于新的$\hat{D}<em>t$，把它交给base algorithm，找出$E</em>{in}$最小时对应的$g_t$，如下图右边所示。</p>
+<p>$$E_{in}^{0/1}(h)=\frac14\sum_{n=1}^4[y\neq h(x)]$$</p>
+<p>由于$\hat{D}_t$完全是D经过bootstrap得到的，其中样本$(x_1,y_1)$出现2次，$(x_2,y_2)$出现1次，$(x_3,y_3)$出现0次，$(x_4,y_4)$出现1次。引入一个参数$u_i$来表示原D中第i个样本在$\hat{D}_t$中出现的次数，如下图左边所示。</p>
+<p>$$E_{in}^u(h)=\frac14\sum_{n=1}^4u_n^{(t)}\cdot [y_n\neq h(x)]$$</p>
+<p><img src="http://img.blog.csdn.net/20170714081506965?" alt="这里写图片描述"></p>
+<p>参数u相当于是权重因子，当$\hat{D}_t$中第i个样本出现的次数越多的时候，那么对应的$u_i$越大，表示在error function中对该样本的惩罚越多。所以，从另外一个角度来看bagging，它其实就是通过bootstrap的方式，来得到这些$u_i$值，作为犯错样本的权重因子，再用base algorithn最小化包含$u_i$的error function，得到不同的$g_t$。这个error function被称为bootstrap-weighted error。</p>
+<p>这种算法叫做Weightd Base Algorithm，目的就是最小化bootstrap-weighted error。</p>
+<p><img src="http://img.blog.csdn.net/20170714083230109?" alt="这里写图片描述"></p>
+<p>其实，这种weightd base algorithm我们之前就介绍过类似的算法形式。例如在soft-margin SVM中，我们引入允许犯错的项，同样可以将每个点的error乘以权重因子$u_n$。加上该项前的参数C，经过QP，最终得到$0\leq \alpha_n\leq Cu_n$，有别于之前介绍的$0\leq \alpha_n\leq C$。这里的$u_n$相当于每个犯错的样本的惩罚因子，并会反映到$\alpha_n$的范围限定上。</p>
+<p>同样在logistic regression中，同样可以对每个犯错误的样本乘以相应的$u_n$，作为惩罚因子。$u_n$表示该错误点出现的次数，$u_n$越大，则对应的惩罚因子越大，则在最小化error时就应该更加重视这些点。</p>
+<p><img src="http://img.blog.csdn.net/20170714085048224?" alt="这里写图片描述"></p>
+<p>其实这种example-weighted learning，我们在机器学习基石课程第8次笔记中就介绍过class-weighted的思想。二者道理是相通的。</p>
+<p>知道了u的概念后，我们知道不同的u组合经过base algorithm得到不同的$g_t$。那么如何选取u，使得到的$g_t$之间有很大的不同呢？之所以要让所有的$g_t$差别很大，是因为上节课aggregation中，我们介绍过$g_t$越不一样，其aggregation的效果越好，即每个人的意见越不相同，越能运用集体的智慧，得到好的预测模型。</p>
+<p>为了得到不同的$g_t$，我们先来看看$g_t$和$g_{t+1}$是怎么得到的：</p>
+<p><img src="http://img.blog.csdn.net/20170714131902089?" alt="这里写图片描述"></p>
+<p>如上所示，$g_t$是由$u_n^{t}$得到的，$g_{t+1}$是由$u_n^{(t+1)}$得到的。如果$g_t$这个模型在使用$u_n^{(t+1)}$的时候得到的error很大，即预测效果非常不好，那就表示由$u_n^{(t+1)}$计算的$g_{t+1}$会与$g_t$有很大不同。而$g_{t+1}$与$g_t$差异性大正是我们希望看到的。</p>
+<p>怎么做呢？方法是利用$g_t$在使用$u_n^{(t+1)}$的时候表现很差的条件，越差越好。如果在$g_t$作用下，$u_n^{(t+1)}$中的表现（即error）近似为0.5的时候，表明$g_t$对$u_n^{(t+1)}$的预测分类没有什么作用，就像抛硬币一样，是随机选择的。这样的做法就能最大限度地保证$g_{t+1}$会与$g_t$有较大的差异性。其数学表达式如下所示：</p>
+<p><img src="http://img.blog.csdn.net/20170714134048908?" alt="这里写图片描述"></p>
+<p>乍看上面这个式子，似乎不好求解。但是，我们对它做一些等价处理，其中分式中分子可以看成$g_t$作用下犯错误的点，而分母可以看成犯错的点和没有犯错误的点的集合，即所有样本点。其中犯错误的点和没有犯错误的点分别用橘色方块和绿色圆圈表示：</p>
+<p><img src="http://img.blog.csdn.net/20170714135429196?" alt="这里写图片描述"></p>
+<p>要让分式等于0.5，显然只要将犯错误的点和没有犯错误的点的数量调成一样就可以了。也就是说，在$g_t$作用下，让犯错的$u_n^{(t+1)}$数量和没有犯错的$u_n^{(t+1)}$数量一致就行（包含权重$u_n^{t+1}$）。一种简单的方法就是利用放大和缩小的思想（本节课开始引入识别苹果的例子中提到的放大图片和缩小图片就是这个目的），将犯错误的$u_n^{t}$和没有犯错误的$u_n^{t}$做相应的乘积操作，使得二者值变成相等。例如$u_n^{t}$ of incorrect为1126，$u_n^{t}$ of correct为6211，要让$u_n^{(t+1)}$中错误比例正好是0.5，可以这样做，对于incorrect $u_n^{(t+1)}$：</p>
+<p>$$u_n^{(t+1)}\leftarrow u_n^{(t)}\cdot 6211$$</p>
+<p>对于correct $u_n^{(t+1)}$：</p>
+<p>$$u_n^{(t+1)}\leftarrow u_n^{(t)}\cdot 1126$$</p>
+<p>或者利用犯错的比例来做，令weighted incorrect rate和weighted correct rate分别设为$\frac{1126}{7337}$和$\frac{6211}{7337}$。一般求解方式是令犯错率为$\epsilon_t$，在计算$u_n^{(t+1)}$的时候，$u_n^{t}$分别乘以$(1-\epsilon_t)$和$\epsilon_t$。</p>
+<p><img src="http://img.blog.csdn.net/20170714141601750?" alt="这里写图片描述"></p>
+<h3 id="Adaptive-Boosting-Algorithm"><a href="#Adaptive-Boosting-Algorithm" class="headerlink" title="Adaptive Boosting Algorithm"></a>Adaptive Boosting Algorithm</h3><p>上一部分，我们介绍了在计算$u_n^{(t+1)}$的时候，$u_n^{t}$分别乘以$(1-\epsilon_t)$和$\epsilon_t$。下面将构造一个新的尺度因子：</p>
+<p>$$\diamond t=\sqrt{\frac{1-\epsilon_t}{\epsilon_t}}$$</p>
+<p>那么引入这个新的尺度因子之后，对于错误的$u_n^{t}$，将它乘以$\diamond t$；对于正确的$u_n^{t}$，将它除以$\diamond t$。这种操作跟之前介绍的分别乘以$(1-\epsilon_t)$和$\epsilon_t$的效果是一样的。之所以引入$\diamond t$是因为它告诉我们更多的物理意义。因为如果$\epsilon_t\leq\frac12$，得到$\diamond t\geq1$，那么接下来错误的$u_n^{t}$与$\diamond t$的乘积就相当于把错误点放大了，而正确的$u_n^{t}$与$\diamond t$的相除就相当于把正确点缩小了。这种scale up incorrect和scale down correct的做法与本节课开始介绍的学生识别苹果的例子中放大错误的图片和缩小正确的图片是一个原理，让学生能够将注意力更多地放在犯错误的点上。通过这种scaling-up incorrect的操作，能够保证得到不同于$g_t$的$g_{t+1}$。</p>
+<p><img src="http://img.blog.csdn.net/20170714152321580?" alt="这里写图片描述"></p>
+<p>值得注意的是上述的结论是建立在$\epsilon_t\leq\frac12$的基础上，如果$\epsilon_t\geq\frac12$，那么就做相反的推论即可。关于$\epsilon_t\geq\frac12$的情况，我们稍后会进行说明。</p>
+<p>从这个概念出发，我们可以得到一个初步的演算法。其核心步骤是每次迭代时，利用$\diamond t=\sqrt{\frac{1-\epsilon_t}{\epsilon_t}}$把$u_t$更新为$u_{t+1}$。具体迭代步骤如下：</p>
+<p><img src="http://img.blog.csdn.net/20170717080641948?" alt="这里写图片描述"></p>
+<p>但是，上述步骤还有两个问题没有解决，第一个问题是初始的$u^{(1)}$应为多少呢？一般来说，为了保证第一次$E_{in}$最小的话，设$u^{(1)}=\frac1N$即可。这样最开始的$g_1$就能由此推导。第二个问题，最终的G(x)应该怎么求？是将所有的g(t)合并uniform在一起吗？一般来说并不是这样直接uniform求解，因为$g_{t+1}$是通过$g_t$得来的，二者在$E_{in}$上的表现差别比较大。所以，一般是对所有的g(t)进行linear或者non-linear组合来得到G(t)。</p>
+<p><img src="http://img.blog.csdn.net/20170717081850838?" alt="这里写图片描述"></p>
+<p>接下来的内容，我们将对上面的第二个问题进行探讨，研究一种算法，将所有的g(t)进行linear组合。方法是计算$g(t)$的同时，就能计算得到其线性组合系数$\alpha_t$，即aggregate linearly on the fly。这种算法使最终求得$g_{t+1}$的时候，所有$g_t$的线性组合系数$\alpha$也求得了，不用再重新计算$\alpha$了。这种Linear Aggregation on the Fly算法流程为：</p>
+<p><img src="http://img.blog.csdn.net/20170717083113667?" alt="这里写图片描述"></p>
+<p>如何在每次迭代的时候计算$\alpha_t$呢？我们知道$\alpha_t$与$\epsilon_t$是相关的：$\epsilon_t$越小，对应的$\alpha_t$应该越大，$\epsilon_t$越大，对应的$\alpha_t$应该越小。又因为$\diamond t$与$\epsilon_t$是正相关的，所以，$\alpha_t$应该是$\diamond t$的单调函数。我们构造$\alpha_t$为：</p>
+<p>$$\alpha_t=ln(\diamond t)$$</p>
+<p>$\alpha_t$这样取值是有物理意义的，例如当$\epsilon_t=\frac12$时，error很大，跟掷骰子这样的随机过程没什么两样，此时对应的$\diamond t=1$，$\alpha_t=0$，即此$g_t$对G没有什么贡献，权重应该设为零。而当$\epsilon_t=0$时，没有error，表示该$g_t$预测非常准，此时对应的$\diamond t=\infty$，$\alpha_t=\infty$，即此$g_t$对G贡献非常大，权重应该设为无穷大。</p>
+<p><img src="http://img.blog.csdn.net/20170717085137932?" alt="这里写图片描述"></p>
+<p>这种算法被称为Adaptive Boosting。它由三部分构成：base learning algorithm A，re-weighting factor $\diamond t$和linear aggregation $\alpha_t$。这三部分分别对应于我们在本节课开始介绍的例子中的Student，Teacher和Class。</p>
+<p><img src="http://img.blog.csdn.net/20170717085756381?" alt="这里写图片描述"></p>
+<p>综上所述，完整的adaptive boosting（AdaBoost）Algorithm流程如下：</p>
+<p><img src="http://img.blog.csdn.net/20170717112519198?" alt="这里写图片描述"></p>
+<p>从我们之前介绍过的VC bound角度来看，AdaBoost算法理论上满足：</p>
+<p><img src="http://img.blog.csdn.net/20170717112851795?" alt="这里写图片描述"></p>
+<p>上式中，$E_{out}(G)$的上界由两部分组成，一项是$E_{in}(G)$，另一项是模型复杂度O(*)。模型复杂度中$d_{vc}(H)$是$g_t$的VC Dimension，T是迭代次数，可以证明G的$d_{vc}$服从$O(d_{vc}(H)\cdot Tlog\ T)$。</p>
+<p>对这个VC bound中的第一项$E_{in}(G)$来说，有一个很好的性质：如果满足$\epsilon_t\leq \epsilon&lt;\frac12$，则经过$T=O(log\ N)$次迭代之后，$E_{in}(G)$能减小到等于零的程度。而当N很大的时候，其中第二项也能变得很小。因为这两项都能变得很小，那么整个$E_{out}(G)$就能被限定在一个有限的上界中。</p>
+<p>其实，这种性质也正是AdaBoost算法的精髓所在。只要每次的$\epsilon_t\leq \epsilon&lt;\frac12$，即所选择的矩g比乱猜的表现好一点点，那么经过每次迭代之后，矩g的表现都会比原来更好一些，逐渐变强，最终得到$E_{in}=0$且$E_{out}$很小。</p>
+<p><img src="http://img.blog.csdn.net/20170717132338143?" alt="这里写图片描述"></p>
+<h3 id="Adaptive-Boosting-in-Action"><a href="#Adaptive-Boosting-in-Action" class="headerlink" title="Adaptive Boosting in Action"></a>Adaptive Boosting in Action</h3><p>上一小节我们已经介绍了选择一个“弱弱”的算法A（$\epsilon_t\leq \epsilon&lt;\frac12$，比乱猜好就行），就能经过多次迭代得到$E_{in}=0$。我们称这种形式为decision stump模型。下面介绍一个例子，来看看AdaBoost是如何使用decision stump解决实际问题的。</p>
+<p>如下图所示，二维平面上分布一些正负样本点，利用decision stump来做切割。</p>
+<p><img src="http://img.blog.csdn.net/20170717134058765?" alt="这里写图片描述"></p>
+<p>第一步：</p>
+<p><img src="http://img.blog.csdn.net/20170717134139058?" alt="这里写图片描述"></p>
+<p>第二步：</p>
+<p><img src="http://img.blog.csdn.net/20170717134354783?" alt="这里写图片描述"></p>
+<p>第三步：</p>
+<p><img src="http://img.blog.csdn.net/20170717134445972?" alt="这里写图片描述"></p>
+<p>第四步：</p>
+<p><img src="http://img.blog.csdn.net/20170717134548872?" alt="这里写图片描述"></p>
+<p>第五步：</p>
+<p><img src="http://img.blog.csdn.net/20170717134642556?" alt="这里写图片描述"></p>
+<p>可以看到，经过5次迭代之后，所有的正负点已经被完全分开了，则最终得到的分类线为：</p>
+<p><img src="http://img.blog.csdn.net/20170717134743082?" alt="这里写图片描述"></p>
+<p>另外一个例子，对于一个相对比较复杂的数据集，如下图所示。它的分界线从视觉上看应该是一个sin波的形式。如果我们再使用AdaBoost算法，通过decision stump来做切割。在迭代切割100次后，得到的分界线如下所示。</p>
+<p><img src="http://img.blog.csdn.net/20170717135425498?" alt="这里写图片描述"></p>
+<p>可以看出，AdaBoost-Stump这种非线性模型得到的分界线对正负样本有较好的分离效果。</p>
+<p>课程中还介绍了一个AdaBoost-Stump在人脸识别方面的应用：</p>
+<p><img src="http://img.blog.csdn.net/20170717140200102?" alt="这里写图片描述"></p>
+<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p>本节课主要介绍了Adaptive Boosting。首先通过讲一个老师教小学生识别苹果的例子，来引入Boosting的思想，即把许多“弱弱”的hypotheses合并起来，变成很强的预测模型。然后重点介绍这种算法如何实现，关键在于每次迭代时，给予样本不同的系数u，宗旨是放大错误样本，缩小正确样本，得到不同的小矩g。并且在每次迭代时根据错误$\epsilon$值的大小，给予不同$g_t$不同的权重。最终由不同的$g_t$进行组合得到整体的预测模型G。实际证明，Adaptive Boosting能够得到有效的预测模型。</p>
+<p><strong><em>注明：</em></strong></p>
+<p>文章中所有的图片均来自台湾大学林轩田《机器学习技法》课程</p>
+
+      
+    </div>
+    
+    
+    
+	
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="红色石头 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信公众号，了解更多AI资源！</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="红色石头 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="红色石头 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    红色石头
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://redstonewill.github.io/2018/03/18/25/" title="台湾大学林轩田机器学习技法课程学习笔记8 -- Adaptive Boosting">https://redstonewill.github.io/2018/03/18/25/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag"><i class="fa fa-tag"></i> 机器学习</a>
+          
+            <a href="/tags/林轩田/" rel="tag"><i class="fa fa-tag"></i> 林轩田</a>
+          
+            <a href="/tags/笔记/" rel="tag"><i class="fa fa-tag"></i> 笔记</a>
+          
+            <a href="/tags/技法/" rel="tag"><i class="fa fa-tag"></i> 技法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/18/24/" rel="next" title="台湾大学林轩田机器学习技法课程学习笔记7 -- Blending and Bagging">
+                <i class="fa fa-chevron-left"></i> 台湾大学林轩田机器学习技法课程学习笔记7 -- Blending and Bagging
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/18/26/" rel="prev" title="台湾大学林轩田机器学习技法课程学习笔记9 -- Decision Tree">
+                台湾大学林轩田机器学习技法课程学习笔记9 -- Decision Tree <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_inline_share_toolbox">
+  <script type = "text/javascript" src = "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5aaa217593e0eff1" async = "async" ></script>
+</div>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNDg0MS8xMTM3OA=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/blog-logo.jpg"
+                alt="红色石头" />
+            
+              <p class="site-author-name" itemprop="name">红色石头</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/RedstoneWill" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://blog.csdn.net/red_stone1" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-contao"></i>CSDN</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/red_stone_wl/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/6479023696?refer_flag=1001030201_" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:redstonewill@hotmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Motivation-of-Boosting"><span class="nav-number">1.</span> <span class="nav-text">Motivation of Boosting</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Diversity-by-Re-weighting"><span class="nav-number">2.</span> <span class="nav-text">Diversity by Re-weighting</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Adaptive-Boosting-Algorithm"><span class="nav-number">3.</span> <span class="nav-text">Adaptive Boosting Algorithm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Adaptive-Boosting-in-Action"><span class="nav-number">4.</span> <span class="nav-text">Adaptive Boosting in Action</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Summary"><span class="nav-number">5.</span> <span class="nav-text">Summary</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">红色石头</span>
+
+  
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_pv"></span>
+</span>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共105.7k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("GPinP9RLLAEN4cQw3GyGH1i6-gzGzoHsz", "P23pTYCEXWROAMFxuaSGYGIa");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

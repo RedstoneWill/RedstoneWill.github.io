@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="googlead9dc5c68da2c41a" />
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="baV2kbPkNW" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/favicon.ico?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="机器学习,林轩田,笔记,技法," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="红色石头的机器学习之路" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="keywords" content="机器学习,林轩田,笔记,技法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="台湾大学林轩田机器学习技法课程学习笔记14 -- Radial Basis Function Network">
+<meta property="og:url" content="https://redstonewill.github.io/2018/03/18/31/index.html">
+<meta property="og:site_name" content="红色石头的机器学习之路">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://img.blog.csdn.net/20170814084714413?imageView/2/w/500/q/100">
+<meta property="og:image" content="http://img.blog.csdn.net/20170814084714413?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170814092622529?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170814133904920?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170814135229130?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170814135931865?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170814141742989?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170814145418972?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170814161854002?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170814164639278?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170814224716379?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170814231531021?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170815075312519?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170815082805680?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170815084315626?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170815091954727?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170815092618603?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170815093443497?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170815163423702?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170815165700953?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170815170616266?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170823170743970?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170815192317319?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170815193601984?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170815204928962?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170815205719760?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170815210706556?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170815210718226?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170815210947603?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170815211219673?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170815211325330?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170815211541395?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170815211558354?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170815211706419?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170815211724216?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170815211826045?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170815211841648?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170815211943356?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170815212000373?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170815212602972?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170815212818702?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170815214012047?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170816075335699?">
+<meta property="og:updated_time" content="2018-03-18T06:39:30.623Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="台湾大学林轩田机器学习技法课程学习笔记14 -- Radial Basis Function Network">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20170814084714413?imageView/2/w/500/q/100">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'ZFJHIGA2DV',
+      apiKey: 'e3baeea7f059baffe169cc0eec8adacf',
+      indexName: 'redstonewillblog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"输入关键词进行搜索","hits_empty":"没有找到与 ${query} 相关的内容","hits_stats":"${hits}条相关记录，共耗时${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://redstonewill.github.io/2018/03/18/31/"/>
+
+
+
+
+
+  <title>台湾大学林轩田机器学习技法课程学习笔记14 -- Radial Basis Function Network | 红色石头的机器学习之路</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	
+	<a href="https://github.com/RedstoneWill" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+	
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">红色石头的机器学习之路</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">公众号ID：redstonewill</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://redstonewill.github.io/2018/03/18/31/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="红色石头">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="红色石头的机器学习之路">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">台湾大学林轩田机器学习技法课程学习笔记14 -- Radial Basis Function Network</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-18T14:38:01+08:00">
+                2018-03-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/林轩田机器学习技法/" itemprop="url" rel="index">
+                    <span itemprop="name">林轩田机器学习技法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/03/18/31/" class="leancloud_visitors" data-flag-title="台湾大学林轩田机器学习技法课程学习笔记14 -- Radial Basis Function Network">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4,709
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://img.blog.csdn.net/20170814084714413?imageView/2/w/500/q/100" alt="这里写图片描述"><br><a id="more"></a></p>
+<blockquote>
+<p>我的CSDN博客地址：<a href="http://blog.csdn.net/red_stone1" target="_blank" rel="noopener">红色石头的专栏</a><br>我的知乎主页：<a href="https://www.zhihu.com/people/red_stone_wl" target="_blank" rel="noopener">红色石头</a><br>我的微博：<a href="https://weibo.com/6479023696/profile?topnav=1&amp;wvr=6&amp;is_all=1" target="_blank" rel="noopener">RedstoneWill的微博</a><br>我的GitHub：<a href="https://github.com/RedstoneWill" target="_blank" rel="noopener">RedstoneWill的GitHub</a><br>我的微信公众号：红色石头的机器学习之路（ID：redstonewill）<br>欢迎大家关注我！共同学习，共同进步！</p>
+</blockquote>
+<p>上节课我们主要介绍了Deep Learning的概念。Deep Learing其实是Neural Networ的延伸，神经元更多，网络结构更加复杂。深度学习网络在训练的过程中最核心的问题就是pre-training和regularization。pre-training中，我们使用denoising autoencoder来对初始化权重进行选择。denoising autoencoder与统计学中经常用来进行数据处理的PCA算法具有很大的关联性。这节课我们将介绍Radial Basis Function Network，把之前介绍的adial Basis Function和Neural Network联系起来。</p>
+<h3 id="RBF-Network-Hypothesis"><a href="#RBF-Network-Hypothesis" class="headerlink" title="RBF Network Hypothesis"></a>RBF Network Hypothesis</h3><p>之前我们介绍过，在SVM中引入Gaussian Kernel就能在无限多维的特征转换中得到一条“粗壮”的分界线（或者高维分界平面、分界超平面）。从结果来看，Gaussian SVM其实就是将一些Gaussian函数进行线性组合，而Gaussian函数的中心就位于Support Vectors上，最终得到预测模型$g_{svm}(x)$。</p>
+<p><img src="http://img.blog.csdn.net/20170814084714413?" alt="这里写图片描述"></p>
+<p>Gaussian kernel的另一种叫法是Radial Basis Function(RBF) kernel，即径向基函数。这个名字从何而来？首先，radial表示Gaussian函数计算结果只跟新的点x与中心点$x_n$的距离有关，与其它无关。basis function就是指Gaussian函数，最终的矩$g_{svm}(x)$就是由这些basis function线性组合而成。</p>
+<p>从另外一个角度来看Gaussian SVM。首先，构造一个函数$g_n(x)$：</p>
+<p>$$g_n(x)=y_ne^{-\gamma||x-x_n||^2}$$</p>
+<p>上式中，指数项表示新的点x与$x_n$之间的距离大小。距离越近，即权重越大，相当于对$y_n$投的票数更多；而距离越远，权重越小，相当于对$y_n$投的票数更少。其物理意义是新的点与$x_n$的距离远近决定了$g_n(x)$与$y_n$的接近程度。如果距离越近，则$y_n$对$g_n(x)$的权重影响越大；如果距离越远，则$y_n$对$g_n(x)$的权重影响越小。那么整体来说，$g_{svm}(x)$就由所有的SV组成的$g_n(x)$线性组合而成，不同$g_n(x)$对应的系数是$\alpha_n$，最后由sign函数做最后的选择。这个过程很类型我们之前介绍的aggregation中将所有较好的hypothesis线性组合，不同的$g_n(x)$有不同的权重$\alpha_n$。我们把$g_n(x)$叫做radial hypotheses，Gaussian SVM就是将所有SV对应的radial hypotheses进行线性组合（linear aggregation）。</p>
+<p><img src="http://img.blog.csdn.net/20170814092622529?" alt="这里写图片描述"></p>
+<p>那么，Radial Basis Function(RBF) Network其实就是上面Gaussian SVM概念的延伸，目的就是找到所有radial hypotheses的linear aggregation，得到更好的网络模型。</p>
+<p>之所以叫作RBF Network是因为它的模型结构类似于我们之前介绍的Neural Network。</p>
+<p><img src="http://img.blog.csdn.net/20170814133904920?" alt="这里写图片描述"></p>
+<p>Neural Network与RBF Network在输出层基本是类似的，都是上一层hypotheses的线性组合（linear aggregation）。但是对于隐藏层的各个神经元来说，Neural Network是使用内积（inner-product）加上tanh()函数的方法，而RBF Network是使用距离（distance）加上Gaussian函数的方法。总的来说，RBF Network是Neural Network的一个分支。</p>
+<p><img src="http://img.blog.csdn.net/20170814135229130?" alt="这里写图片描述"></p>
+<p>至此，RBF Network Hypothesis以及网络结构可以写成如下形式：</p>
+<p><img src="http://img.blog.csdn.net/20170814135931865?" alt="这里写图片描述"></p>
+<p>上式中，$\mu_m$表示每个中心点的位置，隐藏层每个神经元对应一个中心点；$\beta_m$表示每个RBF的权重，即投票所占比重。 </p>
+<p>对应到Gaussian SVM上，上式中的RBF就是Gaussian函数。由于是分类问题，上式中的Output就是sign函数。其中，RBF的个数M就等于支持向量的个数SV，$\mu_m$就代表每个SV的坐标$x_m$，而$\beta_m$就是在Dual SVM中推导得到的$\alpha_ny_m$值。那我们学习的目标就是根据已知的RBF和Output，来决定最好的中心点位置$\mu_m$和权重系数$\beta_m$。</p>
+<p><img src="http://img.blog.csdn.net/20170814141742989?" alt="这里写图片描述"></p>
+<p>在之前介绍SVM的时候，我们就讲过Mercer定理：一个矩阵是Kernel的充分必要条件是它是对称的且是半正定的，条件比较苛刻。除了Gaussian kernel还有Polynomial kernel等等。Kernel实际上描述了两个向量之间的相似性，通过转换到z空间计算内积的方式，来表征二者之间的相似性。而RBF实际上是直接使用x空间的距离来描述了一种相似性，距离越近，相似性越高。因此，kernel和RBF可以看成是两种衡量相似性（similarity）的方式。本文介绍的Gaussian RBF即为二者的交集。</p>
+<p><img src="http://img.blog.csdn.net/20170814145418972?" alt="这里写图片描述"></p>
+<p>除了kernel和RBF之外，还有其它衡量相似性的函数。例如神经网络中的神经元就是衡量输入和权重之间的相似性。</p>
+<p>经过以上分析，我们知道了RBF Network中distance similarity是一个很好的定义特征转换的方法。除此之外，我们还可以使用其它相似性函数来表征特征转换，从而得到更好的机器学习模型。</p>
+<h3 id="RBF-Network-Learning"><a href="#RBF-Network-Learning" class="headerlink" title="RBF Network Learning"></a>RBF Network Learning</h3><p>我们已经介绍了RBF Network的Hypothesis可表示为：</p>
+<p><img src="http://img.blog.csdn.net/20170814161854002?" alt="这里写图片描述"></p>
+<p>其中$\mu_m$表示中心点的位置。$\mu_m$的个数M是人为决定的，如果将每个样本点$x_m$都作为一个中心点，即M=N，则我们把这种结构称为full RBF Network。也就是说，对于full RBF Network，每个样本点都对最终的预测都有影响（uniform influence），影响的程度由距离函数和权重$\beta_m$决定。如果每个样本点的影响力都是相同的，设为1，$\beta_m=1\cdot y_m$，那么相当于只根据距离的远近进行投票。最终将x与所有样本点的RBF距离线性组合，经过sign函数后，得到最终的预测分类结果。这实际上就是aggregation的过程，考虑并计入所有样本点的影响力，最后将x与所有样本点的distance similarity进行线性组合。</p>
+<p><img src="http://img.blog.csdn.net/20170814164639278?" alt="这里写图片描述"></p>
+<p>full RBF Network的矩可以表示为：</p>
+<p><img src="http://img.blog.csdn.net/20170814224716379?" alt="这里写图片描述"></p>
+<p>我们来看上式中的Gaussian函数项，当x与样本点$x_m$越接近的时候，其高斯函数值越大。由于Gaussian函数曲线性质，越靠近中心点，值越大；偏离中心点，其值会下降得很快。也就是说，在所有N个中心样本点中，往往只有距离x最近的那个样本点起到关键作用，而其它距离x较远的样本点其值很小，基本可以忽略。因此，为了简化运算，我们可以找到距离x最近的中心样本点，只用这一个点来代替所有N个点，最后得到的矩$g_{nbor}(x)$也只由该最近的中心点决定。这种模型叫做nearest neighbor model，只考虑距离x最近的那一个“邻居”。</p>
+<p>当然可以对nearest neighbor model进行扩展，如果不是只选择一个“邻居”，而是选择距离x最近的k个“邻居”，进行uniformly aggregation，得到最终的矩$g_{nbor}(x)$。这种方法通常叫做k近邻算法（k nearest neighbor）。</p>
+<p><img src="http://img.blog.csdn.net/20170814231531021?" alt="这里写图片描述"></p>
+<p>k nearest neighbor通常比nearest neighbor model效果更好，计算量上也比full RBF Network要简单一些。值得一提的是，k nearest neighbor与full RBF Network都是比较“偷懒”的方法。因为它们在训练模型的时候比较简单，没有太多的运算，但是在测试的时候却要花费更多的力气，找出最相近的中心点，计算相对复杂一些。</p>
+<p>接下来，我们来看一下Full RBF Network有什么样的优点和好处。考虑一个squared error regression问题，且每个RBF的权重为$\beta_m$而不是前面简化的$y_m$。目的是计算最优化模型对应的$\beta_m$值。该hypothesis可表示为：</p>
+<p><img src="http://img.blog.csdn.net/20170815075312519?" alt="这里写图片描述"></p>
+<p>很明显，这是一个简单的线性回归问题，每个RBF都可以看成是特征转换。特征转换后的向量$z_n$可表示为：</p>
+<p>$$z_n=[RBF(x_n,x_1),\  RBF(x_n,x_2),\  \cdots,\  RBF(x_n,x_N)]$$</p>
+<p>那么，根据之前线性回归介绍过的最优化解公式，就能快速地得到$\beta$的最优解为：</p>
+<p>$$\beta=(Z^TZ)^{-1}Z^Ty$$</p>
+<p>上述解的条件是矩阵$Z^TZ$是可逆的。</p>
+<p>矩阵Z的大小是NxN，是一个方阵。而且，由于Z中每个向量$z_n$表示该点与其它所有点的RBF distance，所以从形式上来说，Z也是对称矩阵。如果所有的样本点$x_n$都不一样，则Z一定是可逆的。</p>
+<p><img src="http://img.blog.csdn.net/20170815082805680?" alt="这里写图片描述"></p>
+<p>根据Z矩阵的这些性质，我们可以对$\beta$的解进行化简，得到：</p>
+<p>$$\beta=Z^{-1}y$$</p>
+<p>将$\beta$的解代入矩的计算中，以$x_1$为例，得到：</p>
+<p>$$g_{RBF}(x_1)=\beta^Tz_1=y^TZ^{-1}z_1=y^T\ [1\  0\  \cdots\  0]^T=y_1$$</p>
+<p>结果非常有趣，模型的输出与原样本$y_1$完全相同。同样，对任意的$x_n$，都能得到$g_{RBF}(x_n)=y_n$。因此，$E_{in}(g_{RBF})=0$。看起来，这个模型非常完美了，没有error。但是，我们之前就说过，机器学习中，$E_{in}=0$并非好事，很可能造成模型复杂度增加及过拟合。</p>
+<p><img src="http://img.blog.csdn.net/20170815084315626?" alt="这里写图片描述"></p>
+<p>当然，这种方法在某些领域还是很有用的。比如在函数拟合（function approximation）中，目标就是让$E_{in}=0$，使得原所有样本都尽可能地落在拟合的函数曲线上。</p>
+<p>为了避免发生过拟合，我们可以引入正则项$\lambda$，得到$\beta$的最优解为：</p>
+<p>$$\beta=(Z^TZ+\lambda I)^{-1}Z^Ty$$</p>
+<p><img src="http://img.blog.csdn.net/20170815091954727?" alt="这里写图片描述"></p>
+<p>我们再来看一下Z矩阵，Z矩阵是由一系列Gaussian函数组成，每个Gaussian函数计算的是两个样本之间的distance similarity。这里的Z与之前我们介绍的Gaussian SVM中的kernel K是一致的。当时我们得到kernel ridgeregression中线性系数$\beta$的解为：</p>
+<p>$$\beta=(K+\lambda I)^{-1}y$$</p>
+<p>比较一下kernel ridgeregression与regularized full RBF Network的$\beta$解，形式上相似但不完全相同。这是因为regularization不一样，在kernel ridgeregression中，是对无限多维的特征转换做regularization，而在regularized full RBF Network中，是对有限维（N维度）的特征转换做regularization。因此，两者的公式解有细微差别。</p>
+<p><img src="http://img.blog.csdn.net/20170815092618603?" alt="这里写图片描述"></p>
+<p>除此之外，还有另外一种regularization的方法，就是不把所有N个样本点都拿来作中心点，而是只选择其中的M个样本点作为中心点。类似于SVM中的SV一样，只选择具有代表性的M个中心点。这样减少中心点数量的同时也就减少了权重的数量，能够起到regularization的效果，避免发生过拟合。</p>
+<p><img src="http://img.blog.csdn.net/20170815093443497?" alt="这里写图片描述"></p>
+<p>下一部分，我们将讨论如何选取M个中心点作为好的代表。</p>
+<h3 id="k-Means-Algorithm"><a href="#k-Means-Algorithm" class="headerlink" title="k-Means Algorithm"></a>k-Means Algorithm</h3><p>之所以要选择代表，是因为如果某些样本点很接近，那么就可以用一个中心点来代表它们。这就是聚类（cluster）的思想，从所有N个样本点中选择少数几个代表作为中心点。</p>
+<p><img src="http://img.blog.csdn.net/20170815163423702?" alt="这里写图片描述"></p>
+<p>聚类（clustering）问题是一种典型的非监督式学习（unsupervised learning）。它的优化问题有两个变量需要确定：一个是分类的分群值$S_m$，每一类可表示为$S_1,S_2,\cdots,S_M$；另外一个是每一类对应的中心点$\mu_1,\mu_2,\cdots,\mu_M$。那么对于该聚类问题的优化，其error function可使用squared error measure来衡量。</p>
+<p><img src="http://img.blog.csdn.net/20170815165700953?" alt="这里写图片描述"></p>
+<p>那么，我们的目标就是通过选择最合适的$S_1,S_2,\cdots,S_M$和$\mu_1,\mu_2,\cdots,\mu_M$，使得$E_{in}$最小化。对应的公式可表示为：</p>
+<p><img src="http://img.blog.csdn.net/20170815170616266?" alt="这里写图片描述"></p>
+<p>从这个最小化公式，我们能够发现这是一个组合最佳化的问题，既要优化分群值$S_m$，又要求解每一类的中心点$u_m$。所以，这个最小化问题是比较复杂、难优化的。通常的办法是对S和$\mu$分别进行最优化求解。</p>
+<p>首先，如果$\mu_1,\mu_2,\cdots,\mu_M$是固定的，目标就是只要对所有的$x_n$进行分群归类。这个求解过程很简单，因为每个样本点只能属于一个群S，不能同时属于两个或多个群。所以，只要根据距离公式，计算选择离$x_n$最近的中心点$\mu$即可。</p>
+<p><img src="http://img.blog.csdn.net/20170823170743970?" alt="这里写图片描述"></p>
+<p>然后，如果$S_1,S_2,\cdots,S_M$是固定的，目标就是只要找出每个类的中心点$\mu$。显然，根据上式中的error function，所有的$x_n$分群是已知的，那么该最小化问题就是一个典型的数值最优化问题。对于每个类群$S_m$，利用梯度下降算法，即可得到$\mu_m$的解。</p>
+<p><img src="http://img.blog.csdn.net/20170815192317319?" alt="这里写图片描述"></p>
+<p>如上图所示，中心点$\mu_m$就等于所有属于类群$S_m$的平均位置处。</p>
+<p>经过以上的推导，我们得到了一个非常有名的一种unsupervised learning算法，叫做k-Means Algorithm。这里的k就是代表上面的M，表示类群的个数。</p>
+<p>k-Means Algorithm的流程是这样的：首先，随机选择k个中心点$\mu_1,\mu_2,\cdots,\mu_k$；然后，再由确定的中心点得到不同的类群$S_1,S_2,\cdots,S_k$；接着，再由确定的类群计算出新的不同的k个中心点；继续循环迭代计算，交互地对$\mu$和S值进行最优化计算，不断更新$\mu$和S值，直到程序收敛，实现$E_{in}$最小化。具体算法流程图如下所示：</p>
+<p><img src="http://img.blog.csdn.net/20170815193601984?" alt="这里写图片描述"></p>
+<p>有一个问题是，k-Means Algorithm的循环迭代一定会停止吗？或者说一定能得到最优解吗？答案是肯定的。因为每次迭代更新，$\mu$和S值都会比上一次的值更接近最优解，也就是说$E_{in}$是不断减小的。而$E_{in}$的下界是0，所以，$E_{in}$最终会等于0，$\mu$和S最终能得到最优解。</p>
+<p>k-Means Algorithm已经介绍完毕。接下来，我们把k-Means Algorithm应用到RBF Network中去。首先，使用k-Means，得到原始样本的k个中心点。原始样本到k个中心点组成了RBF特征转换$\Phi(x)$。然后，根据上面介绍过的线性模型，由最优化公式解计算得到权重$\beta$值。最后，将所有的$\Phi(x)$用$\beta$线性组合，即得到矩$g_{RBFNET}(x)$的表达式。具体的算法流程如下所示：</p>
+<p><img src="http://img.blog.csdn.net/20170815204928962?" alt="这里写图片描述"></p>
+<p>值得一提的是，这里我们使用了unsupervised learning（k-Means）与我们上节课介绍的autoencoder类似，同样都是特征转换（feature transform）的方法。</p>
+<p>在最优化求解过程中，参数有k-Means类群个数M、Gaussian函数参数$\lambda$等。我们可以采用validation的方法来选取最佳的参数值。</p>
+<p><img src="http://img.blog.csdn.net/20170815205719760?" alt="这里写图片描述"></p>
+<h3 id="k-means-and-RBF-Network-in-Action"><a href="#k-means-and-RBF-Network-in-Action" class="headerlink" title="k-means and RBF Network in Action"></a>k-means and RBF Network in Action</h3><p>下面这部分，我们将举几个例子，看一下k-Means Algorithm是如何处理分类问题的。</p>
+<p>第一个例子，平面上有4个类群，k=4。首先，我们随机选择4个中心点，如下图中四种颜色的方块所示：</p>
+<p><img src="http://img.blog.csdn.net/20170815210706556?" alt="这里写图片描述"></p>
+<p>第一次迭代，由初始中心点，得到4个类群点的分布：</p>
+<p><img src="http://img.blog.csdn.net/20170815210718226?" alt="这里写图片描述"></p>
+<p>4个类群点确定后，再更新4个中心点的位置：</p>
+<p><img src="http://img.blog.csdn.net/20170815210947603?" alt="这里写图片描述"></p>
+<p>第二次迭代，由上面得到的4个中心点，再计算4个类群点的分布：</p>
+<p><img src="http://img.blog.csdn.net/20170815211219673?" alt="这里写图片描述"></p>
+<p>4个类群点确定后，再更新4个中心点的位置：</p>
+<p><img src="http://img.blog.csdn.net/20170815211325330?" alt="这里写图片描述"></p>
+<p>第三次迭代，由上面得到的4个中心点，再计算4个类群点的分布：</p>
+<p><img src="http://img.blog.csdn.net/20170815211541395?" alt="这里写图片描述"></p>
+<p>4个类群点确定后，再更新4个中心点的位置：</p>
+<p><img src="http://img.blog.csdn.net/20170815211558354?" alt="这里写图片描述"></p>
+<p>第四次迭代，由上面得到的4个中心点，再计算4个类群点的分布：</p>
+<p><img src="http://img.blog.csdn.net/20170815211706419?" alt="这里写图片描述"></p>
+<p>4个类群点确定后，再更新4个中心点的位置：</p>
+<p><img src="http://img.blog.csdn.net/20170815211724216?" alt="这里写图片描述"></p>
+<p>第五次迭代，由上面得到的4个中心点，再计算4个类群点的分布：</p>
+<p><img src="http://img.blog.csdn.net/20170815211826045?" alt="这里写图片描述"></p>
+<p>4个类群点确定后，再更新4个中心点的位置：</p>
+<p><img src="http://img.blog.csdn.net/20170815211841648?" alt="这里写图片描述"></p>
+<p>第六次迭代，由上面得到的4个中心点，再计算4个类群点的分布：</p>
+<p><img src="http://img.blog.csdn.net/20170815211943356?" alt="这里写图片描述"></p>
+<p>4个类群点确定后，再更新4个中心点的位置：</p>
+<p><img src="http://img.blog.csdn.net/20170815212000373?" alt="这里写图片描述"></p>
+<p>从上图我们可以看到，经过六次迭代计算后，聚类的效果已经相当不错了。从另外一个角度来说，k值的选择很重要，下面我们来看看不同的k值对应什么样的分类效果。</p>
+<p><img src="http://img.blog.csdn.net/20170815212602972?" alt="这里写图片描述"></p>
+<p>如上图所示，初始时，我们分别设定k为2，4，7，随机选择中心点位置。在经过多次迭代后，得到的聚类结果如下：</p>
+<p><img src="http://img.blog.csdn.net/20170815212818702?" alt="这里写图片描述"></p>
+<p>通过上面这个例子可以得出，不同的k值会得到不同的聚类效果。还有一点值得注意的是，初始中心点位置也可能会影响最终的聚类。例如上图中k=7的例子，初始值选取的右边三个中心点比较靠近，最后得到的右边三个聚类中心点位置也跟初始位置比较相近。所以，k值大小和初始中心点位置都会影响聚类效果。</p>
+<p>接下来，我们把k-Means应用到RBF Network中，同样分别设定k为2，4，7，不同模型得到的分类效果如下：</p>
+<p><img src="http://img.blog.csdn.net/20170815214012047?" alt="这里写图片描述"></p>
+<p>很明显，k=2时，分类效果不是太好；k=4时，分类效果好一些；而k=7时，分类效果更好，能够更细致地将样本准确分类。这说明了k-Means中k值设置得是否合理，对RBF Network的分类效果起到重要的作用。</p>
+<p>再来看一个例子，如果使用full RBF Network进行分类，即k=N，如下图左边所示，设置正则化因子$\lambda=0.001$。下图右边表示只考虑full RBF Network中的nearest neighbor。下图中间表示的是k=4的RBF Network的分类效果。</p>
+<p><img src="http://img.blog.csdn.net/20170816075335699?" alt="这里写图片描述"></p>
+<p>从上图的比较中，我们可以发现full RBF Network得到的分类线比较弯曲复杂。由于full RBF Network的计算量比较大，所以一般情况下，实际应用得不太多。</p>
+<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p>本节课主要介绍了Radial Basis Function Network。RBF Network Hypothesis就是计算样本之间distance similarity的Gaussian函数，这类原型替代了神经网络中的神经元。RBF Network的训练学习过程，其实就是对所有的原型Hypotheses进行linear aggregation。然后，我们介绍了一个确定k个中心点的unsupervised learning算法，叫做k-Means Algorithm。这是一种典型的聚类算法，实现对原始样本数据的聚类分群。接着，将k-Means Algorithm应用到RBF Network中，选择合适数量的中心点，得到更好的分类模型。最后，我们列举了几个在实际中使用k-Means和RBF Network的例子，结果显示不同的类群k值对分类的效果影响很大。</p>
+<p><strong><em>注明：</em></strong></p>
+<p>文章中所有的图片均来自台湾大学林轩田《机器学习技法》课程</p>
+
+      
+    </div>
+    
+    
+    
+	
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="红色石头 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信公众号，了解更多AI资源！</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="红色石头 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="红色石头 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    红色石头
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://redstonewill.github.io/2018/03/18/31/" title="台湾大学林轩田机器学习技法课程学习笔记14 -- Radial Basis Function Network">https://redstonewill.github.io/2018/03/18/31/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag"><i class="fa fa-tag"></i> 机器学习</a>
+          
+            <a href="/tags/林轩田/" rel="tag"><i class="fa fa-tag"></i> 林轩田</a>
+          
+            <a href="/tags/笔记/" rel="tag"><i class="fa fa-tag"></i> 笔记</a>
+          
+            <a href="/tags/技法/" rel="tag"><i class="fa fa-tag"></i> 技法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/18/30/" rel="next" title="台湾大学林轩田机器学习技法课程学习笔记13 -- Deep Learning">
+                <i class="fa fa-chevron-left"></i> 台湾大学林轩田机器学习技法课程学习笔记13 -- Deep Learning
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/18/32/" rel="prev" title="台湾大学林轩田机器学习技法课程学习笔记15 -- Matrix Factorization">
+                台湾大学林轩田机器学习技法课程学习笔记15 -- Matrix Factorization <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_inline_share_toolbox">
+  <script type = "text/javascript" src = "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5aaa217593e0eff1" async = "async" ></script>
+</div>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNDg0MS8xMTM3OA=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/blog-logo.jpg"
+                alt="红色石头" />
+            
+              <p class="site-author-name" itemprop="name">红色石头</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/RedstoneWill" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://blog.csdn.net/red_stone1" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-contao"></i>CSDN</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/red_stone_wl/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/6479023696?refer_flag=1001030201_" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:redstonewill@hotmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#RBF-Network-Hypothesis"><span class="nav-number">1.</span> <span class="nav-text">RBF Network Hypothesis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RBF-Network-Learning"><span class="nav-number">2.</span> <span class="nav-text">RBF Network Learning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#k-Means-Algorithm"><span class="nav-number">3.</span> <span class="nav-text">k-Means Algorithm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#k-means-and-RBF-Network-in-Action"><span class="nav-number">4.</span> <span class="nav-text">k-means and RBF Network in Action</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Summary"><span class="nav-number">5.</span> <span class="nav-text">Summary</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">红色石头</span>
+
+  
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_pv"></span>
+</span>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共105.7k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("GPinP9RLLAEN4cQw3GyGH1i6-gzGzoHsz", "P23pTYCEXWROAMFxuaSGYGIa");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
