@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="googlead9dc5c68da2c41a" />
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="baV2kbPkNW" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/favicon.ico?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="机器学习,林轩田,笔记,技法," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="红色石头的机器学习之路" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="keywords" content="机器学习,林轩田,笔记,技法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="台湾大学林轩田机器学习技法课程学习笔记2 -- Dual Support Vector Machine">
+<meta property="og:url" content="https://redstonewill.github.io/2018/03/18/19/index.html">
+<meta property="og:site_name" content="红色石头的机器学习之路">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://img.blog.csdn.net/20170627195157734?imageView/2/w/500/q/100">
+<meta property="og:image" content="http://img.blog.csdn.net/20170627195157734?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170627195918132?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170627202803919?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170627215728198?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170627225749786?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170628075805823?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170628080019645?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170628083339835?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170628084913755?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170628090217878?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170628091730046?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170628091859925?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170628125859622?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170628131919549?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170628140938851?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170628144714622?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170628153020643?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170628153642180?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170628154103081?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170628154618376?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170628155410408?">
+<meta property="og:image" content="http://img.blog.csdn.net/20170628160120576?">
+<meta property="og:updated_time" content="2018-03-18T02:52:29.417Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="台湾大学林轩田机器学习技法课程学习笔记2 -- Dual Support Vector Machine">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20170627195157734?imageView/2/w/500/q/100">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'ZFJHIGA2DV',
+      apiKey: 'e3baeea7f059baffe169cc0eec8adacf',
+      indexName: 'redstonewillblog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"输入关键词进行搜索","hits_empty":"没有找到与 ${query} 相关的内容","hits_stats":"${hits}条相关记录，共耗时${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://redstonewill.github.io/2018/03/18/19/"/>
+
+
+
+
+
+  <title>台湾大学林轩田机器学习技法课程学习笔记2 -- Dual Support Vector Machine | 红色石头的机器学习之路</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	
+	<a href="https://github.com/RedstoneWill" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+	
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">红色石头的机器学习之路</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">公众号ID：redstonewill</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://redstonewill.github.io/2018/03/18/19/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="红色石头">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="红色石头的机器学习之路">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">台湾大学林轩田机器学习技法课程学习笔记2 -- Dual Support Vector Machine</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-18T10:50:33+08:00">
+                2018-03-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/林轩田机器学习技法/" itemprop="url" rel="index">
+                    <span itemprop="name">林轩田机器学习技法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/03/18/19/" class="leancloud_visitors" data-flag-title="台湾大学林轩田机器学习技法课程学习笔记2 -- Dual Support Vector Machine">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,925
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://img.blog.csdn.net/20170627195157734?imageView/2/w/500/q/100" alt="这里写图片描述"><br><a id="more"></a></p>
+<blockquote>
+<p>我的CSDN博客地址：<a href="http://blog.csdn.net/red_stone1" target="_blank" rel="noopener">红色石头的专栏</a><br>我的知乎主页：<a href="https://www.zhihu.com/people/red_stone_wl" target="_blank" rel="noopener">红色石头</a><br>我的微博：<a href="https://weibo.com/6479023696/profile?topnav=1&amp;wvr=6&amp;is_all=1" target="_blank" rel="noopener">RedstoneWill的微博</a><br>我的GitHub：<a href="https://github.com/RedstoneWill" target="_blank" rel="noopener">RedstoneWill的GitHub</a><br>我的微信公众号：红色石头的机器学习之路（ID：redstonewill）<br>欢迎大家关注我！共同学习，共同进步！</p>
+</blockquote>
+<p>上节课我们主要介绍了线性支持向量机（Linear Support Vector Machine）。Linear SVM的目标是找出最“胖”的分割线进行正负类的分离，方法是使用二次规划来求出分类线。本节课将从另一个方面入手，研究对偶支持向量机（Dual Support Vector Machine），尝试从新的角度计算得出分类线，推广SVM的应用范围。</p>
+<h3 id="Motivation-of-Dual-SVM"><a href="#Motivation-of-Dual-SVM" class="headerlink" title="Motivation of Dual SVM"></a>Motivation of Dual SVM</h3><p>首先，我们回顾一下，对于非线性SVM，我们通常可以使用非线性变换将变量从x域转换到z域中。然后，在z域中，根据上一节课的内容，使用线性SVM解决问题即可。上一节课我们说过，使用SVM得到large-margin，减少了有效的VC Dimension，限制了模型复杂度；另一方面，使用特征转换，目的是让模型更复杂，减小$E_{in}$。所以说，非线性SVM是把这两者目的结合起来，平衡这两者的关系。那么，特征转换下，求解QP问题在z域中的维度设为$\hat d +1$，如果模型越复杂，则$\hat d +1$越大，相应求解这个QP问题也变得很困难。当$\hat d$无限大的时候，问题将会变得难以求解，那么有没有什么办法可以解决这个问题呢？一种方法就是使SVM的求解过程不依赖$\hat d$，这就是我们本节课所要讨论的主要内容。</p>
+<p><img src="http://img.blog.csdn.net/20170627195157734?" alt="这里写图片描述"></p>
+<p>比较一下，我们上一节课所讲的Original SVM二次规划问题的变量个数是$\hat d +1$，有N个限制条件；而本节课，我们把问题转化为对偶问题（’Equivalent’ SVM），同样是二次规划，只不过变量个数变成N个，有N+1个限制条件。这种对偶SVM的好处就是问题只跟N有关，与$\hat d$无关，这样就不存在上文提到的当$\hat d$无限大时难以求解的情况。</p>
+<p><img src="http://img.blog.csdn.net/20170627195918132?" alt="这里写图片描述"></p>
+<p>如何把问题转化为对偶问题（’Equivalent’ SVM），其中的数学推导非常复杂，本文不做详细数学论证，但是会从概念和原理上进行简单的推导。</p>
+<p>还记得我们在《机器学习基石》课程中介绍的Regularization中，在最小化$E_{in}$的过程中，也添加了限制条件：$w^Tw\leq C$。我们的求解方法是引入拉格朗日因子$\lambda$，将有条件的最小化问题转换为无条件的最小化问题：$min\ E_{aug}(w)=E_{in}(w)+\frac{\lambda}{N}w^Tw$，最终得到的w的最优化解为：</p>
+<p>$$\nabla E_{in}(w)+\frac{2\lambda}{N}w=0$$</p>
+<p>所以，在regularization问题中，$\lambda$是已知常量，求解过程变得容易。那么，对于dual SVM问题，同样可以引入$\lambda$，将条件问题转换为非条件问题，只不过$\lambda$是未知参数，且个数是N，需要对其进行求解。</p>
+<p><img src="http://img.blog.csdn.net/20170627202803919?" alt="这里写图片描述"></p>
+<p>如何将条件问题转换为非条件问题？上一节课我们介绍的SVM中，目标是：$min\ \frac12w^Tw$，条件是：$y_n(w^Tz_n+b)\geq 1,\ for\ n=1,2,\cdots,N$。首先，我们令拉格朗日因子为$\alpha_n$（区别于regularization），构造一个函数：</p>
+<p>$$L(b,w,\alpha)=\frac12w^Tw+\sum_{n=1}^N\alpha_n(1-y_n(w^Tz_n+b))$$</p>
+<p>这个函数右边第一项是SVM的目标，第二项是SVM的条件和拉格朗日因子$\alpha_n$的乘积。我们把这个函数称为拉格朗日函数，其中包含三个参数：b，w，$\alpha_n$。</p>
+<p><img src="http://img.blog.csdn.net/20170627215728198?" alt="这里写图片描述"></p>
+<p>下面，我们利用拉格朗日函数，把SVM构造成一个非条件问题：</p>
+<p><img src="http://img.blog.csdn.net/20170627225749786?" alt="这里写图片描述"></p>
+<p>该最小化问题中包含了最大化问题，怎么解释呢？首先我们规定拉格朗日因子$\alpha_n\geq0$，根据SVM的限定条件可得：$(1-y_n(w^Tz_n+b))\leq0$，如果没有达到最优解，即有不满足$(1-y_n(w^Tz_n+b))\leq0$的情况，因为$\alpha_n\geq0$，那么必然有$\sum_n\alpha_n(1-y_n(w^Tz_n+b))\geq0$。对于这种大于零的情况，其最大值是无解的。如果对于所有的点，均满足$(1-y_n(w^Tz_n+b))\leq0$，那么必然有$\sum_n\alpha_n(1-y_n(w^Tz_n+b))\leq0$，则当$\sum_n\alpha_n(1-y_n(w^Tz_n+b))=0$时，其有最大值，最大值就是我们SVM的目标：$\frac12w^Tw$。因此，这种转化为非条件的SVM构造函数的形式是可行的。</p>
+<h3 id="Lagrange-Dual-SVM"><a href="#Lagrange-Dual-SVM" class="headerlink" title="Lagrange Dual SVM"></a>Lagrange Dual SVM</h3><p>现在，我们已经将SVM问题转化为与拉格朗日因子$\alpha_n$有关的最大最小值形式。已知$\alpha_n\geq0$，那么对于任何固定的$\alpha’$，且$\alpha_n’\geq0$，一定有如下不等式成立：</p>
+<p><img src="http://img.blog.csdn.net/20170628075805823?" alt="这里写图片描述"></p>
+<p>对上述不等式右边取最大值，不等式同样成立：</p>
+<p><img src="http://img.blog.csdn.net/20170628080019645?" alt="这里写图片描述"></p>
+<p>上述不等式表明，我们对SVM的min和max做了对调，满足这样的关系，这叫做Lagrange dual problem。不等式右边是SVM问题的下界，我们接下来的目的就是求出这个下界。</p>
+<p>已知$\geq$是一种弱对偶关系，在二次规划QP问题中，如果满足以下三个条件：</p>
+<ul>
+<li><p><strong>函数是凸的（convex primal）</strong></p>
+</li>
+<li><p><strong>函数有解（feasible primal）</strong></p>
+</li>
+<li><p><strong>条件是线性的（linear constraints）</strong></p>
+</li>
+</ul>
+<p>那么，上述不等式关系就变成强对偶关系，$\geq$变成=，即一定存在满足条件的解$(b,w,\alpha)$，使等式左边和右边都成立，SVM的解就转化为右边的形式。</p>
+<p>经过推导，SVM对偶问题的解已经转化为无条件形式：</p>
+<p><img src="http://img.blog.csdn.net/20170628083339835?" alt="这里写图片描述"></p>
+<p>其中，上式括号里面的是对拉格朗日函数$L(b,w,\alpha)$计算最小值。那么根据梯度下降算法思想：最小值位置满足梯度为零。首先，令$L(b,w,\alpha)$对参数b的梯度为零：</p>
+<p>$$\frac{\partial L(b,w,\alpha)}{\partial b}=0=-\sum_{n=1}^N\alpha_ny_n$$</p>
+<p>也就是说，最优解一定满足$\sum_{n=1}^N\alpha_ny_n=0$。那么，我们把这个条件代入计算max条件中（与$\alpha_n\geq0$同为条件），并进行化简：</p>
+<p><img src="http://img.blog.csdn.net/20170628084913755?" alt="这里写图片描述"></p>
+<p>这样，SVM表达式消去了b，问题化简了一些。然后，再根据最小值思想，令$L(b,w,\alpha)$对参数w的梯度为零：</p>
+<p>$$\frac{\partial L(b,w,\alpha}{\partial w}=0=w-\sum_{n=1}^N\alpha_ny_nz_n$$</p>
+<p>即得到：</p>
+<p>$$w=\sum_{n=1}^N\alpha_ny_nz_n$$</p>
+<p>也就是说，最优解一定满足$w=\sum_{n=1}^N\alpha_ny_nz_n$。那么，同样我们把这个条件代入并进行化简：</p>
+<p><img src="http://img.blog.csdn.net/20170628090217878?" alt="这里写图片描述"></p>
+<p>这样，SVM表达式消去了w，问题更加简化了。这时候的条件有3个：</p>
+<ul>
+<li><p>all $\alpha_n\geq0$</p>
+</li>
+<li><p>$\sum_{n=1}^N\alpha_ny_n=0$</p>
+</li>
+<li><p>$w=\sum_{n=1}^N\alpha_ny_nz_n$</p>
+</li>
+</ul>
+<p>SVM简化为只有$\alpha_n$的最佳化问题，即计算满足上述三个条件下，函数$-\frac12||\sum_{n=1}^N\alpha_ny_nz_n||^2+\sum_{n=1}^N\alpha_n$最小值时对应的$\alpha_n$是多少。</p>
+<p>总结一下，SVM最佳化形式转化为只与$\alpha_n$有关：</p>
+<p><img src="http://img.blog.csdn.net/20170628091730046?" alt="这里写图片描述"></p>
+<p>其中，满足最佳化的条件称之为Karush-Kuhn-Tucker(KKT)：</p>
+<p><img src="http://img.blog.csdn.net/20170628091859925?" alt="这里写图片描述"></p>
+<p>在下一部分中，我们将利用KKT条件来计算最优化问题中的$\alpha$，进而得到b和w。</p>
+<h3 id="Solving-Dual-SVM"><a href="#Solving-Dual-SVM" class="headerlink" title="Solving Dual SVM"></a>Solving Dual SVM</h3><p>上面我们已经得到了dual SVM的简化版了，接下来，我们继续对它进行一些优化。首先，将max问题转化为min问题，再做一些条件整理和推导，得到：</p>
+<p><img src="http://img.blog.csdn.net/20170628125859622?" alt="这里写图片描述"></p>
+<p>显然，这是一个convex的QP问题，且有N个变量$\alpha_n$，限制条件有N+1个。则根据上一节课讲的QP解法，找到Q，p，A，c对应的值，用软件工具包进行求解即可。</p>
+<p><img src="http://img.blog.csdn.net/20170628131919549?" alt="这里写图片描述"></p>
+<p>求解过程很清晰，但是值得注意的是，$q_{n,m}=y_ny_mz^T_nz_m$，大部分值是非零的，称为dense。当N很大的时候，例如N=30000，那么对应的$Q_D$的计算量将会很大，存储空间也很大。所以一般情况下，对dual SVM问题的矩阵$Q_D$，需要使用一些特殊的方法，这部分内容就不再赘述了。</p>
+<p><img src="http://img.blog.csdn.net/20170628140938851?" alt="这里写图片描述"></p>
+<p>得到$\alpha_n$之后，再根据之前的KKT条件，就可以计算出w和b了。首先利用条件$w=\sum\alpha_ny_nz_n$得到w，然后利用条件$\alpha_n(1-y_n(w^Tz_n+b))=0$，取任一$\alpha_n\neq0$即$\alpha_n$&gt;0的点，得到$1-y_n(w^Tz_n+b)=0$，进而求得$b=y_n-w^Tz_n$。</p>
+<p><img src="http://img.blog.csdn.net/20170628144714622?" alt="这里写图片描述"></p>
+<p>值得注意的是，计算b值，$\alpha_n$&gt;0时，有$y_n(w^Tz_n+b)=1$成立。$y_n(w^Tz_n+b)=1$正好表示的是该点在SVM分类线上，即fat boundary。也就是说，满足$\alpha_n$&gt;0的点一定落在fat boundary上，这些点就是Support Vector。这是一个非常有趣的特性。</p>
+<h3 id="Messages-behind-Dual-SVM"><a href="#Messages-behind-Dual-SVM" class="headerlink" title="Messages behind Dual SVM"></a>Messages behind Dual SVM</h3><p>回忆一下，上一节课中，我们把位于分类线边界上的点称为support vector（candidates）。本节课前面介绍了$\alpha_n$&gt;0的点一定落在分类线边界上，这些点称之为support vector（注意没有candidates）。也就是说分类线上的点不一定都是支持向量，但是满足$\alpha_n$&gt;0的点，一定是支持向量。</p>
+<p><img src="http://img.blog.csdn.net/20170628153020643?" alt="这里写图片描述"></p>
+<p>SV只由$\alpha_n$&gt;0的点决定，根据上一部分推导的w和b的计算公式，我们发现，w和b仅由SV即$\alpha_n$&gt;0的点决定，简化了计算量。这跟我们上一节课介绍的分类线只由“胖”边界上的点所决定是一个道理。也就是说，样本点可以分成两类：一类是support vectors，通过support vectors可以求得fattest hyperplane；另一类不是support vectors，对我们求得fattest hyperplane没有影响。</p>
+<p><img src="http://img.blog.csdn.net/20170628153642180?" alt="这里写图片描述"></p>
+<p>回过头来，我们来比较一下SVM和PLA的w公式：</p>
+<p><img src="http://img.blog.csdn.net/20170628154103081?" alt="这里写图片描述"></p>
+<p>我们发现，二者在形式上是相似的。$w_{SVM}$由fattest hyperplane边界上所有的SV决定，$w_{PLA}$由所有当前分类错误的点决定。$w_{SVM}$和$w_{PLA}$都是原始数据点$y_nz_n$的线性组合形式，是原始数据的代表。</p>
+<p><img src="http://img.blog.csdn.net/20170628154618376?" alt="这里写图片描述"></p>
+<p>总结一下，本节课和上节课主要介绍了两种形式的SVM，一种是Primal Hard-Margin SVM，另一种是Dual Hard_Margin SVM。Primal Hard-Margin SVM有$\hat d+1$个参数，有N个限制条件。当$\hat d+1$很大时，求解困难。而Dual Hard_Margin SVM有N个参数，有N+1个限制条件。当数据量N很大时，也同样会增大计算难度。两种形式都能得到w和b，求得fattest hyperplane。通常情况下，如果N不是很大，一般使用Dual SVM来解决问题。</p>
+<p><img src="http://img.blog.csdn.net/20170628155410408?" alt="这里写图片描述"></p>
+<p>这节课提出的Dual SVM的目的是为了避免计算过程中对$\hat d$的依赖，而只与N有关。但是，Dual SVM是否真的消除了对$\hat d$的依赖呢？其实并没有。因为在计算$q_{n,m}=y_ny_mz_n^Tz_m$的过程中，由z向量引入了$\hat d$，实际上复杂度已经隐藏在计算过程中了。所以，我们的目标并没有实现。下一节课我们将继续研究探讨如何消除对$\hat d$的依赖。</p>
+<p><img src="http://img.blog.csdn.net/20170628160120576?" alt="这里写图片描述"></p>
+<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p>本节课主要介绍了SVM的另一种形式：Dual SVM。我们这样做的出发点是为了移除计算过程对$\hat d$的依赖。Dual SVM的推导过程是通过引入拉格朗日因子$\alpha$，将SVM转化为新的非条件形式。然后，利用QP，得到最佳解的拉格朗日因子$\alpha$。再通过KKT条件，计算得到对应的w和b。最终求得fattest hyperplane。下一节课，我们将解决Dual SVM计算过程中对$\hat d$的依赖问题。</p>
+<p><strong><em>注明：</em></strong></p>
+<p>文章中所有的图片均来自台湾大学林轩田《机器学习技法》课程</p>
+
+      
+    </div>
+    
+    
+    
+	
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="红色石头 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信公众号，了解更多AI资源！</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="红色石头 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="红色石头 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    红色石头
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://redstonewill.github.io/2018/03/18/19/" title="台湾大学林轩田机器学习技法课程学习笔记2 -- Dual Support Vector Machine">https://redstonewill.github.io/2018/03/18/19/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag"><i class="fa fa-tag"></i> 机器学习</a>
+          
+            <a href="/tags/林轩田/" rel="tag"><i class="fa fa-tag"></i> 林轩田</a>
+          
+            <a href="/tags/笔记/" rel="tag"><i class="fa fa-tag"></i> 笔记</a>
+          
+            <a href="/tags/技法/" rel="tag"><i class="fa fa-tag"></i> 技法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/18/18/" rel="next" title="台湾大学林轩田机器学习技法课程学习笔记1 -- Linear Support Vector Machine">
+                <i class="fa fa-chevron-left"></i> 台湾大学林轩田机器学习技法课程学习笔记1 -- Linear Support Vector Machine
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/18/20/" rel="prev" title="台湾大学林轩田机器学习技法课程学习笔记3 -- Kernel Support Vector Machine">
+                台湾大学林轩田机器学习技法课程学习笔记3 -- Kernel Support Vector Machine <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_inline_share_toolbox">
+  <script type = "text/javascript" src = "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5aaa217593e0eff1" async = "async" ></script>
+</div>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNDg0MS8xMTM3OA=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/blog-logo.jpg"
+                alt="红色石头" />
+            
+              <p class="site-author-name" itemprop="name">红色石头</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/RedstoneWill" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://blog.csdn.net/red_stone1" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-contao"></i>CSDN</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/red_stone_wl/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/6479023696?refer_flag=1001030201_" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:redstonewill@hotmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Motivation-of-Dual-SVM"><span class="nav-number">1.</span> <span class="nav-text">Motivation of Dual SVM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lagrange-Dual-SVM"><span class="nav-number">2.</span> <span class="nav-text">Lagrange Dual SVM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solving-Dual-SVM"><span class="nav-number">3.</span> <span class="nav-text">Solving Dual SVM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Messages-behind-Dual-SVM"><span class="nav-number">4.</span> <span class="nav-text">Messages behind Dual SVM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Summary"><span class="nav-number">5.</span> <span class="nav-text">Summary</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">红色石头</span>
+
+  
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_pv"></span>
+</span>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共56.9k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("GPinP9RLLAEN4cQw3GyGH1i6-gzGzoHsz", "P23pTYCEXWROAMFxuaSGYGIa");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
