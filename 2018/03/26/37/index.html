@@ -111,7 +111,7 @@
 <meta property="og:image" content="http://img.blog.csdn.net/20170927082510979?">
 <meta property="og:image" content="http://img.blog.csdn.net/20170927082924477?">
 <meta property="og:image" content="http://img.blog.csdn.net/20170927082954620?">
-<meta property="og:updated_time" content="2018-03-27T02:59:26.061Z">
+<meta property="og:updated_time" content="2018-03-27T03:03:07.669Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Coursera吴恩达《神经网络与深度学习》课程笔记（4）-- 浅层神经网络">
 <meta name="twitter:image" content="http://img.blog.csdn.net/20170927081305727?imageView/2/w/500/q/100">
@@ -442,7 +442,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  4,654
+                  4,662
                 </span>
               
 
@@ -512,8 +512,8 @@
 <p><img src="http://img.blog.csdn.net/20170927081521144?" alt="这里写图片描述"></p>
 <p>之前也介绍过，这里顺便提一下，$W^{[1]}$的维度是（4,3），$b^{[1]}$的维度是（4,1），$W^{[2]}$的维度是（1,4），$b^{[2]}$的维度是（1,1）。这点需要特别注意。</p>
 <h3 id="Vectorizing-across-multiple-examples"><a href="#Vectorizing-across-multiple-examples" class="headerlink" title="Vectorizing across multiple examples"></a>Vectorizing across multiple examples</h3><p>上一部分我们只是介绍了单个样本的神经网络正向传播矩阵运算过程。而对于m个训练样本，我们也可以使用矩阵相乘的形式来提高计算效率。而且它的形式与上一部分单个样本的矩阵运算十分相似，比较简单。</p>
-<p>之前我们也介绍过，在书写标记上用上标(i)表示第i个样本，例如$x^{(i)}$，$z^{(i)}$，$a^{<a href="i">2</a>}$。对于每个样本i，可以使用for循环来求解其正向输出：</p>
-<p>for i = 1 to m:<br>$\ \ \ \ z^{<a href="i">1</a>}=W^{[1]}x^{(i)}+b^{[1]}$<br>$\ \ \ \ a^{<a href="i">1</a>}=\sigma(z^{<a href="i">1</a>})$<br>$\ \ \ \ z^{<a href="i">2</a>}=W^{[2]}a^{<a href="i">1</a>}+b^{[2]}$<br>$\ \ \ \ a^{<a href="i">2</a>}=\sigma(z^{<a href="i">2</a>})$</p>
+<p>之前我们也介绍过，在书写标记上用上标(i)表示第i个样本，例如$x^{(i)}$，$z^{(i)}$，$a^{[2](i)}$。对于每个样本i，可以使用for循环来求解其正向输出：</p>
+<p>for i = 1 to m:<br>$\ \ \ \ z^{[1](i)}=W^{[1]}x^{(i)}+b^{[1]}$<br>$\ \ \ \ a^{[1](i)}=\sigma(z^{[1](i)})$<br>$\ \ \ \ z^{[2](i)}=W^{[2]}a^{[1](i)}+b^{[2]}$<br>$\ \ \ \ a^{[2](i)}=\sigma(z^{[2](i)})$</p>
 <p>不使用for循环，利用矩阵运算的思想，输入矩阵X的维度为（$n_x$,m）。这样，我们可以把上面的for循环写成矩阵运算的形式：</p>
 <p>$$Z^{[1]}=W^{[1]}X+b^{[1]}$$</p>
 <p>$$A^{[1]}=\sigma(Z^{[1]})$$</p>
@@ -942,7 +942,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共120.6k字</span>
+  <span class="post-count">博客全站共120.7k字</span>
 </div>
         
 
