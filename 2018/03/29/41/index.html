@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="googlead9dc5c68da2c41a" />
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="baV2kbPkNW" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/favicon.ico?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="笔记,深度学习,神经网络,Coursera,吴恩达," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="红色石头的机器学习之路" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="keywords" content="笔记,深度学习,神经网络,Coursera,吴恩达">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Coursera吴恩达《优化深度神经网络》课程笔记（3）-- 超参数调试、Batch正则化和编程框架">
+<meta property="og:url" content="https://redstonewill.github.io/2018/03/29/41/index.html">
+<meta property="og:site_name" content="红色石头的机器学习之路">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://img.blog.csdn.net/20171031230142816?imageView/2/w/500/q/100">
+<meta property="og:image" content="http://img.blog.csdn.net/20171031162750019?">
+<meta property="og:image" content="http://img.blog.csdn.net/20171031162811224?">
+<meta property="og:image" content="http://img.blog.csdn.net/20171031230142816?">
+<meta property="og:image" content="http://img.blog.csdn.net/20171101094754376?">
+<meta property="og:image" content="http://img.blog.csdn.net/20171101171005196?">
+<meta property="og:image" content="http://img.blog.csdn.net/20171102090304433?">
+<meta property="og:image" content="http://img.blog.csdn.net/20171108204845005?">
+<meta property="og:image" content="http://img.blog.csdn.net/20171109212043740?">
+<meta property="og:updated_time" content="2018-03-29T13:50:14.502Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Coursera吴恩达《优化深度神经网络》课程笔记（3）-- 超参数调试、Batch正则化和编程框架">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20171031230142816?imageView/2/w/500/q/100">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'ZFJHIGA2DV',
+      apiKey: 'e3baeea7f059baffe169cc0eec8adacf',
+      indexName: 'redstonewillblog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"输入关键词进行搜索","hits_empty":"找不到关于 ${query} 的文章","hits_stats":"共找到 ${hits} 篇文章，耗时${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://redstonewill.github.io/2018/03/29/41/"/>
+
+
+
+
+
+  <title>Coursera吴恩达《优化深度神经网络》课程笔记（3）-- 超参数调试、Batch正则化和编程框架 | 红色石头的机器学习之路</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	
+	<a href="https://github.com/RedstoneWill" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+	
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">红色石头的机器学习之路</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">公众号ID：redstonewill</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://redstonewill.github.io/2018/03/29/41/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="红色石头">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="红色石头的机器学习之路">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Coursera吴恩达《优化深度神经网络》课程笔记（3）-- 超参数调试、Batch正则化和编程框架</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-29T21:21:30+08:00">
+                2018-03-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/深度学习/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/深度学习/吴恩达优化深度神经网络/" itemprop="url" rel="index">
+                    <span itemprop="name">吴恩达优化深度神经网络</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/03/29/41/" class="leancloud_visitors" data-flag-title="Coursera吴恩达《优化深度神经网络》课程笔记（3）-- 超参数调试、Batch正则化和编程框架">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  5,755
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://img.blog.csdn.net/20171031230142816?imageView/2/w/500/q/100" alt="这里写图片描述"><br><a id="more"></a></p>
+<blockquote>
+<p>我的CSDN博客地址：<a href="http://blog.csdn.net/red_stone1" target="_blank" rel="noopener">红色石头的专栏</a><br>我的知乎主页：<a href="https://www.zhihu.com/people/red_stone_wl" target="_blank" rel="noopener">红色石头</a><br>我的微博：<a href="https://weibo.com/6479023696/profile?topnav=1&amp;wvr=6&amp;is_all=1" target="_blank" rel="noopener">RedstoneWill的微博</a><br>我的GitHub：<a href="https://github.com/RedstoneWill" target="_blank" rel="noopener">RedstoneWill的GitHub</a><br>我的微信公众号：红色石头的机器学习之路（ID：redstonewill）<br>欢迎大家关注我！共同学习，共同进步！</p>
+</blockquote>
+<p>上节课我们主要介绍了深度神经网络的优化算法。包括对原始数据集进行分割，使用mini-batch gradient descent。然后介绍了指数加权平均（Exponentially weighted averages）的概念以及偏移校正（bias correction）方法。接着，我们着重介绍了三种常用的加速神经网络学习速度的三种算法：动量梯度下降、RMSprop和Adam算法。其中，Adam结合了动量梯度下降和RMSprop各自的优点，实际应用中表现更好。然后，我们介绍了另外一种提高学习速度的方法：learning rate decay，通过不断减小学习因子，减小步进长度，来减小梯度振荡。最后，我们对深度学习中local optima的概念作了更深入的解释。本节课，我们将重点介绍三个方面的内容：超参数调试、Batch正则化和深度学习编程框架。</p>
+<h3 id="Tuning-Process"><a href="#Tuning-Process" class="headerlink" title="Tuning Process"></a>Tuning Process</h3><p>深度神经网络需要调试的超参数（Hyperparameters）较多，包括：</p>
+<ul>
+<li><p><strong>$\alpha$：学习因子</strong></p>
+</li>
+<li><p><strong>$\beta$：动量梯度下降因子</strong></p>
+</li>
+<li><p><strong>$\beta_1,\beta_2,\varepsilon$：Adam算法参数</strong></p>
+</li>
+<li><p><strong>#layers：神经网络层数</strong></p>
+</li>
+<li><p><strong>#hidden units：各隐藏层神经元个数</strong></p>
+</li>
+<li><p><strong>learning rate decay：学习因子下降参数</strong></p>
+</li>
+<li><p><strong>mini-batch size：批量训练样本包含的样本个数</strong></p>
+</li>
+</ul>
+<p>超参数之间也有重要性差异。通常来说，学习因子$\alpha$是最重要的超参数，也是需要重点调试的超参数。动量梯度下降因子$\beta$、各隐藏层神经元个数#hidden units和mini-batch size的重要性仅次于$\alpha$。然后就是神经网络层数#layers和学习因子下降参数learning rate decay。最后，Adam算法的三个参数$\beta_1,\beta_2,\varepsilon$一般常设置为0.9，0.999和$10^{-8}$，不需要反复调试。当然，这里超参数重要性的排名并不是绝对的，具体情况，具体分析。</p>
+<p>如何选择和调试超参数？传统的机器学习中，我们对每个参数等距离选取任意个数的点，然后，分别使用不同点对应的参数组合进行训练，最后根据验证集上的表现好坏，来选定最佳的参数。例如有两个待调试的参数，分别在每个参数上选取5个点，这样构成了5x5=25中参数组合，如下图所示：</p>
+<p><img src="http://img.blog.csdn.net/20171031162750019?" alt="这里写图片描述"></p>
+<p>这种做法在参数比较少的时候效果较好。但是在深度神经网络模型中，我们一般不采用这种均匀间隔取点的方法，比较好的做法是使用随机选择。也就是说，对于上面这个例子，我们随机选择25个点，作为待调试的超参数，如下图所示：</p>
+<p><img src="http://img.blog.csdn.net/20171031162811224?" alt="这里写图片描述"></p>
+<p>随机化选择参数的目的是为了尽可能地得到更多种参数组合。还是上面的例子，如果使用均匀采样的话，每个参数只有5种情况；而使用随机采样的话，每个参数有25种可能的情况，因此更有可能得到最佳的参数组合。</p>
+<p>这种做法带来的另外一个好处就是对重要性不同的参数之间的选择效果更好。假设hyperparameter1为$\alpha$，hyperparameter2为$\varepsilon$，显然二者的重要性是不一样的。如果使用第一种均匀采样的方法，$\varepsilon$的影响很小，相当于只选择了5个$\alpha$值。而如果使用第二种随机采样的方法，$\varepsilon$和$\alpha$都有可能选择25种不同值。这大大增加了$\alpha$调试的个数，更有可能选择到最优值。其实，在实际应用中完全不知道哪个参数更加重要的情况下，随机采样的方式能有效解决这一问题，但是均匀采样做不到这点。</p>
+<p>在经过随机采样之后，我们可能得到某些区域模型的表现较好。然而，为了得到更精确的最佳参数，我们应该继续对选定的区域进行由粗到细的采样（coarse to fine sampling scheme）。也就是放大表现较好的区域，再对此区域做更密集的随机采样。例如，对下图中右下角的方形区域再做25点的随机采样，以获得最佳参数。</p>
+<p><img src="http://img.blog.csdn.net/20171031230142816?" alt="这里写图片描述"></p>
+<h3 id="Using-an-appropriate-scale-to-pick-hyperparameters"><a href="#Using-an-appropriate-scale-to-pick-hyperparameters" class="headerlink" title="Using an appropriate scale to pick hyperparameters"></a>Using an appropriate scale to pick hyperparameters</h3><p>上一部分讲的调试参数使用随机采样，对于某些超参数是可以进行尺度均匀采样的，但是某些超参数需要选择不同的合适尺度进行随机采样。</p>
+<p>什么意思呢？例如对于超参数#layers和#hidden units，都是正整数，是可以进行均匀随机采样的，即超参数每次变化的尺度都是一致的（如每次变化为1，犹如一个刻度尺一样，刻度是均匀的）。</p>
+<p>但是，对于某些超参数，可能需要非均匀随机采样（即非均匀刻度尺）。例如超参数$\alpha$，待调范围是[0.0001, 1]。如果使用均匀随机采样，那么有90%的采样点分布在[0.1, 1]之间，只有10%分布在[0.0001, 0.1]之间。这在实际应用中是不太好的，因为最佳的$\alpha$值可能主要分布在[0.0001, 0.1]之间，而[0.1, 1]范围内$\alpha$值效果并不好。因此我们更关注的是区间[0.0001, 0.1]，应该在这个区间内细分更多刻度。</p>
+<p>通常的做法是将linear scale转换为log scale，将均匀尺度转化为非均匀尺度，然后再在log scale下进行均匀采样。这样，[0.0001, 0.001]，[0.001, 0.01]，[0.01, 0.1]，[0.1, 1]各个区间内随机采样的超参数个数基本一致，也就扩大了之前[0.0001, 0.1]区间内采样值个数。</p>
+<p><img src="http://img.blog.csdn.net/20171101094754376?" alt="这里写图片描述"></p>
+<p>一般解法是，如果线性区间为[a, b]，令m=log(a)，n=log(b)，则对应的log区间为[m,n]。对log区间的[m,n]进行随机均匀采样，然后得到的采样值r，最后反推到线性区间，即$10^r$。$10^r$就是最终采样的超参数。相应的Python语句为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">m = np.log10(a)</span><br><span class="line">n = np.log10(b)</span><br><span class="line">r = np.random.rand()</span><br><span class="line">r = m + (n-m)*r</span><br><span class="line">r = np.power(<span class="number">10</span>,r)</span><br></pre></td></tr></table></figure>
+<p>除了$\alpha$之外，动量梯度因子$\beta$也是一样，在超参数调试的时候也需要进行非均匀采样。一般$\beta$的取值范围在[0.9, 0.999]之间，那么$1-\beta$的取值范围就在[0.001, 0.1]之间。那么直接对$1-\beta$在[0.001, 0.1]区间内进行log变换即可。</p>
+<p>这里解释下为什么$\beta$也需要向$\alpha$那样做非均匀采样。假设$\beta$从0.9000变化为0.9005，那么$\frac{1}{1-\beta}$基本没有变化。但假设$\beta$从0.9990变化为0.9995，那么$\frac{1}{1-\beta}$前后差别1000。$\beta$越接近1，指数加权平均的个数越多，变化越大。所以对$\beta$接近1的区间，应该采集得更密集一些。</p>
+<h3 id="Hyperparameters-tuning-in-practice-Pandas-vs-Caviar"><a href="#Hyperparameters-tuning-in-practice-Pandas-vs-Caviar" class="headerlink" title="Hyperparameters tuning in practice: Pandas vs. Caviar"></a>Hyperparameters tuning in practice: Pandas vs. Caviar</h3><p>经过调试选择完最佳的超参数并不是一成不变的，一段时间之后（例如一个月），需要根据新的数据和实际情况，再次调试超参数，以获得实时的最佳模型。</p>
+<p>在训练深度神经网络时，一种情况是受计算能力所限，我们只能对一个模型进行训练，调试不同的超参数，使得这个模型有最佳的表现。我们称之为Babysitting one model。另外一种情况是可以对多个模型同时进行训练，每个模型上调试不同的超参数，根据表现情况，选择最佳的模型。我们称之为Training many models in parallel。</p>
+<p><img src="http://img.blog.csdn.net/20171101171005196?" alt="这里写图片描述"></p>
+<p>因为第一种情况只使用一个模型，所以类比做Panda approach；第二种情况同时训练多个模型，类比做Caviar approach。使用哪种模型是由计算资源、计算能力所决定的。一般来说，对于非常复杂或者数据量很大的模型，使用Panda approach更多一些。</p>
+<h3 id="Normalizing-activations-in-a-network"><a href="#Normalizing-activations-in-a-network" class="headerlink" title="Normalizing activations in a network"></a>Normalizing activations in a network</h3><p>Sergey Ioffe和Christian Szegedy两位学者提出了Batch Normalization方法。Batch Normalization不仅可以让调试超参数更加简单，而且可以让神经网络模型更加“健壮”。也就是说较好模型可接受的超参数范围更大一些，包容性更强，使得更容易去训练一个深度神经网络。接下来，我们就来介绍什么是Batch Normalization，以及它是如何工作的。</p>
+<p>之前，我们在<a href="http://blog.csdn.net/red_stone1/article/details/78208851" target="_blank" rel="noopener">Coursera吴恩达《优化深度神经网络》课程笔记（1）– 深度学习的实用层面</a>中提到过在训练神经网络时，标准化输入可以提高训练的速度。方法是对训练数据集进行归一化的操作，即将原始数据减去其均值$\mu$后，再除以其方差$\sigma^2$。但是标准化输入只是对输入进行了处理，那么对于神经网络，又该如何对各隐藏层的输入进行标准化处理呢？</p>
+<p>其实在神经网络中，第$l$层隐藏层的输入就是第$l-1$层隐藏层的输出$A^{[l-1]}$。对$A^{[l-1]}$进行标准化处理，从原理上来说可以提高$W^{[l]}$和$b^{[l]}$的训练速度和准确度。这种对各隐藏层的标准化处理就是Batch Normalization。值得注意的是，实际应用中，一般是对$Z^{[l-1]}$进行标准化处理而不是$A^{[l-1]}$，其实差别不是很大。</p>
+<p>Batch Normalization对第$l$层隐藏层的输入$Z^{[l-1]}$做如下标准化处理，忽略上标$[l-1]$：</p>
+<p>$$\mu=\frac1m\sum_iz^{(i)}$$</p>
+<p>$$\sigma^2=\frac1m\sum_i(z_i-\mu)^2$$</p>
+<p>$$z^{(i)}_{norm}=\frac{z^{(i)}-\mu}{\sqrt{\sigma^2+\varepsilon}}$$</p>
+<p>其中，m是单个mini-batch包含样本个数，$\varepsilon$是为了防止分母为零，可取值$10^{-8}$。这样，使得该隐藏层的所有输入$z^{(i)}$均值为0，方差为1。</p>
+<p>但是，大部分情况下并不希望所有的$z^{(i)}$均值都为0，方差都为1，也不太合理。通常需要对$z^{(i)}$进行进一步处理：</p>
+<p>$$\tilde z^{(i)}=\gamma\cdot z^{(i)}_{norm}+\beta$$</p>
+<p>上式中，$\gamma$和$\beta$是learnable parameters，类似于W和b一样，可以通过梯度下降等算法求得。这里，$\gamma$和$\beta$的作用是让$\tilde z^{(i)}$的均值和方差为任意值，只需调整其值就可以了。例如，令：</p>
+<p>$$\gamma=\sqrt{\sigma^2+\varepsilon},\ \ \beta=u$$</p>
+<p>则$\tilde z^{(i)}=z^{(i)}$，即identity function。可见，设置$\gamma$和$\beta$为不同的值，可以得到任意的均值和方差。</p>
+<p>这样，通过Batch Normalization，对隐藏层的各个$z^{<a href="i">l</a>}$进行标准化处理，得到$\tilde z^{<a href="i">l</a>}$，替代$z^{<a href="i">l</a>}$。</p>
+<p>值得注意的是，输入的标准化处理Normalizing inputs和隐藏层的标准化处理Batch Normalization是有区别的。Normalizing inputs使所有输入的均值为0，方差为1。而Batch Normalization可使各隐藏层输入的均值和方差为任意值。实际上，从激活函数的角度来说，如果各隐藏层的输入均值在靠近0的区域即处于激活函数的线性区域，这样不利于训练好的非线性神经网络，得到的模型效果也不会太好。这也解释了为什么需要用$\gamma$和$\beta$来对$z^{<a href="i">l</a>}$作进一步处理。</p>
+<h3 id="Fitting-Batch-Norm-into-a-neural-network"><a href="#Fitting-Batch-Norm-into-a-neural-network" class="headerlink" title="Fitting Batch Norm into a neural network"></a>Fitting Batch Norm into a neural network</h3><p>我们已经知道了如何对某单一隐藏层的所有神经元进行Batch Norm，接下来将研究如何把Bath Norm应用到整个神经网络中。</p>
+<p>对于L层神经网络，经过Batch Norm的作用，整体流程如下：</p>
+<p><img src="http://img.blog.csdn.net/20171102090304433?" alt="这里写图片描述"></p>
+<p>实际上，Batch Norm经常使用在mini-batch上，这也是其名称的由来。</p>
+<p>值得注意的是，因为Batch Norm对各隐藏层$Z^{[l]}=W^{[l]}A^{[l-1]}+b^{[l]}$有去均值的操作，所以这里的常数项$b^{[l]}$可以消去，其数值效果完全可以由$\tilde Z^{[l]}$中的$\beta$来实现。因此，我们在使用Batch Norm的时候，可以忽略各隐藏层的常数项$b^{[l]}$。在使用梯度下降算法时，分别对$W^{[l]}$，$\beta^{[l]}$和$\gamma^{[l]}$进行迭代更新。除了传统的梯度下降算法之外，还可以使用我们之前介绍过的动量梯度下降、RMSprop或者Adam等优化算法。</p>
+<h3 id="Why-does-Batch-Norm-work？"><a href="#Why-does-Batch-Norm-work？" class="headerlink" title="Why does Batch Norm work？"></a>Why does Batch Norm work？</h3><p>我们可以把输入特征做均值为0，方差为1的规范化处理，来加快学习速度。而Batch Norm也是对隐藏层各神经元的输入做类似的规范化处理。总的来说，Batch Norm不仅能够提高神经网络训练速度，而且能让神经网络的权重W的更新更加“稳健”，尤其在深层神经网络中更加明显。比如神经网络很后面的W对前面的W包容性更强，即前面的W的变化对后面W造成的影响很小，整体网络更加健壮。</p>
+<p>举个例子来说明，假如用一个浅层神经网络（类似逻辑回归）来训练识别猫的模型。如下图所示，提供的所有猫的训练样本都是黑猫。然后，用这个训练得到的模型来对各种颜色的猫样本进行测试，测试的结果可能并不好。其原因是训练样本不具有一般性（即不是所有的猫都是黑猫），这种训练样本（黑猫）和测试样本（猫）分布的变化称之为covariate shift。</p>
+<p><img src="http://img.blog.csdn.net/20171108204845005?" alt="这里写图片描述"></p>
+<p>对于这种情况，如果实际应用的样本与训练样本分布不同，即发生了covariate shift，则一般是要对模型重新进行训练的。在神经网络，尤其是深度神经网络中，covariate shift会导致模型预测效果变差，重新训练的模型各隐藏层的$W^{[l]}$和$B^{[l]}$均产生偏移、变化。而Batch Norm的作用恰恰是减小covariate shift的影响，让模型变得更加健壮，鲁棒性更强。Batch Norm减少了各层$W^{[l]}$、$B^{[l]}$之间的耦合性，让各层更加独立，实现自我训练学习的效果。也就是说，如果输入发生covariate shift，那么因为Batch Norm的作用，对个隐藏层输出$Z^{[l]}$进行均值和方差的归一化处理，$W^{[l]}$和$B^{[l]}$更加稳定，使得原来的模型也有不错的表现。针对上面这个黑猫的例子，如果我们使用深层神经网络，使用Batch Norm，那么该模型对花猫的识别能力应该也是不错的。</p>
+<p>从另一个方面来说，Batch Norm也起到轻微的正则化（regularization）效果。具体表现在：</p>
+<ul>
+<li><p><strong>每个mini-batch都进行均值为0，方差为1的归一化操作</strong></p>
+</li>
+<li><p><strong>每个mini-batch中，对各个隐藏层的$Z^{[l]}$添加了随机噪声，效果类似于Dropout</strong></p>
+</li>
+<li><p><strong>mini-batch越小，正则化效果越明显</strong></p>
+</li>
+</ul>
+<p>但是，Batch Norm的正则化效果比较微弱，正则化也不是Batch Norm的主要功能。</p>
+<h3 id="Batch-Norm-at-test-time"><a href="#Batch-Norm-at-test-time" class="headerlink" title="Batch Norm at test time"></a>Batch Norm at test time</h3><p>训练过程中，Batch Norm是对单个mini-batch进行操作的，但在测试过程中，如果是单个样本，该如何使用Batch Norm进行处理呢？</p>
+<p>首先，回顾一下训练过程中Batch Norm的主要过程：</p>
+<p>$$\mu=\frac1m\sum_iz^{(i)}$$</p>
+<p>$$\sigma^2=\frac1m\sum_i(z^{(i)}-\mu)^2$$</p>
+<p>$$z_{norm}^{(i)}=\frac{z^{(i)}-\mu}{\sqrt{\sigma^2+\varepsilon}}$$</p>
+<p>$$\tilde z^{(i)}=\gamma\cdot z^{(i)}_{norm}+\beta$$</p>
+<p>其中，$\mu$和$\sigma^2$是对单个mini-batch中所有m个样本求得的。在测试过程中，如果只有一个样本，求其均值和方差是没有意义的，就需要对$\mu$和$\sigma^2$进行估计。估计的方法有很多，理论上我们可以将所有训练集放入最终的神经网络模型中，然后将每个隐藏层计算得到的$\mu^{[l]}$和$\sigma^{2[l]}$直接作为测试过程的$\mu$和$\sigma^2$来使用。但是，实际应用中一般不使用这种方法，而是使用我们之前介绍过的指数加权平均（exponentially weighted average）的方法来预测测试过程单个样本的$\mu$和$\sigma^2$。</p>
+<p>指数加权平均的做法很简单，对于第$l$层隐藏层，考虑所有mini-batch在该隐藏层下的$\mu^{[l]}$和$\sigma^{2[l]}$，然后用指数加权平均的方式来预测得到当前单个样本的$\mu^{[l]}$和$\sigma^{2[l]}$。这样就实现了对测试过程单个样本的均值和方差估计。最后，再利用训练过程得到的$\gamma$和$\beta$值计算出各层的$\tilde z^{(i)}$值。</p>
+<h3 id="Softmax-Regression"><a href="#Softmax-Regression" class="headerlink" title="Softmax Regression"></a>Softmax Regression</h3><p>目前我们介绍的都是二分类问题，神经网络输出层只有一个神经元，表示预测输出$\hat y$是正类的概率$P(y=1|x)$，$\hat y&gt;0.5$则判断为正类，$\hat y&lt;0.5$则判断为负类。</p>
+<p>对于多分类问题，用C表示种类个数，神经网络中输出层就有C个神经元，即$n^{[L]}=C$。其中，每个神经元的输出依次对应属于该类的概率，即$P(y=c|x)$。为了处理多分类问题，我们一般使用Softmax回归模型。Softmax回归模型输出层的激活函数如下所示：</p>
+<p>$$z^{[L]}=W^{[L]}a^{[L-1]}+b^{[L]}$$</p>
+<p>$$a^{[L]}_i=\frac{e^{z^{[L]}<em>i}}{\sum</em>{i=1}^Ce^{z^{[L]}_i}}$$</p>
+<p>输出层每个神经元的输出$a^{[L]}_i$对应属于该类的概率，满足：</p>
+<p>$$\sum_{i=1}^Ca^{[L]}_i=1$$</p>
+<p>所有的$a^{[L]}_i$，即$\hat y$，维度为(C, 1)。</p>
+<p>下面给出几个简单的线性多分类的例子：</p>
+<p><img src="http://img.blog.csdn.net/20171109212043740?" alt="这里写图片描述"></p>
+<p>如果使用神经网络，特别是深层神经网络，可以得到更复杂、更精确的非线性模型。</p>
+<h3 id="Training-a-softmax-classifier"><a href="#Training-a-softmax-classifier" class="headerlink" title="Training a softmax classifier"></a>Training a softmax classifier</h3><p>Softmax classifier的训练过程与我们之前介绍的二元分类问题有所不同。先来看一下softmax classifier的loss function。举例来说，假如C=4，某个样本的预测输出$\hat y$和真实输出$y$为：</p>
+<p>$$<br> \hat y=\left[<br> \begin{matrix}<br>   0.3 \<br>   0.2 \<br>   0.1 \<br>   0.4<br>  \end{matrix}<br>  \right]<br>$$</p>
+<p>$$<br> y=\left[<br> \begin{matrix}<br>   0 \<br>   1 \<br>   0 \<br>   0<br>  \end{matrix}<br>  \right]<br>$$</p>
+<p>从$\hat y$值来看，$P(y=4|x)=0.4$，概率最大，而真实样本属于第2类，因此该预测效果不佳。我们定义softmax classifier的loss function为：</p>
+<p>$$L(\hat y,y)=-\sum_{j=1}^4y_j\cdot log\ \hat y_j$$</p>
+<p>然而，由于只有当$j=2$时，$y_2=1$，其它情况下，$y_j=0$。所以，上式中的$L(\hat y,y)$可以简化为：</p>
+<p>$$L(\hat y,y)=-y_2\cdot log\ \hat y_2=-log\ \hat y_2$$</p>
+<p>要让$L(\hat y,y)$更小，就应该让$\hat y_2$越大越好。$\hat y_2$反映的是概率，完全符合我们之前的定义。</p>
+<p>所有m个样本的cost function为：</p>
+<p>$$J=\frac1m\sum_{i=1}^mL(\hat y,y)$$</p>
+<p>其预测输出向量$A^{[L]}$即$\hat Y$的维度为(4, m)。</p>
+<p>softmax classifier的反向传播过程仍然使用梯度下降算法，其推导过程与二元分类有一点点不一样。因为只有输出层的激活函数不一样，我们先推导$dZ^{[L]}$：</p>
+<p>$$da^{[L]}=-\frac{1}{a^{[L]}}$$</p>
+<p>$$\frac{\partial a^{[L]}}{\partial z^{[L]}}=\frac{\partial}{\partial z^{[L]}}\cdot (\frac{e^{z^{[L]}_i}}{\sum_i^Ce^{z^{[L]}_i}})=a^{[L]}\cdot (1-a^{[L]})$$</p>
+<p>$$dz^{[L]}=da^{[L]}\cdot \frac{\partial a^{[L]}}{\partial z^{[L]}}=a^{[L]}-1=a^{[L]}-y$$</p>
+<p>对于所有m个训练样本：</p>
+<p>$$dZ^{[L]}=A^{[L]}-Y$$</p>
+<p>可见$dZ^{[L]}$的表达式与二元分类结果是一致的，虽然推导过程不太一样。然后就可以继续进行反向传播过程的梯度下降算法了，推导过程与二元分类神经网络完全一致。</p>
+<h3 id="Deep-learning-frameworks"><a href="#Deep-learning-frameworks" class="headerlink" title="Deep learning frameworks"></a>Deep learning frameworks</h3><p>深度学习框架有很多，例如：</p>
+<ul>
+<li><p><strong>Caffe/Caffe2</strong></p>
+</li>
+<li><p><strong>CNTK</strong></p>
+</li>
+<li><p><strong>DL4J</strong></p>
+</li>
+<li><p><strong>Keras</strong></p>
+</li>
+<li><p><strong>Lasagne</strong></p>
+</li>
+<li><p><strong>mxnet</strong></p>
+</li>
+<li><p><strong>PaddlePaddle</strong></p>
+</li>
+<li><p><strong>TensorFlow</strong></p>
+</li>
+<li><p><strong>Theano</strong></p>
+</li>
+<li><p><strong>Torch</strong></p>
+</li>
+</ul>
+<p>一般选择深度学习框架的基本准则是：</p>
+<ul>
+<li><p><strong>Ease of programming(development and deployment)</strong></p>
+</li>
+<li><p><strong>Running speed</strong></p>
+</li>
+<li><p><strong>Truly open(open source with good governance)</strong></p>
+</li>
+</ul>
+<p>实际应用中，我们应该根据自己的需求选择最合适的深度学习框架。</p>
+<h3 id="TensorFlow"><a href="#TensorFlow" class="headerlink" title="TensorFlow"></a>TensorFlow</h3><p>这里简单介绍一下最近几年比较火的一个深度学习框架：TensorFlow。</p>
+<p>举个例子来说明，例如cost function是参数w的函数：</p>
+<p>$$J=w^2-10w+25$$</p>
+<p>如果使用TensorFlow对cost function进行优化，求出最小值对应的w，程序如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"></span><br><span class="line">w = tf.Variable(<span class="number">0</span>,dtype=tf.float32)</span><br><span class="line"><span class="comment">#cost = tf.add(tf.add(w**2,tf.multiply(-10,w)),25)</span></span><br><span class="line">cost = w**<span class="number">2</span> - <span class="number">10</span>*w +<span class="number">25</span></span><br><span class="line">train = tf.train.GradientDescentOptimizer(<span class="number">0.01</span>).minimize(cost)</span><br><span class="line"></span><br><span class="line">init = tf.global_variables_initializer()</span><br><span class="line">session = tf.Session()</span><br><span class="line">session.run(init)</span><br><span class="line">print(session.run(w))</span><br></pre></td></tr></table></figure>
+<p>>&gt;0.0</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">session.run(train)</span><br><span class="line">print(session.run(w))</span><br></pre></td></tr></table></figure>
+<p>>&gt;0.1</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1000</span>):</span><br><span class="line">	session.run(train)</span><br><span class="line">print(session.run(w))</span><br></pre></td></tr></table></figure>
+<p>>&gt;4.99999</p>
+<p>TensorFlow框架内可以直接调用梯度下降优化算法，不需要我们自己再写程序了，大大提高了效率。在运行1000次梯度下降算法后，w的解为4.99999，已经非常接近w的最优值5了。</p>
+<p>针对上面这个例子，如果对w前的系数用变量x来代替，程序如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"></span><br><span class="line">cofficients = np.array([[<span class="number">1.</span>],[<span class="number">-10.</span>],[<span class="number">25.</span>]])</span><br><span class="line"></span><br><span class="line">w = tf.Variable(<span class="number">0</span>,dtype=tf.float32)</span><br><span class="line">x = tf.placeholder(tf.float32,[<span class="number">3</span>,<span class="number">1</span>])</span><br><span class="line"><span class="comment">#cost = tf.add(tf.add(w**2,tf.multiply(-10,w)),25)</span></span><br><span class="line"><span class="comment">#cost = w**2 - 10*w +25</span></span><br><span class="line">cost = x[<span class="number">0</span>][<span class="number">0</span>]*w**<span class="number">2</span> + x[<span class="number">1</span>][<span class="number">0</span>]*w + x[<span class="number">2</span>][<span class="number">0</span>]</span><br><span class="line">train = tf.train.GradientDescentOptimizer(<span class="number">0.01</span>).minimize(cost)</span><br><span class="line"></span><br><span class="line">init = tf.global_variables_initializer()</span><br><span class="line">session = tf.Session()</span><br><span class="line">session.run(init)</span><br><span class="line">print(session.run(w))</span><br></pre></td></tr></table></figure>
+<p>>&gt;0.0</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">session.run(train, feed_dict=(x:coefficients))</span><br><span class="line">print(session.run(w))</span><br></pre></td></tr></table></figure>
+<p>>&gt;0.1</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1000</span>):</span><br><span class="line">	session.run(train, feed_dict=(x:coefficients))</span><br><span class="line">print(session.run(w))</span><br></pre></td></tr></table></figure>
+<p>>&gt;4.99999</p>
+<p>结果跟之前是一样的。除此之外，我们还可以更改x即cofficients的值，而得到不同的优化结果w。</p>
+<p>另外，上段程序中的：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">session = tf.Session()</span><br><span class="line">session.run(init)</span><br><span class="line">print(session.run(w))</span><br></pre></td></tr></table></figure>
+<p>有另外一种写法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> session:</span><br><span class="line">	session.run(init)</span><br><span class="line">	print(session.run(w))</span><br></pre></td></tr></table></figure>
+<p>TensorFlow的最大优点就是采用数据流图（data flow graphs）来进行数值运算。图中的节点（Nodes）表示数学操作，图中的线（edges）则表示在节点间相互联系的多维数据数组，即张量（tensor）。而且它灵活的架构让你可以在多种平台上展开计算，例如台式计算机中的一个或多个CPU（或GPU），服务器，移动设备等等。</p>
+<p>关于TensorFlow更多的原理和编程技巧这里就不在赘述了，感兴趣的朋友可以关注更详细的TensorFlow相关文档。</p>
+
+      
+    </div>
+    
+    
+    
+	
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="红色石头 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信公众号，了解更多AI资源！</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="红色石头 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="红色石头 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    红色石头
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://redstonewill.github.io/2018/03/29/41/" title="Coursera吴恩达《优化深度神经网络》课程笔记（3）-- 超参数调试、Batch正则化和编程框架">https://redstonewill.github.io/2018/03/29/41/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/笔记/" rel="tag"><i class="fa fa-tag"></i> 笔记</a>
+          
+            <a href="/tags/深度学习/" rel="tag"><i class="fa fa-tag"></i> 深度学习</a>
+          
+            <a href="/tags/神经网络/" rel="tag"><i class="fa fa-tag"></i> 神经网络</a>
+          
+            <a href="/tags/Coursera/" rel="tag"><i class="fa fa-tag"></i> Coursera</a>
+          
+            <a href="/tags/吴恩达/" rel="tag"><i class="fa fa-tag"></i> 吴恩达</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/29/40/" rel="next" title="Coursera吴恩达《优化深度神经网络》课程笔记（2）-- 优化算法">
+                <i class="fa fa-chevron-left"></i> Coursera吴恩达《优化深度神经网络》课程笔记（2）-- 优化算法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_inline_share_toolbox">
+  <script type = "text/javascript" src = "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5aaa217593e0eff1" async = "async" ></script>
+</div>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNDg0MS8xMTM3OA=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/blog-logo.jpg"
+                alt="红色石头" />
+            
+              <p class="site-author-name" itemprop="name">红色石头</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/RedstoneWill" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://blog.csdn.net/red_stone1" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-contao"></i>CSDN</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/red_stone_wl/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/redstonewill" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:redstonewill@hotmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Tuning-Process"><span class="nav-number">1.</span> <span class="nav-text">Tuning Process</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Using-an-appropriate-scale-to-pick-hyperparameters"><span class="nav-number">2.</span> <span class="nav-text">Using an appropriate scale to pick hyperparameters</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hyperparameters-tuning-in-practice-Pandas-vs-Caviar"><span class="nav-number">3.</span> <span class="nav-text">Hyperparameters tuning in practice: Pandas vs. Caviar</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Normalizing-activations-in-a-network"><span class="nav-number">4.</span> <span class="nav-text">Normalizing activations in a network</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fitting-Batch-Norm-into-a-neural-network"><span class="nav-number">5.</span> <span class="nav-text">Fitting Batch Norm into a neural network</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Why-does-Batch-Norm-work？"><span class="nav-number">6.</span> <span class="nav-text">Why does Batch Norm work？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Batch-Norm-at-test-time"><span class="nav-number">7.</span> <span class="nav-text">Batch Norm at test time</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Softmax-Regression"><span class="nav-number">8.</span> <span class="nav-text">Softmax Regression</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Training-a-softmax-classifier"><span class="nav-number">9.</span> <span class="nav-text">Training a softmax classifier</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deep-learning-frameworks"><span class="nav-number">10.</span> <span class="nav-text">Deep learning frameworks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TensorFlow"><span class="nav-number">11.</span> <span class="nav-text">TensorFlow</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">红色石头</span>
+
+  
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_pv"></span>
+</span>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共142.7k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("GPinP9RLLAEN4cQw3GyGH1i6-gzGzoHsz", "P23pTYCEXWROAMFxuaSGYGIa");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
