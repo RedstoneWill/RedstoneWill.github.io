@@ -107,7 +107,7 @@
 <meta property="og:image" content="http://img.blog.csdn.net/20171102090304433?">
 <meta property="og:image" content="http://img.blog.csdn.net/20171108204845005?">
 <meta property="og:image" content="http://img.blog.csdn.net/20171109212043740?">
-<meta property="og:updated_time" content="2018-03-29T13:50:14.502Z">
+<meta property="og:updated_time" content="2018-03-29T13:55:23.340Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Coursera吴恩达《优化深度神经网络》课程笔记（3）-- 超参数调试、Batch正则化和编程框架">
 <meta name="twitter:image" content="http://img.blog.csdn.net/20171031230142816?imageView/2/w/500/q/100">
@@ -438,7 +438,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  5,755
+                  5,758
                 </span>
               
 
@@ -520,7 +520,7 @@
 <p>上式中，$\gamma$和$\beta$是learnable parameters，类似于W和b一样，可以通过梯度下降等算法求得。这里，$\gamma$和$\beta$的作用是让$\tilde z^{(i)}$的均值和方差为任意值，只需调整其值就可以了。例如，令：</p>
 <p>$$\gamma=\sqrt{\sigma^2+\varepsilon},\ \ \beta=u$$</p>
 <p>则$\tilde z^{(i)}=z^{(i)}$，即identity function。可见，设置$\gamma$和$\beta$为不同的值，可以得到任意的均值和方差。</p>
-<p>这样，通过Batch Normalization，对隐藏层的各个$z^{<a href="i">l</a>}$进行标准化处理，得到$\tilde z^{<a href="i">l</a>}$，替代$z^{<a href="i">l</a>}$。</p>
+<p>这样，通过Batch Normalization，对隐藏层的各个$z^{[l](i)}$进行标准化处理，得到$\tilde z^{[l](i)}$，替代$z^{[l](i)}$。</p>
 <p>值得注意的是，输入的标准化处理Normalizing inputs和隐藏层的标准化处理Batch Normalization是有区别的。Normalizing inputs使所有输入的均值为0，方差为1。而Batch Normalization可使各隐藏层输入的均值和方差为任意值。实际上，从激活函数的角度来说，如果各隐藏层的输入均值在靠近0的区域即处于激活函数的线性区域，这样不利于训练好的非线性神经网络，得到的模型效果也不会太好。这也解释了为什么需要用$\gamma$和$\beta$来对$z^{<a href="i">l</a>}$作进一步处理。</p>
 <h3 id="Fitting-Batch-Norm-into-a-neural-network"><a href="#Fitting-Batch-Norm-into-a-neural-network" class="headerlink" title="Fitting Batch Norm into a neural network"></a>Fitting Batch Norm into a neural network</h3><p>我们已经知道了如何对某单一隐藏层的所有神经元进行Batch Norm，接下来将研究如何把Bath Norm应用到整个神经网络中。</p>
 <p>对于L层神经网络，经过Batch Norm的作用，整体流程如下：</p>
