@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="googlead9dc5c68da2c41a" />
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="baV2kbPkNW" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/favicon.ico?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="笔记,深度学习,神经网络,Coursera,吴恩达," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="红色石头的机器学习之路" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="keywords" content="笔记,深度学习,神经网络,Coursera,吴恩达">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Coursera吴恩达《优化深度神经网络》课程笔记（2）-- 优化算法">
+<meta property="og:url" content="https://redstonewill.github.io/2018/03/29/40/index.html">
+<meta property="og:site_name" content="红色石头的机器学习之路">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://img.blog.csdn.net/20171028232352807?imageView/2/w/500/q/100">
+<meta property="og:image" content="http://img.blog.csdn.net/20171026113219156?">
+<meta property="og:image" content="http://img.blog.csdn.net/20171026135131370?">
+<meta property="og:image" content="http://img.blog.csdn.net/20171026140312033?">
+<meta property="og:image" content="http://img.blog.csdn.net/20171026145118050?">
+<meta property="og:image" content="http://img.blog.csdn.net/20171027142418881?">
+<meta property="og:image" content="http://img.blog.csdn.net/20171027150509634?">
+<meta property="og:image" content="http://img.blog.csdn.net/20171027155944527?">
+<meta property="og:image" content="http://img.blog.csdn.net/20171028095447301?">
+<meta property="og:image" content="http://img.blog.csdn.net/20171028142838569?">
+<meta property="og:image" content="http://img.blog.csdn.net/20171028163526337?">
+<meta property="og:image" content="http://img.blog.csdn.net/20171028212226321?">
+<meta property="og:image" content="http://img.blog.csdn.net/20171028232352807?">
+<meta property="og:image" content="http://img.blog.csdn.net/20171029094627014?">
+<meta property="og:updated_time" content="2018-03-29T13:18:36.308Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Coursera吴恩达《优化深度神经网络》课程笔记（2）-- 优化算法">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20171028232352807?imageView/2/w/500/q/100">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'ZFJHIGA2DV',
+      apiKey: 'e3baeea7f059baffe169cc0eec8adacf',
+      indexName: 'redstonewillblog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"输入关键词进行搜索","hits_empty":"找不到关于 ${query} 的文章","hits_stats":"共找到 ${hits} 篇文章，耗时${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://redstonewill.github.io/2018/03/29/40/"/>
+
+
+
+
+
+  <title>Coursera吴恩达《优化深度神经网络》课程笔记（2）-- 优化算法 | 红色石头的机器学习之路</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	
+	<a href="https://github.com/RedstoneWill" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+	
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">红色石头的机器学习之路</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">公众号ID：redstonewill</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://redstonewill.github.io/2018/03/29/40/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="红色石头">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="红色石头的机器学习之路">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Coursera吴恩达《优化深度神经网络》课程笔记（2）-- 优化算法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-29T20:58:17+08:00">
+                2018-03-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/深度学习/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/深度学习/吴恩达优化深度神经网络/" itemprop="url" rel="index">
+                    <span itemprop="name">吴恩达优化深度神经网络</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/03/29/40/" class="leancloud_visitors" data-flag-title="Coursera吴恩达《优化深度神经网络》课程笔记（2）-- 优化算法">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4,922
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://img.blog.csdn.net/20171028232352807?imageView/2/w/500/q/100" alt="这里写图片描述"><br><a id="more"></a></p>
+<blockquote>
+<p>我的CSDN博客地址：<a href="http://blog.csdn.net/red_stone1" target="_blank" rel="noopener">红色石头的专栏</a><br>我的知乎主页：<a href="https://www.zhihu.com/people/red_stone_wl" target="_blank" rel="noopener">红色石头</a><br>我的微博：<a href="https://weibo.com/6479023696/profile?topnav=1&amp;wvr=6&amp;is_all=1" target="_blank" rel="noopener">RedstoneWill的微博</a><br>我的GitHub：<a href="https://github.com/RedstoneWill" target="_blank" rel="noopener">RedstoneWill的GitHub</a><br>我的微信公众号：红色石头的机器学习之路（ID：redstonewill）<br>欢迎大家关注我！共同学习，共同进步！</p>
+</blockquote>
+<p>上节课我们主要介绍了如何建立一个实用的深度学习神经网络。包括Train/Dev/Test sets的比例选择，Bias和Variance的概念和区别：Bias对应欠拟合，Variance对应过拟合。接着，我们介绍了防止过拟合的两种方法：L2 regularization和Dropout。然后，介绍了如何进行规范化输入，以加快梯度下降速度和精度。然后，我们介绍了梯度消失和梯度爆炸的概念和危害，并提出了如何使用梯度初始化来降低这种风险。最后，我们介绍了梯度检查，来验证梯度下降算法是否正确。本节课，我们将继续讨论深度神经网络中的一些优化算法，通过使用这些技巧和方法来提高神经网络的训练速度和精度。</p>
+<h3 id="Mini-batch-gradient-descent"><a href="#Mini-batch-gradient-descent" class="headerlink" title="Mini-batch gradient descent"></a>Mini-batch gradient descent</h3><p>之前我们介绍的神经网络训练过程是对所有m个样本，称为batch，通过向量化计算方式，同时进行的。如果m很大，例如达到百万数量级，训练速度往往会很慢，因为每次迭代都要对所有样本进行进行求和运算和矩阵运算。我们将这种梯度下降算法称为Batch Gradient Descent。</p>
+<p>为了解决这一问题，我们可以把m个训练样本分成若干个子集，称为mini-batches，这样每个子集包含的数据量就小了，例如只有1000，然后每次在单一子集上进行神经网络训练，速度就会大大提高。这种梯度下降算法叫做Mini-batch Gradient Descent。</p>
+<p>假设总的训练样本个数m=5000000，其维度为$(n_x,m)$。将其分成5000个子集，每个mini-batch含有1000个样本。我们将每个mini-batch记为$X^{\{t\}}$，其维度为$(n_x,1000)$。相应的每个mini-batch的输出记为$Y^{\{t\}}$，其维度为$(1,1000)$，且$t=1,2,\cdots,5000$。</p>
+<p>这里顺便总结一下我们遇到的神经网络中几类字母的上标含义：</p>
+<ul>
+<li><p><strong>$X^{(i)}$ ：第i个样本</strong></p>
+</li>
+<li><p><strong>$Z^{[l]}$：神经网络第$l$层网络的线性输出</strong></p>
+</li>
+<li><p><strong>$X^{\{t\}},Y^{\{t\}}$：第t组mini-batch</strong></p>
+</li>
+</ul>
+<p>Mini-batches Gradient Descent的实现过程是先将总的训练样本分成T个子集（mini-batches），然后对每个mini-batch进行神经网络训练，包括Forward Propagation，Compute Cost Function，Backward Propagation，循环至T个mini-batch都训练完毕。</p>
+<p>$for\ \ t=1,\cdots,T\ \ \{$</p>
+<p>$\ \ \ \ Forward\ Propagation$</p>
+<p>$\ \ \ \ Compute Cost Function$</p>
+<p>$\ \ \ \ Backward Propagation$</p>
+<p>$\ \ \ \ W:=W-\alpha\cdot dW$</p>
+<p>$\ \ \ \ b:=b-\alpha\cdot db$</p>
+<p>$\}$</p>
+<p>经过T次循环之后，所有m个训练样本都进行了梯度下降计算。这个过程，我们称之为经历了一个epoch。对于Batch Gradient Descent而言，一个epoch只进行一次梯度下降算法；而Mini-Batches Gradient Descent，一个epoch会进行T次梯度下降算法。</p>
+<p>值得一提的是，对于Mini-Batches Gradient Descent，可以进行多次epoch训练。而且，每次epoch，最好是将总体训练数据重新打乱、重新分成T组mini-batches，这样有利于训练出最佳的神经网络模型。</p>
+<h3 id="Understanding-mini-batch-gradient-descent"><a href="#Understanding-mini-batch-gradient-descent" class="headerlink" title="Understanding mini-batch gradient descent"></a>Understanding mini-batch gradient descent</h3><p>Batch gradient descent和Mini-batch gradient descent的cost曲线如下图所示：</p>
+<p><img src="http://img.blog.csdn.net/20171026113219156?" alt="这里写图片描述"></p>
+<p>对于一般的神经网络模型，使用Batch gradient descent，随着迭代次数增加，cost是不断减小的。然而，使用Mini-batch gradient descent，随着在不同的mini-batch上迭代训练，其cost不是单调下降，而是受类似noise的影响，出现振荡。但整体的趋势是下降的，最终也能得到较低的cost值。</p>
+<p>之所以出现细微振荡的原因是不同的mini-batch之间是有差异的。例如可能第一个子集$(X^1,Y^1)$是好的子集，而第二个子集$(X^2,Y^2)$包含了一些噪声noise。出现细微振荡是正常的。</p>
+<p>如何选择每个mini-batch的大小，即包含的样本个数呢？有两个极端：如果mini-batch size=m，即为Batch gradient descent，只包含一个子集为$(X^1,Y^1)=(X,Y)$；如果mini-batch size=1，即为Stachastic gradient descent，每个样本就是一个子集$(X^1,Y^1)=(x^{(i)},y^{(i)})$，共有m个子集。</p>
+<p>我们来比较一下Batch gradient descent和Stachastic gradient descent的梯度下降曲线。如下图所示，蓝色的线代表Batch gradient descent，紫色的线代表Stachastic gradient descent。Batch gradient descent会比较平稳地接近全局最小值，但是因为使用了所有m个样本，每次前进的速度有些慢。Stachastic gradient descent每次前进速度很快，但是路线曲折，有较大的振荡，最终会在最小值附近来回波动，难以真正达到最小值处。而且在数值处理上就不能使用向量化的方法来提高运算速度。</p>
+<p><img src="http://img.blog.csdn.net/20171026135131370?" alt="这里写图片描述"></p>
+<p>实际使用中，mini-batch size不能设置得太大（Batch gradient descent），也不能设置得太小（Stachastic gradient descent）。这样，相当于结合了Batch gradient descent和Stachastic gradient descent各自的优点，既能使用向量化优化算法，又能叫快速地找到最小值。mini-batch gradient descent的梯度下降曲线如下图绿色所示，每次前进速度较快，且振荡较小，基本能接近全局最小值。</p>
+<p><img src="http://img.blog.csdn.net/20171026140312033?" alt="这里写图片描述"></p>
+<p>一般来说，如果总体样本数量m不太大时，例如$m\leq2000$，建议直接使用Batch gradient descent。如果总体样本数量m很大时，建议将样本分成许多mini-batches。推荐常用的mini-batch size为64,128,256,512。这些都是2的幂。之所以这样设置的原因是计算机存储数据一般是2的幂，这样设置可以提高运算速度。</p>
+<h3 id="Exponentially-weighted-averages"><a href="#Exponentially-weighted-averages" class="headerlink" title="Exponentially weighted averages"></a>Exponentially weighted averages</h3><p>该部分我们将介绍指数加权平均（Exponentially weighted averages）的概念。</p>
+<p>举个例子，记录半年内伦敦市的气温变化，并在二维平面上绘制出来，如下图所示：</p>
+<p><img src="http://img.blog.csdn.net/20171026145118050?" alt="这里写图片描述"></p>
+<p>看上去，温度数据似乎有noise，而且抖动较大。如果我们希望看到半年内气温的整体变化趋势，可以通过移动平均（moving average）的方法来对每天气温进行平滑处理。</p>
+<p>例如我们可以设$V_0=0$，当成第0天的气温值。</p>
+<p>第一天的气温与第0天的气温有关：</p>
+<p>$$V_1=0.9V_0+0.1\theta_1$$</p>
+<p>第二天的气温与第一天的气温有关：</p>
+<p>$$\begin{eqnarray}V_2<br>&amp;=&amp;0.9V_1+0.1\theta_2\<br>&amp;=&amp;0.9(0.9V_0+0.1\theta_1)+0.1\theta_2\<br>&amp;=&amp;0.9^2V_0+0.9\cdot0.1\theta_1+0.1\theta_2<br>\end{eqnarray}$$</p>
+<p>第三天的气温与第二天的气温有关：</p>
+<p>$$\begin{eqnarray}V_3<br>&amp;=&amp;0.9V_2+0.1\theta_3\<br>&amp;=&amp;0.9(0.9^2V_0+0.9\cdot0.1\theta_1+0.1\theta_2)+0.1\theta_3\<br>&amp;=&amp;0.9^3V_0+0.9^2\cdot 0.1\theta_1+0.9\cdot 0.1\theta_2+0.1\theta_3<br>\end{eqnarray}$$</p>
+<p>即第t天与第t-1天的气温迭代关系为：</p>
+<p>$$\begin{eqnarray}V_t<br>&amp;=&amp;0.9V_{t-1}+0.1\theta_t\<br>&amp;=&amp;0.9^tV_0+0.9^{t-1}\cdot0.1\theta_1+0.9^{t-2}\cdot 0.1\theta_2+\cdots+0.9\cdot0.1\theta_{t-1}+0.1\theta_t<br>\end{eqnarray}$$</p>
+<p>经过移动平均处理得到的气温如下图红色曲线所示：</p>
+<p><img src="http://img.blog.csdn.net/20171027142418881?" alt="这里写图片描述"></p>
+<p>这种滑动平均算法称为指数加权平均（exponentially weighted average）。根据之前的推导公式，其一般形式为：</p>
+<p>$$V_t=\beta V_{t-1}+(1-\beta)\theta_t$$</p>
+<p>上面的例子中，$\beta=0.9$。$\beta$值决定了指数加权平均的天数，近似表示为：</p>
+<p>$$\frac{1}{1-\beta}$$</p>
+<p>例如，当$\beta=0.9$，则$\frac{1}{1-\beta}=10$，表示将前10天进行指数加权平均。当$\beta=0.98$，则$\frac{1}{1-\beta}=50$，表示将前50天进行指数加权平均。$\beta$值越大，则指数加权平均的天数越多，平均后的趋势线就越平缓，但是同时也会向右平移。下图绿色曲线和黄色曲线分别表示了$\beta=0.98$和$\beta=0.5$时，指数加权平均的结果。</p>
+<p><img src="http://img.blog.csdn.net/20171027150509634?" alt="这里写图片描述"></p>
+<p>这里简单解释一下公式$\frac{1}{1-\beta}$是怎么来的。准确来说，指数加权平均算法跟之前所有天的数值都有关系，根据之前的推导公式就能看出。但是指数是衰减的，一般认为衰减到$\frac1e$就可以忽略不计了。因此，根据之前的推导公式，我们只要证明</p>
+<p>$$\beta^{\frac{1}{1-\beta}}=\frac1e$$</p>
+<p>就好了。</p>
+<p>令$\frac{1}{1-\beta}=N$，$N&gt;0$，则$\beta=1-\frac{1}{N}$，$\frac1N&lt;1$。即证明转化为：</p>
+<p>$$(1-\frac1N)^N=\frac1e$$</p>
+<p>显然，当$N&gt;&gt;0$时，上述等式是近似成立的。</p>
+<p>至此，简单解释了为什么指数加权平均的天数的计算公式为$\frac{1}{1-\beta}$。</p>
+<h3 id="Understanding-exponetially-weighted-averages"><a href="#Understanding-exponetially-weighted-averages" class="headerlink" title="Understanding exponetially weighted averages"></a>Understanding exponetially weighted averages</h3><p>我们将指数加权平均公式的一般形式写下来：</p>
+<p>$$\begin{eqnarray}V_t<br>&amp;=&amp;\beta V_{t-1}+(1-\beta)\theta_t\<br>&amp;=&amp;(1-\beta)\theta_t+(1-\beta)\cdot\beta\cdot\theta_{t-1}+(1-\beta)\cdot \beta^2\cdot\theta_{t-2}+\cdots\<br>&amp;&amp;+(1-\beta)\cdot \beta^{t-1}\cdot \theta_1+\beta^t\cdot V_0<br>\end{eqnarray}$$</p>
+<p>观察上面这个式子，$\theta_t,\theta_{t-1},\theta_{t-2},\cdots,\theta_1$是原始数据值，$(1-\beta),(1-\beta)\beta,(1-\beta)\beta^2,\cdots,(1-\beta)\beta^{t-1}$是类似指数曲线，从右向左，呈指数下降的。$V_t$的值就是这两个子式的点乘，将原始数据值与衰减指数点乘，相当于做了指数衰减，离得越近，影响越大，离得越远，影响越小，衰减越厉害。</p>
+<p><img src="http://img.blog.csdn.net/20171027155944527?" alt="这里写图片描述"></p>
+<p>我们已经知道了指数加权平均的递推公式。实际应用中，为了减少内存的使用，我们可以使用这样的语句来实现指数加权平均算法：</p>
+<p>$V_{\theta}=0$</p>
+<p>$Repeat\ \{$</p>
+<p>$\ \ \ \ Get\ next\ \theta_t$</p>
+<p>$\ \ \ \ V_{\theta}:=\beta V_{\theta}+(1-\beta)\theta_t$</p>
+<p>$\}$</p>
+<h3 id="Bias-correction-in-exponentially-weighted-average"><a href="#Bias-correction-in-exponentially-weighted-average" class="headerlink" title="Bias correction in exponentially weighted average"></a>Bias correction in exponentially weighted average</h3><p>上文中提到当$\beta=0.98$时，指数加权平均结果如下图绿色曲线所示。但是实际上，真实曲线如紫色曲线所示。</p>
+<p><img src="http://img.blog.csdn.net/20171028095447301?" alt="这里写图片描述"></p>
+<p>我们注意到，紫色曲线与绿色曲线的区别是，紫色曲线开始的时候相对较低一些。这是因为开始时我们设置$V_0=0$，所以初始值会相对小一些，直到后面受前面的影响渐渐变小，趋于正常。</p>
+<p>修正这种问题的方法是进行偏移校正（bias correction），即在每次计算完$V_t$后，对$V_t$进行下式处理：</p>
+<p>$$\frac{V_t}{1-\beta^t}$$</p>
+<p>在刚开始的时候，t比较小，$(1-\beta^t)&lt;1$，这样就将$V_t$修正得更大一些，效果是把紫色曲线开始部分向上提升一些，与绿色曲线接近重合。随着t增大，$(1-\beta^t)\approx1$，$V_t$基本不变，紫色曲线与绿色曲线依然重合。这样就实现了简单的偏移校正，得到我们希望的绿色曲线。</p>
+<p>值得一提的是，机器学习中，偏移校正并不是必须的。因为，在迭代一次次数后（t较大），$V_t$受初始值影响微乎其微，紫色曲线与绿色曲线基本重合。所以，一般可以忽略初始迭代过程，等到一定迭代之后再取值，这样就不需要进行偏移校正了。</p>
+<h3 id="Gradient-descent-with-momentum"><a href="#Gradient-descent-with-momentum" class="headerlink" title="Gradient descent with momentum"></a>Gradient descent with momentum</h3><p>该部分将介绍动量梯度下降算法，其速度要比传统的梯度下降算法快很多。做法是在每次训练时，对梯度进行指数加权平均处理，然后用得到的梯度值更新权重W和常数项b。下面介绍具体的实现过程。</p>
+<p><img src="http://img.blog.csdn.net/20171028142838569?" alt="这里写图片描述"></p>
+<p>原始的梯度下降算法如上图蓝色折线所示。在梯度下降过程中，梯度下降的振荡较大，尤其对于W、b之间数值范围差别较大的情况。此时每一点处的梯度只与当前方向有关，产生类似折线的效果，前进缓慢。而如果对梯度进行指数加权平均，这样使当前梯度不仅与当前方向有关，还与之前的方向有关，这样处理让梯度前进方向更加平滑，减少振荡，能够更快地到达最小值处。</p>
+<p>权重W和常数项b的指数加权平均表达式如下：</p>
+<p>$$V_{dW}=\beta\cdot V_{dW}+(1-\beta)\cdot dW$$</p>
+<p>$$V_{db}=\beta\cdot V_{db}+(1-\beta)\cdot db$$</p>
+<p>从动量的角度来看，以权重W为例，$V_{dW}$可以成速度V，$dW$可以看成是加速度a。指数加权平均实际上是计算当前的速度，当前速度由之前的速度和现在的加速度共同影响。而$\beta&lt;1$，又能限制速度$V_{dW}$过大。也就是说，当前的速度是渐变的，而不是瞬变的，是动量的过程。这保证了梯度下降的平稳性和准确性，减少振荡，较快地达到最小值处。</p>
+<p>动量梯度下降算法的过程如下：</p>
+<p>$On\ iteration\ t:$</p>
+<p>$\ \ \ \ Compute\ dW,\ db\ on\ the\ current\ mini-batch$</p>
+<p>$\ \ \ \ V_{dW}=\beta V_{dW}+(1-\beta)dW$</p>
+<p>$\ \ \ \ V_{db}=\beta V_{db}+(1-\beta)db$</p>
+<p>$\ \ \ \ W=W-\alpha V_{dW},\ b=b-\alpha V_{db}$</p>
+<p>初始时，令$V_{dW}=0,V_{db}=0$。一般设置$\beta=0.9$，即指数加权平均前10天的数据，实际应用效果较好。</p>
+<p>另外，关于偏移校正，可以不使用。因为经过10次迭代后，随着滑动平均的过程，偏移情况会逐渐消失。</p>
+<p>补充一下，在其它文献资料中，动量梯度下降还有另外一种写法：</p>
+<p>$$V_{dW}=\beta V_{dW}+dW$$</p>
+<p>$$V_{db}=\beta V_{db}+db$$</p>
+<p>即消去了$dW$和$db$前的系数$(1-\beta)$。这样简化了表达式，但是学习因子$\alpha$相当于变成了$\frac{\alpha}{1-\beta}$，表示$\alpha$也受$\beta$的影响。从效果上来说，这种写法也是可以的，但是不够直观，且调参涉及到$\alpha$，不够方便。所以，实际应用中，推荐第一种动量梯度下降的表达式。</p>
+<h3 id="RMSprop"><a href="#RMSprop" class="headerlink" title="RMSprop"></a>RMSprop</h3><p>RMSprop是另外一种优化梯度下降速度的算法。每次迭代训练过程中，其权重W和常数项b的更新表达式为：</p>
+<p>$$S_W=\beta S_{dW}+(1-\beta)dW^2$$</p>
+<p>$$S_b=\beta S_{db}+(1-\beta)db^2$$</p>
+<p>$$W:=W-\alpha \frac{dW}{\sqrt{S_W}},\ b:=b-\alpha \frac{db}{\sqrt{S_b}}$$</p>
+<p>下面简单解释一下RMSprop算法的原理，仍然以下图为例，为了便于分析，令水平方向为W的方向，垂直方向为b的方向。</p>
+<p><img src="http://img.blog.csdn.net/20171028163526337?" alt="这里写图片描述"></p>
+<p>从图中可以看出，梯度下降（蓝色折线）在垂直方向（b）上振荡较大，在水平方向（W）上振荡较小，表示在b方向上梯度较大，即$db$较大，而在W方向上梯度较小，即$dW$较小。因此，上述表达式中$S_b$较大，而$S_W$较小。在更新W和b的表达式中，变化值$\frac{dW}{\sqrt{S_W}}$较大，而$\frac{db}{\sqrt{S_b}}$较小。也就使得W变化得多一些，b变化得少一些。即加快了W方向的速度，减小了b方向的速度，减小振荡，实现快速梯度下降算法，其梯度下降过程如绿色折线所示。总得来说，就是如果哪个方向振荡大，就减小该方向的更新速度，从而减小振荡。</p>
+<p>还有一点需要注意的是为了避免RMSprop算法中分母为零，通常可以在分母增加一个极小的常数$\varepsilon$：</p>
+<p>$$W:=W-\alpha \frac{dW}{\sqrt{S_W}+\varepsilon},\ b:=b-\alpha \frac{db}{\sqrt{S_b}+\varepsilon}$$</p>
+<p>其中，$\varepsilon=10^{-8}$，或者其它较小值。</p>
+<h3 id="Adam-optimization-algorithm"><a href="#Adam-optimization-algorithm" class="headerlink" title="Adam optimization algorithm"></a>Adam optimization algorithm</h3><p>Adam（Adaptive Moment Estimation）算法结合了动量梯度下降算法和RMSprop算法。其算法流程为：</p>
+<p>$V_{dW}=0,\ S_{dW},\ V_{db}=0,\ S_{db}=0$</p>
+<p>$On\ iteration\ t:$</p>
+<p>$\ \ \ \ Cimpute\ dW,\ db$</p>
+<p>$\ \ \ \ V_{dW}=\beta_1V_{dW}+(1-\beta_1)dW,\ V_{db}=\beta_1V_{db}+(1-\beta_1)db$</p>
+<p>$\ \ \ \ S_{dW}=\beta_2S_{dW}+(1-\beta_2)dW^2,\ S_{db}=\beta_2S_{db}+(1-\beta_2)db^2$</p>
+<p>$\ \ \ \ V_{dW}^{corrected}=\frac{V_{dW}}{1-\beta_1^t},\ V_{db}^{corrected}=\frac{V_{db}}{1-\beta_1^t}$</p>
+<p>$\ \ \ \ S_{dW}^{corrected}=\frac{S_{dW}}{1-\beta_2^t},\ S_{db}^{corrected}=\frac{S_{db}}{1-\beta_2^t}$</p>
+<p>$\ \ \ \ W:=W-\alpha\frac{V_{dW}^{corrected}}{\sqrt{S_{dW}^{corrected}}+\varepsilon},\ b:=b-\alpha\frac{V_{db}^{corrected}}{\sqrt{S_{db}^{corrected}}+\varepsilon}$</p>
+<p>Adam算法包含了几个超参数，分别是：$\alpha,\beta_1,\beta_2,\varepsilon$。其中，$\beta_1$通常设置为0.9，$\beta_2$通常设置为0.999，$\varepsilon$通常设置为$10^{-8}$。一般只需要对$\beta_1$和$\beta_2$进行调试。</p>
+<p>实际应用中，Adam算法结合了动量梯度下降和RMSprop各自的优点，使得神经网络训练速度大大提高。</p>
+<h3 id="Learning-rate-decay"><a href="#Learning-rate-decay" class="headerlink" title="Learning rate decay"></a>Learning rate decay</h3><p>减小学习因子$\alpha$也能有效提高神经网络训练速度，这种方法被称为learning rate decay。</p>
+<p>Learning rate decay就是随着迭代次数增加，学习因子$\alpha$逐渐减小。下面用图示的方式来解释这样做的好处。下图中，蓝色折线表示使用恒定的学习因子$\alpha$，由于每次训练$\alpha$相同，步进长度不变，在接近最优值处的振荡也大，在最优值附近较大范围内振荡，与最优值距离就比较远。绿色折线表示使用不断减小的$\alpha$，随着训练次数增加，$\alpha$逐渐减小，步进长度减小，使得能够在最优值处较小范围内微弱振荡，不断逼近最优值。相比较恒定的$\alpha$来说，learning rate decay更接近最优值。</p>
+<p><img src="http://img.blog.csdn.net/20171028212226321?" alt="这里写图片描述"></p>
+<p>Learning rate decay中对$\alpha$可由下列公式得到：</p>
+<p>$$\alpha=\frac{1}{1+decay_rate*epoch}\alpha_0$$</p>
+<p>其中，deacy_rate是参数（可调），epoch是训练完所有样本的次数。随着epoch增加，$\alpha$会不断变小。</p>
+<p>除了上面计算$\alpha$的公式之外，还有其它可供选择的计算公式：</p>
+<p>$$\alpha=0.95^{epoch}\cdot \alpha_0$$</p>
+<p>$$\alpha=\frac{k}{\sqrt{epoch}}\cdot \alpha_0\ \ \ \ or\ \ \ \ \frac{k}{\sqrt{t}}\cdot \alpha_0$$</p>
+<p>其中，k为可调参数，t为mini-bach number。</p>
+<p>除此之外，还可以设置$\alpha$为关于t的离散值，随着t增加，$\alpha$呈阶梯式减小。当然，也可以根据训练情况灵活调整当前的$\alpha$值，但会比较耗时间。</p>
+<h3 id="The-problem-of-local-optima"><a href="#The-problem-of-local-optima" class="headerlink" title="The problem of local optima"></a>The problem of local optima</h3><p>在使用梯度下降算法不断减小cost function时，可能会得到局部最优解（local optima）而不是全局最优解（global optima）。之前我们对局部最优解的理解是形如碗状的凹槽，如下图左边所示。但是在神经网络中，local optima的概念发生了变化。准确地来说，大部分梯度为零的“最优点”并不是这些凹槽处，而是形如右边所示的马鞍状，称为saddle point。也就是说，梯度为零并不能保证都是convex（极小值），也有可能是concave（极大值）。特别是在神经网络中参数很多的情况下，所有参数梯度为零的点很可能都是右边所示的马鞍状的saddle point，而不是左边那样的local optimum。</p>
+<p><img src="http://img.blog.csdn.net/20171028232352807?" alt="这里写图片描述"></p>
+<p>类似马鞍状的plateaus会降低神经网络学习速度。Plateaus是梯度接近于零的平缓区域，如下图所示。在plateaus上梯度很小，前进缓慢，到达saddle point需要很长时间。到达saddle point后，由于随机扰动，梯度一般能够沿着图中绿色箭头，离开saddle point，继续前进，只是在plateaus上花费了太多时间。</p>
+<p><img src="http://img.blog.csdn.net/20171029094627014?" alt="这里写图片描述"></p>
+<p>总的来说，关于local optima，有两点总结：</p>
+<ul>
+<li><p><strong>只要选择合理的强大的神经网络，一般不太可能陷入local optima</strong></p>
+</li>
+<li><p><strong>Plateaus可能会使梯度下降变慢，降低学习速度</strong></p>
+</li>
+</ul>
+<p>值得一提的是，上文介绍的动量梯度下降，RMSprop，Adam算法都能有效解决plateaus下降过慢的问题，大大提高神经网络的学习速度。</p>
+
+      
+    </div>
+    
+    
+    
+	
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="红色石头 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信公众号，了解更多AI资源！</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="红色石头 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="红色石头 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    红色石头
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://redstonewill.github.io/2018/03/29/40/" title="Coursera吴恩达《优化深度神经网络》课程笔记（2）-- 优化算法">https://redstonewill.github.io/2018/03/29/40/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/笔记/" rel="tag"><i class="fa fa-tag"></i> 笔记</a>
+          
+            <a href="/tags/深度学习/" rel="tag"><i class="fa fa-tag"></i> 深度学习</a>
+          
+            <a href="/tags/神经网络/" rel="tag"><i class="fa fa-tag"></i> 神经网络</a>
+          
+            <a href="/tags/Coursera/" rel="tag"><i class="fa fa-tag"></i> Coursera</a>
+          
+            <a href="/tags/吴恩达/" rel="tag"><i class="fa fa-tag"></i> 吴恩达</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/29/39/" rel="next" title="Coursera吴恩达《优化深度神经网络》课程笔记（1）-- 深度学习的实用层面">
+                <i class="fa fa-chevron-left"></i> Coursera吴恩达《优化深度神经网络》课程笔记（1）-- 深度学习的实用层面
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_inline_share_toolbox">
+  <script type = "text/javascript" src = "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5aaa217593e0eff1" async = "async" ></script>
+</div>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNDg0MS8xMTM3OA=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/blog-logo.jpg"
+                alt="红色石头" />
+            
+              <p class="site-author-name" itemprop="name">红色石头</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/RedstoneWill" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://blog.csdn.net/red_stone1" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-contao"></i>CSDN</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/red_stone_wl/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/redstonewill" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:redstonewill@hotmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Mini-batch-gradient-descent"><span class="nav-number">1.</span> <span class="nav-text">Mini-batch gradient descent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Understanding-mini-batch-gradient-descent"><span class="nav-number">2.</span> <span class="nav-text">Understanding mini-batch gradient descent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exponentially-weighted-averages"><span class="nav-number">3.</span> <span class="nav-text">Exponentially weighted averages</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Understanding-exponetially-weighted-averages"><span class="nav-number">4.</span> <span class="nav-text">Understanding exponetially weighted averages</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bias-correction-in-exponentially-weighted-average"><span class="nav-number">5.</span> <span class="nav-text">Bias correction in exponentially weighted average</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gradient-descent-with-momentum"><span class="nav-number">6.</span> <span class="nav-text">Gradient descent with momentum</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RMSprop"><span class="nav-number">7.</span> <span class="nav-text">RMSprop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Adam-optimization-algorithm"><span class="nav-number">8.</span> <span class="nav-text">Adam optimization algorithm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Learning-rate-decay"><span class="nav-number">9.</span> <span class="nav-text">Learning rate decay</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#The-problem-of-local-optima"><span class="nav-number">10.</span> <span class="nav-text">The problem of local optima</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">红色石头</span>
+
+  
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_pv"></span>
+</span>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共136.9k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("GPinP9RLLAEN4cQw3GyGH1i6-gzGzoHsz", "P23pTYCEXWROAMFxuaSGYGIa");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
