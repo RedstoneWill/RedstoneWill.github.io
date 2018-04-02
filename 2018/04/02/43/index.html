@@ -104,7 +104,7 @@
 <meta property="og:image" content="http://img.blog.csdn.net/20171123160012172?">
 <meta property="og:image" content="http://img.blog.csdn.net/20171124141447596?">
 <meta property="og:image" content="http://img.blog.csdn.net/20171127134439086?">
-<meta property="og:updated_time" content="2018-04-02T07:45:56.300Z">
+<meta property="og:updated_time" content="2018-04-02T07:50:31.736Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Coursera吴恩达《构建机器学习项目》课程笔记（2）-- 机器学习策略（下）">
 <meta name="twitter:image" content="http://img.blog.csdn.net/20171122223431927?imageView/2/w/500/q/100">
@@ -464,7 +464,7 @@
 <blockquote>
 <p>我的CSDN博客地址：<a href="http://blog.csdn.net/red_stone1" target="_blank" rel="noopener">红色石头的专栏</a><br>我的知乎主页：<a href="https://www.zhihu.com/people/red_stone_wl" target="_blank" rel="noopener">红色石头</a><br>我的微博：<a href="https://weibo.com/6479023696/profile?topnav=1&amp;wvr=6&amp;is_all=1" target="_blank" rel="noopener">RedstoneWill的微博</a><br>我的GitHub：<a href="https://github.com/RedstoneWill" target="_blank" rel="noopener">RedstoneWill的GitHub</a><br>我的微信公众号：红色石头的机器学习之路（ID：redstonewill）<br>欢迎大家关注我！共同学习，共同进步！</p>
 </blockquote>
-<p>这是Andrew Ng深度学习专项课程第三门课《构建机器学习项目》的第二节笔记，第一节笔记入口：<a href="http://blog.csdn.net/red_stone1/article/details/78519599" target="_blank" rel="noopener">Coursera吴恩达《构建机器学习项目》课程笔记（1）– 机器学习策略（上）</a></p>
+<p>这是Andrew Ng深度学习专项课程第三门课《构建机器学习项目》的第二节笔记，第一节笔记入口：<a href="https://redstonewill.github.io/2018/04/02/42/">Coursera吴恩达《构建机器学习项目》课程笔记（1）– 机器学习策略（上）</a></p>
 <h3 id="Carrying-out-error-analysis"><a href="#Carrying-out-error-analysis" class="headerlink" title="Carrying out error analysis"></a>Carrying out error analysis</h3><p>对已经建立的机器学习模型进行错误分析（error analysis）十分必要，而且有针对性地、正确地进行error analysis更加重要。</p>
 <p>举个例子，猫类识别问题，已经建立的模型的错误率为10%。为了提高正确率，我们发现该模型会将一些狗类图片错误分类成猫。一种常规解决办法是扩大狗类样本，增强模型对够类（负样本）的训练。但是，这一过程可能会花费几个月的时间，耗费这么大的时间成本到底是否值得呢？也就是说扩大狗类样本，重新训练模型，对提高模型准确率到底有多大作用？这时候我们就需要进行error analysis，帮助我们做出判断。</p>
 <p>方法很简单，我们可以从分类错误的样本中统计出狗类的样本数量。根据狗类样本所占的比重，判断这一问题的重要性。假如狗类样本所占比重仅为5%，即时我们花费几个月的时间扩大狗类样本，提升模型对其识别率，改进后的模型错误率最多只会降低到9.5%。相比之前的10%，并没有显著改善。我们把这种性能限制称为ceiling on performance。相反，假如错误样本中狗类所占比重为50%，那么改进后的模型错误率有望降低到5%，性能改善很大。因此，值得去花费更多的时间扩大狗类样本。</p>
